@@ -1,5 +1,11 @@
 import React from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 
 const Location = () => {
   const locations = [
@@ -14,7 +20,7 @@ const Location = () => {
   ];
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.title}>Location</Text>
       <View style={styles.grid}>
         {locations.map((location, index) => (
@@ -24,7 +30,7 @@ const Location = () => {
           </TouchableOpacity>
         ))}
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

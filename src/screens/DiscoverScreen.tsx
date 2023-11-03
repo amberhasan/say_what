@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
+import LocationScreen from './LocationScreen';
 
-const DiscoverScreen: React.FC = () => {
+const DiscoverScreen: React.FC = ({navigation}) => {
   const categories = [
     'Location',
     'Mood',
@@ -12,12 +13,22 @@ const DiscoverScreen: React.FC = () => {
     'Universal',
   ];
 
+  const handleCategoryClick = (category: string) => {
+    if (category === 'Location') {
+      navigation.navigate('LocationScreen'); // <-- Navigate to the Location screen
+    }
+    // You can add more conditions here for other categories if needed
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
         data={categories}
         renderItem={({item}) => (
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => handleCategoryClick(item)} // <-- Add onPress here
+          >
             <Text style={styles.buttonText}>{item}</Text>
           </TouchableOpacity>
         )}
