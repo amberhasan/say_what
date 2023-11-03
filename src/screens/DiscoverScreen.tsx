@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
-import LocationScreen from './LocationScreen';
+import LocationScreen from './CategoriesScreen';
 
 const DiscoverScreen: React.FC = ({navigation}) => {
   const categories = [
@@ -15,7 +15,7 @@ const DiscoverScreen: React.FC = ({navigation}) => {
 
   const handleCategoryClick = (category: string) => {
     if (category === 'Location') {
-      navigation.navigate('LocationScreen'); // <-- Navigate to the Location screen
+      navigation.navigate('CategoriesScreen'); // <-- Navigate to the Location screen
     }
     // You can add more conditions here for other categories if needed
   };

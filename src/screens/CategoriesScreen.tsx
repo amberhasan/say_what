@@ -7,7 +7,7 @@ import {
   ScrollView,
 } from 'react-native';
 
-const Location = () => {
+const Location = ({navigation}) => {
   const locations = [
     {icon: '🏔', label: 'Mountains'},
     {icon: '🏖', label: 'Beach'},
@@ -24,7 +24,10 @@ const Location = () => {
       <Text style={styles.title}>Location</Text>
       <View style={styles.grid}>
         {locations.map((location, index) => (
-          <TouchableOpacity key={index} style={styles.box}>
+          <TouchableOpacity
+            key={index}
+            style={styles.box}
+            onPress={() => navigation.navigate('CaptionsScreen')}>
             <Text style={styles.icon}>{location.icon}</Text>
             <Text style={styles.label}>{location.label}</Text>
           </TouchableOpacity>

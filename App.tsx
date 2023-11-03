@@ -5,7 +5,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
 import DiscoverScreen from './src/screens/DiscoverScreen';
-import LocationScreen from './src/screens/LocationScreen'; // Don't forget to import
+import CategoriesScreen from './src/screens/CategoriesScreen';
+import CaptionsScreen from './src/screens/CaptionsScreen';
 import FavoritesScreen from './src/screens/FavoritesScreen';
 import SearchScreen from './src/screens/SearchScreen';
 
@@ -21,9 +22,14 @@ function DiscoverStackNavigator() {
         options={{title: 'Discover'}} // This will set the title in the header
       />
       <DiscoverStack.Screen
-        name="LocationScreen"
-        component={LocationScreen}
+        name="CategoriesScreen"
+        component={CategoriesScreen}
         options={{title: 'Location'}} // This will set the title in the header
+      />
+      <DiscoverStack.Screen
+        name="CaptionsScreen"
+        component={CaptionsScreen}
+        options={{title: 'Mountain'}} // This will set the title in the header
       />
     </DiscoverStack.Navigator>
   );

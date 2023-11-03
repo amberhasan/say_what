@@ -2,7 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import DiscoverScreen from './src/screens/DiscoverScreen';
-import LocationScreen from './src/screens/LocationScreen';
+import CategoriesScreen from './src/screens/CategoriesScreen';
 
 const Stack = createStackNavigator();
 
@@ -11,7 +11,7 @@ const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Discover">
         <Stack.Screen name="Discover" component={DiscoverScreen} />
-        <Stack.Screen name="Location" component={LocationScreen} />
+        <Stack.Screen name="Location" component={CategoriesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
