@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
-import LocationScreen from './CategoriesScreen';
+import categoryData from '../data/captions/categoryData';
 
 const DiscoverScreen: React.FC = ({navigation}) => {
   const categories = [
     'Location',
     'Mood',
-    'Ocasion',
+    'Occasion',
     'Holiday',
     'Season',
     'Lifestyle',
@@ -14,10 +14,10 @@ const DiscoverScreen: React.FC = ({navigation}) => {
   ];
 
   const handleCategoryClick = (category: string) => {
-    if (category === 'Location') {
-      navigation.navigate('CategoriesScreen'); // <-- Navigate to the Location screen
-    }
-    // You can add more conditions here for other categories if needed
+    navigation.navigate('CategoriesScreen', {
+      title: category,
+      categories: categoryData[category],
+    });
   };
 
   return (
@@ -27,8 +27,7 @@ const DiscoverScreen: React.FC = ({navigation}) => {
         renderItem={({item}) => (
           <TouchableOpacity
             style={styles.button}
-            onPress={() => handleCategoryClick(item)} // <-- Add onPress here
-          >
+            onPress={() => handleCategoryClick(item)}>
             <Text style={styles.buttonText}>{item}</Text>
           </TouchableOpacity>
         )}

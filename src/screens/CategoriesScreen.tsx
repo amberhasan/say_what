@@ -7,29 +7,23 @@ import {
   ScrollView,
 } from 'react-native';
 
-const Location = ({navigation}) => {
-  const locations = [
-    {icon: '🏔', label: 'Mountains'},
-    {icon: '🏖', label: 'Beach'},
-    {icon: '⛵', label: 'Lake'},
-    {icon: '🌵', label: 'Desert'},
-    {icon: '👒', label: 'Country'},
-    {icon: '🏙', label: 'City'},
-    {icon: '✈️', label: 'Abroad'},
-    {icon: '🏡', label: 'Home'},
-  ];
-
+const CategoriesScreen = ({navigation, route}) => {
+  const {title, categories} = route.params; // Extracting title and categories from route.params
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>Location</Text>
+      <Text style={styles.title}>{title}</Text>
       <View style={styles.grid}>
-        {locations.map((location, index) => (
+        {categories.map((category, index) => (
           <TouchableOpacity
             key={index}
             style={styles.box}
-            onPress={() => navigation.navigate('CaptionsScreen')}>
-            <Text style={styles.icon}>{location.icon}</Text>
-            <Text style={styles.label}>{location.label}</Text>
+            onPress={() =>
+              navigation.navigate('CaptionsScreen', {
+                selectedCategory: category.label,
+              })
+            }>
+            <Text style={styles.icon}>{category.icon}</Text>
+            <Text style={styles.label}>{category.label}</Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -71,4 +65,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Location;
+export default CategoriesScreen;

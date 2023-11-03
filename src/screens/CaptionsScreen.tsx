@@ -1,21 +1,16 @@
 import React from 'react';
 import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import captionsData from '../data/captions/captionsData'; // Import the data
 
-const CaptionsScreen = () => {
-  const phrases = [
-    'Mountains + Me',
-    'All uphill/downhill from here',
-    'See you on the slopes',
-    'Ski ya later',
-    '______ (location) looks good in white',
-    'On top of the world',
-    'Took the scenic route',
-    'Peaked',
-  ];
+const CaptionsScreen = ({route}) => {
+  const {selectedCategory} = route.params; // Extracting selectedCategory from route.params
+
+  // Get captions for the selected category
+  const phrases = captionsData[selectedCategory] || [];
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Mountains</Text>
+      <Text style={styles.title}>{selectedCategory}</Text>
       <FlatList
         data={phrases}
         renderItem={({item}) => <Text style={styles.listItem}>{item}</Text>}
