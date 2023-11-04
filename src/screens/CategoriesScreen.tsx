@@ -1,30 +1,24 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import {StyleSheet, View, Text, ScrollView} from 'react-native';
+import CategoryBox from '../components/CategoryBox'; // Make sure the path is correct based on your file structure
 
 const CategoriesScreen = ({navigation, route}) => {
-  const {title, categories} = route.params; // Extracting title and categories from route.params
+  const {title, categories} = route.params;
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>{title}</Text>
       <View style={styles.grid}>
         {categories.map((category, index) => (
-          <TouchableOpacity
+          <CategoryBox
             key={index}
-            style={styles.box}
+            category={category}
             onPress={() =>
               navigation.navigate('CaptionsScreen', {
                 selectedCategory: category.label,
               })
-            }>
-            <Text style={styles.icon}>{category.icon}</Text>
-            <Text style={styles.label}>{category.label}</Text>
-          </TouchableOpacity>
+            }
+          />
         ))}
       </View>
     </ScrollView>
@@ -47,22 +41,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-between',
   },
-  box: {
-    width: '45%', // adjust according to your preference
-    height: 120, // adjust according to your preference
-    borderWidth: 1,
-    borderColor: 'black',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 5,
-  },
-  icon: {
-    fontSize: 40, // adjust according to your preference
-  },
-  label: {
-    fontSize: 18, // adjust according to your preference
-    marginTop: 10,
-  },
+  // ... other styles if needed
 });
 
 export default CategoriesScreen;
