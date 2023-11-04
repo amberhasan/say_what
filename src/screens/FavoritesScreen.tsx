@@ -1,16 +1,38 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
+import {useSelector} from 'react-redux';
 
-const FavoritesScreen: React.FC = () => {
+const FavoritesScreen = () => {
+  // Use useSelector to get the favorites array from the Redux store
+  const favorites = useSelector(state => state.favorites);
+  console.log('Favorites', favorites);
+
+  // Render an individual favorite item
+  const renderFavoriteItem = ({item}) => (
+    <View style={styles.itemContainer}>
+      <Text style={styles.itemText}>{item}</Text>
+    </View>
+  );
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Favorites</Text>
-      <View style={styles.messageContainer}>
-        <Text style={styles.messageText}>No captions found</Text>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Start saving!</Text>
-        </TouchableOpacity>
-      </View>
+      {favorites.length > 0 ? (
+        // If there are favorites, render them in a FlatList
+        <FlatList
+          data={favorites}
+          renderItem={renderFavoriteItem}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      ) : (
+        // If there are no favorites, show a message and button
+        <View style={styles.messageContainer}>
+          <Text style={styles.messageText}>No captions found</Text>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Start saving!</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };
@@ -25,7 +47,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 50,
+    marginBottom: 20,
   },
   messageContainer: {
     flex: 1,
@@ -49,6 +71,15 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#333',
   },
+  itemContainer: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e0e0e0',
+  },
+  itemText: {
+    fontSize: 18,
+  },
+  // ...other styles if necessary
 });
 
 export default FavoritesScreen;

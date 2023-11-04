@@ -8,26 +8,29 @@ import {
   Modal,
   Button,
   Clipboard,
+  Alert, // Import Alert to provide feedback
 } from 'react-native';
 import captionsData from '../data/captions/captionsData'; // Import the data
+import {useDispatch} from 'react-redux';
+import {addToFavorites as addToFavoritesAction} from '../actions/favoritesActions'; // adjust the path as necessary
 
 const CaptionsScreen = ({route}) => {
   const {selectedCategory} = route.params;
   const phrases = captionsData[selectedCategory] || [];
   const [selectedCaption, setSelectedCaption] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const dispatch = useDispatch();
 
   const copyToClipboard = text => {
     Clipboard.setString(text);
-    // Close the modal
     setModalVisible(false);
-    // You might want to show a toast or alert to the user that the text has been copied.
+    Alert.alert('Copied!', 'Caption copied to clipboard.');
   };
 
-  const addToFavorites = text => {
-    // Implement the logic to save the text to favorites
+  const addToFavorites = caption => {
+    dispatch(addToFavoritesAction(caption)); // Dispatch the action to add to favorites
     setModalVisible(false);
-    // Show confirmation to the user if needed
+    Alert.alert('Added!', 'Caption added to favorites.');
   };
 
   const renderCaptionItem = ({item}) => {
@@ -39,7 +42,7 @@ const CaptionsScreen = ({route}) => {
           setModalVisible(true);
         }}>
         <Text style={[styles.listItem, isSelected && styles.selectedItem]}>
-          {`\u2022 ${item}`} {/* Unicode bullet point added here */}
+          {`\u2022 ${item}`}
         </Text>
       </TouchableOpacity>
     );
