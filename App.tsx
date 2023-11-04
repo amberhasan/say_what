@@ -9,21 +9,27 @@ import CategoriesScreen from './src/screens/CategoriesScreen';
 import CaptionsScreen from './src/screens/CaptionsScreen';
 import FavoritesScreen from './src/screens/FavoritesScreen';
 import SearchScreen from './src/screens/SearchScreen';
+import {Provider} from 'react-redux';
+import configureStore from './src/store/configureStore';
 
 const Tab = createBottomTabNavigator();
 const DiscoverStack = createStackNavigator();
+const store = configureStore();
+
 export default function App() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{headerShown: false}} // This will hide the header for all screens in the Tab navigator
-      >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Discover" component={DiscoverStackNavigator} />
-        <Tab.Screen name="Favorites" component={FavoritesScreen} />
-        <Tab.Screen name="Search" component={SearchScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={{headerShown: false}} // This will hide the header for all screens in the Tab navigator
+        >
+          <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen name="Discover" component={DiscoverStackNavigator} />
+          <Tab.Screen name="Favorites" component={FavoritesScreen} />
+          <Tab.Screen name="Search" component={SearchScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
