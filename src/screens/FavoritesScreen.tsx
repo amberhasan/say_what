@@ -4,8 +4,8 @@ import {useSelector} from 'react-redux';
 
 const FavoritesScreen = () => {
   // Use useSelector to get the favorites array from the Redux store
-  const favorites = useSelector(state => state.favorites);
-  console.log('Favorites', favorites);
+
+  const favorites = useSelector(state => state.favorites).favorites;
 
   // Render an individual favorite item
   const renderFavoriteItem = ({item}) => (
@@ -18,12 +18,13 @@ const FavoritesScreen = () => {
     <View style={styles.container}>
       <Text style={styles.header}>Favorites</Text>
       {favorites.length > 0 ? (
-        // If there are favorites, render them in a FlatList
-        <FlatList
-          data={favorites}
-          renderItem={renderFavoriteItem}
-          keyExtractor={(item, index) => index.toString()}
-        />
+        <View>
+          <FlatList
+            data={favorites}
+            renderItem={renderFavoriteItem}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        </View>
       ) : (
         // If there are no favorites, show a message and button
         <View style={styles.messageContainer}>
@@ -79,7 +80,6 @@ const styles = StyleSheet.create({
   itemText: {
     fontSize: 18,
   },
-  // ...other styles if necessary
 });
 
 export default FavoritesScreen;
