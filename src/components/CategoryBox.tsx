@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   box: {
     width: '40%', // 4 boxes per row
     aspectRatio: 1, // Keep the box aspect ratio to 1:1, adjust if necessary
-    borderWidth: 1,
+    borderWidth: 3,
     borderColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',

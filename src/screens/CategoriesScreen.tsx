@@ -7,7 +7,7 @@ const CategoriesScreen = ({navigation, route}) => {
 
   return (
     <ScrollView style={styles.container}>
-      {/* <Text style={styles.title}>{title}</Text> */}
+      <Text style={styles.title}>{title}</Text>
       <View style={styles.grid}>
         {categories.map((category, index) => (
           <CategoryBox
