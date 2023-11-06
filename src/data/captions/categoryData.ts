@@ -1,13 +1,13 @@
 const categoryData = {
   Location: [
-    {icon: require('../../images/location/pic4.png'), label: 'Mountains'},
-    {icon: '🏖', label: 'Beach'},
-    {icon: '🏖', label: 'Lake'},
-    {icon: '🏖', label: 'Desert'},
-    {icon: '🏖', label: 'Country'},
-    {icon: '🏖', label: 'City'},
-    {icon: '🏖', label: 'Abroad'},
-    {icon: '🏖', label: 'Home'},
+    {icon: require('../../images/location/mountains.png'), label: 'Mountains'},
+    {icon: require('../../images/location/beach.png'), label: 'Beach'},
+    {icon: require('../../images/location/lake.png'), label: 'Lake'},
+    {icon: require('../../images/location/desert.png'), label: 'Desert'},
+    {icon: require('../../images/location/country.png'), label: 'Country'},
+    {icon: require('../../images/location/city.png'), label: 'City'},
+    {icon: require('../../images/location/abroad.png'), label: 'Abroad'},
+    {icon: require('../../images/location/home.png'), label: 'Home'},
   ],
   Mood: [
     {icon: '😊', label: 'Happy'},

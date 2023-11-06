@@ -1,29 +1,43 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
+// Assuming category.icon is of type ImageSourcePropType which is the correct type for an image source
 const CategoryBox = ({category, onPress}) => (
   <TouchableOpacity style={styles.box} onPress={onPress}>
-    <Text style={styles.icon}>{category.icon}</Text>
+    <View style={styles.container}>
+      <Image source={category.icon} style={styles.icon} resizeMode="contain" />
+    </View>
     <Text style={styles.label}>{category.label}</Text>
   </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
   box: {
-    width: '45%', // adjust according to your preference
-    height: 120, // adjust according to your preference
+    width: '40%', // 4 boxes per row
+    aspectRatio: 1, // Keep the box aspect ratio to 1:1, adjust if necessary
     borderWidth: 1,
     borderColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
     margin: 5,
+    padding: 10, // Adjust padding to ensure content fits and is centered
+  },
+  container: {
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 5, // Adjust horizontal padding if necessary
+    paddingVertical: 5, // Adjust vertical padding if necessary
   },
   icon: {
-    fontSize: 40, // adjust according to your preference
+    width: '100%', // Icons should scale to fit the container width
+    height: undefined, // Height will be calculated based on the aspect ratio
+    aspectRatio: 1, // Adjust if the icons should not be square
+    marginBottom: 8,
   },
   label: {
-    fontSize: 18, // adjust according to your preference
-    marginTop: 10,
+    fontSize: 14,
+    textAlign: 'center',
   },
 });
 
