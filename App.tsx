@@ -26,14 +26,21 @@ export default function App() {
               let iconName;
               if (route.name === 'Home') {
                 iconName = focused
-                  ? require('./src/images/location/mountains.png') // active icon
-                  : require('./src/images/location/mountains.png'); // inactive icon
+                  ? require('./src/images/bottom/selected/house_pink.png') // active icon
+                  : require('./src/images/bottom/unselected/house.png'); // inactive icon
               } else if (route.name === 'Discover') {
                 iconName = focused
-                  ? require('./src/images/location/mountains.png')
-                  : require('./src/images/location/mountains.png');
+                  ? require('./src/images/bottom/selected/lightbulb_pink.png') // active icon
+                  : require('./src/images/bottom/unselected/lightbulb.png'); // inactive icon
+              } else if (route.name === 'Favorites') {
+                iconName = focused
+                  ? require('./src/images/bottom/selected/heart_pink.png') // active icon
+                  : require('./src/images/bottom/unselected/heart.png'); // inactive icon
+              } else if (route.name === 'Search') {
+                iconName = focused
+                  ? require('./src/images/bottom/selected/glass_pink.png') // active icon
+                  : require('./src/images/bottom/unselected/glass.png'); // inactive icon
               }
-              // ... other icons for Favorites and Search
               return (
                 <Image source={iconName} style={{width: size, height: size}} />
               );
@@ -41,23 +48,15 @@ export default function App() {
             tabBarLabel: ({focused, color}) => {
               return (
                 <Text style={{color: focused ? 'blue' : 'black'}}>
-                  {' '}
-                  // Adjust color and style
                   {route.name}
                 </Text>
               );
             },
           })}
           tabBarOptions={{
-            activeTintColor: 'blue', // Adjust active tint color
-            inactiveTintColor: 'gray', // Adjust inactive tint color
-            style: {
-              // Add custom styles here
-            },
-            labelStyle: {
-              // Add custom label styles here
-            },
-            showLabel: true, // Set this to false if you don't want to show labels
+            showLabel: false, // This tells the tab navigator not to show the label
+            activeTintColor: 'blue',
+            inactiveTintColor: 'gray',
           }}>
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Discover" component={DiscoverStackNavigator} />
