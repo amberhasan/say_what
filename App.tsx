@@ -26,37 +26,28 @@ export default function App() {
               let iconName;
               if (route.name === 'Home') {
                 iconName = focused
-                  ? require('./src/images/bottom/selected/house_pink.png') // active icon
-                  : require('./src/images/bottom/unselected/house.png'); // inactive icon
+                  ? require('./src/assets/images/bottom/selected/house_pink.png') // active icon
+                  : require('./src/assets/images/bottom/unselected/house.png'); // inactive icon
               } else if (route.name === 'Discover') {
                 iconName = focused
-                  ? require('./src/images/bottom/selected/lightbulb_pink.png') // active icon
-                  : require('./src/images/bottom/unselected/lightbulb.png'); // inactive icon
+                  ? require('./src/assets/images/bottom/selected/lightbulb_pink.png') // active icon
+                  : require('./src/assets/images/bottom/unselected/lightbulb.png'); // inactive icon
               } else if (route.name === 'Favorites') {
                 iconName = focused
-                  ? require('./src/images/bottom/selected/heart_pink.png') // active icon
-                  : require('./src/images/bottom/unselected/heart.png'); // inactive icon
+                  ? require('./src/assets/images/bottom/selected/heart_pink.png') // active icon
+                  : require('./src/assets/images/bottom/unselected/heart.png'); // inactive icon
               } else if (route.name === 'Search') {
                 iconName = focused
-                  ? require('./src/images/bottom/selected/glass_pink.png') // active icon
-                  : require('./src/images/bottom/unselected/glass.png'); // inactive icon
+                  ? require('./src/assets/images/bottom/selected/glass_pink.png') // active icon
+                  : require('./src/assets/images/bottom/unselected/glass.png'); // inactive icon
               }
               return (
                 <Image source={iconName} style={{width: size, height: size}} />
               );
             },
-            tabBarLabel: ({focused, color}) => {
-              return (
-                <Text style={{color: focused ? 'blue' : 'black'}}>
-                  {route.name}
-                </Text>
-              );
-            },
           })}
           tabBarOptions={{
             showLabel: false, // This tells the tab navigator not to show the label
-            activeTintColor: 'blue',
-            inactiveTintColor: 'gray',
           }}>
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Discover" component={DiscoverStackNavigator} />
@@ -74,12 +65,21 @@ function DiscoverStackNavigator() {
       initialRouteName="DiscoverScreen"
       screenOptions={{headerShown: false}} // This will hide the header for all screens in the Discover stack
     >
-      <DiscoverStack.Screen name="DiscoverScreen" component={DiscoverScreen} />
+      <DiscoverStack.Screen
+        name="DiscoverScreen"
+        component={DiscoverScreen}
+        options={{headerShown: false}}
+      />
       <DiscoverStack.Screen
         name="CategoriesScreen"
         component={CategoriesScreen}
+        options={{headerShown: false}}
       />
-      <DiscoverStack.Screen name="CaptionsScreen" component={CaptionsScreen} />
+      <DiscoverStack.Screen
+        name="CaptionsScreen"
+        component={CaptionsScreen}
+        options={{headerShown: false}}
+      />
     </DiscoverStack.Navigator>
   );
 }

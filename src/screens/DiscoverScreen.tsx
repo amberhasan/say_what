@@ -2,7 +2,8 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import categoryData from '../data/captions/categoryData';
 import {ImageBackground} from 'react-native';
-import buttonImage from '../images/functional/gray_button.png'; // Update the path according to your project structure
+import buttonImage from '../assets/images/functional/gray_button.png'; // Update the path according to your project structure
+import GrayButton from '../components/GrayButton';
 
 const DiscoverScreen: React.FC = ({navigation}) => {
   const categories = [
@@ -27,17 +28,7 @@ const DiscoverScreen: React.FC = ({navigation}) => {
       <FlatList
         data={categories}
         renderItem={({item}) => (
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => handleCategoryClick(item)}>
-            <ImageBackground
-              source={buttonImage}
-              style={styles.buttonImage}
-              resizeMode="cover" // or "stretch" to fill the button area
-            >
-              <Text style={styles.buttonText}>{item}</Text>
-            </ImageBackground>
-          </TouchableOpacity>
+          <GrayButton item={item} onPress={handleCategoryClick} />
         )}
         keyExtractor={item => item}
       />

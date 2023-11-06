@@ -1,60 +1,135 @@
 const categoryData = {
   Location: [
-    {icon: require('../../images/location/mountains.png'), label: 'Mountains'},
-    {icon: require('../../images/location/beach.png'), label: 'Beach'},
-    {icon: require('../../images/location/lake.png'), label: 'Lake'},
-    {icon: require('../../images/location/desert.png'), label: 'Desert'},
-    {icon: require('../../images/location/country.png'), label: 'Country'},
-    {icon: require('../../images/location/city.png'), label: 'City'},
-    {icon: require('../../images/location/abroad.png'), label: 'Abroad'},
-    {icon: require('../../images/location/home.png'), label: 'Home'},
+    {
+      icon: require('../../assets/images/location/mountains.png'),
+      label: 'Mountains',
+    },
+    {icon: require('../../assets/images/location/beach.png'), label: 'Beach'},
+    {icon: require('../../assets/images/location/lake.png'), label: 'Lake'},
+    {icon: require('../../assets/images/location/desert.png'), label: 'Desert'},
+    {
+      icon: require('../../assets/images/location/country.png'),
+      label: 'Country',
+    },
+    {icon: require('../../assets/images/location/city.png'), label: 'City'},
+    {icon: require('../../assets/images/location/abroad.png'), label: 'Abroad'},
+    {icon: require('../../assets/images/location/home.png'), label: 'Home'},
   ],
   Mood: [
-    {icon: '😊', label: 'Happy'},
-    {icon: '😢', label: 'Confident'},
-    {icon: '😢', label: 'Grateful'},
-    {icon: '😢', label: 'Celebratory'},
-    {icon: '😢', label: 'Nostalgic'},
-    {icon: '😢', label: 'Excited'},
+    {icon: require('../../assets/images/mood/happy.png'), label: 'Happy'},
+    {
+      icon: require('../../assets/images/mood/confident.png'),
+      label: 'Confident',
+    },
+    {icon: require('../../assets/images/mood/grateful.png'), label: 'Grateful'},
+    {
+      icon: require('../../assets/images/mood/celebratory.png'),
+      label: 'Celebratory',
+    },
+    {
+      icon: require('../../assets/images/mood/nostalgic.png'),
+      label: 'Nostalgic',
+    },
+    {icon: require('../../assets/images/mood/excited.png'), label: 'Excited'},
   ],
 
   Occasion: [
-    {icon: '😊', label: 'GNO'},
-    {icon: '😢', label: 'Concert'},
-    {icon: '😢', label: 'Graduation'},
-    {icon: '😢', label: 'Birthday'},
-    {icon: '😢', label: 'Date Night'},
-    {icon: '😢', label: 'Girls Trip'},
-    {icon: '😢', label: 'Engagement'},
-    {icon: '😢', label: 'Bachelorette'},
-    {icon: '😢', label: 'Reunion'},
-    {icon: '😢', label: 'Wedding'},
+    {icon: require('../../assets/images/occasion/gno.png'), label: 'GNO'},
+    {
+      icon: require('../../assets/images/occasion/concert.png'),
+      label: 'Concert',
+    },
+    {
+      icon: require('../../assets/images/occasion/graduation.png'),
+      label: 'Graduation',
+    },
+    {
+      icon: require('../../assets/images/occasion/birthday.png'),
+      label: 'Birthday',
+    },
+    {
+      icon: require('../../assets/images/occasion/date.png'),
+      label: 'Date Night',
+    },
+    {
+      icon: require('../../assets/images/occasion/girlstrip.png'),
+      label: 'Girls Trip',
+    },
+    {
+      icon: require('../../assets/images/occasion/engagement.png'),
+      label: 'Engagement',
+    },
+    {
+      icon: require('../../assets/images/occasion/bachelorette.png'),
+      label: 'Bachelorette',
+    },
+    {
+      icon: require('../../assets/images/occasion/reunion.png'),
+      label: 'Reunion',
+    },
+    {
+      icon: require('../../assets/images/occasion/wedding.png'),
+      label: 'Wedding',
+    },
   ],
   Holiday: [
-    {icon: '😊', label: 'NYE'},
-    {icon: '😢', label: 'V-Day'},
-    {icon: '😢', label: 'St. Pattys'},
-    {icon: '😢', label: 'Easter'},
-    {icon: '😢', label: 'Fourth'},
-    {icon: '😢', label: 'Halloween'},
-    {icon: '😢', label: 'Thanksgiving'},
-    {icon: '😢', label: 'Christmas'},
+    {icon: require('../../assets/images/holiday/nye.png'), label: 'NYE'},
+    {
+      icon: require('../../assets/images/holiday/valentines.png'),
+      label: 'V-Day',
+    },
+    {
+      icon: require('../../assets/images/holiday/stpattys.png'),
+      label: 'St. Pattys',
+    },
+    {icon: require('../../assets/images/holiday/easter.png'), label: 'Easter'},
+    {icon: require('../../assets/images/holiday/fourth.png'), label: 'Fourth'},
+    {
+      icon: require('../../assets/images/holiday/halloween.png'),
+      label: 'Halloween',
+    },
+    {
+      icon: require('../../assets/images/holiday/thanksgiving.png'),
+      label: 'Thanksgiving',
+    },
+    {
+      icon: require('../../assets/images/holiday/christmas.png'),
+      label: 'Christmas',
+    },
   ],
   Season: [
-    {icon: '😊', label: 'Spring'},
-    {icon: '😢', label: 'Summer'},
-    {icon: '😢', label: 'Fall'},
-    {icon: '😢', label: 'Winter'},
+    {icon: require('../../assets/images/seasons/spring.png'), label: 'Spring'},
+    {icon: require('../../assets/images/seasons/summer.png'), label: 'Summer'},
+    {icon: require('../../assets/images/seasons/fall.png'), label: 'Fall'},
+    {icon: require('../../assets/images/seasons/winter.png'), label: 'Winter'},
   ],
   Lifestyle: [
-    {icon: '😊', label: 'Travel'},
-    {icon: '😢', label: 'Health/Wellness'},
-    {icon: '😢', label: 'Fashion'},
-    {icon: '😢', label: 'Beauty'},
+    {
+      icon: require('../../assets/images/lifestyle/travel.png'),
+      label: 'Travel',
+    },
+    {
+      icon: require('../../assets/images/lifestyle/health.png'),
+      label: 'Health/Wellness',
+    },
+    {
+      icon: require('../../assets/images/lifestyle/fashion.png'),
+      label: 'Fashion',
+    },
+    {
+      icon: require('../../assets/images/lifestyle/beauty.png'),
+      label: 'Beauty',
+    },
   ],
   Universal: [
-    {icon: '😊', label: 'For any moment'},
-    {icon: '😢', label: 'One-word'},
+    {
+      icon: require('../../assets/images/universal/any.png'),
+      label: 'For any moment',
+    },
+    {
+      icon: require('../../assets/images/universal/oneword.png'),
+      label: 'One-word',
+    },
   ],
 };
 

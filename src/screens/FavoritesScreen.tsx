@@ -1,8 +1,10 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import {useSelector} from 'react-redux';
+import GrayButton from '../components/GrayButton';
+import DiscoverScreen from './DiscoverScreen';
 
-const FavoritesScreen = () => {
+const FavoritesScreen = ({navigation}) => {
   // Use useSelector to get the favorites array from the Redux store
 
   const favorites = useSelector(state => state.favorites).favorites;
@@ -13,6 +15,10 @@ const FavoritesScreen = () => {
       <Text style={styles.itemText}>{item}</Text>
     </View>
   );
+
+  const handleStartSaving = () => {
+    navigation.navigate('DiscoverScreen'); // Navigate to the "Discover" screen
+  };
 
   return (
     <View style={styles.container}>
@@ -29,9 +35,7 @@ const FavoritesScreen = () => {
         // If there are no favorites, show a message and button
         <View style={styles.messageContainer}>
           <Text style={styles.messageText}>No captions found</Text>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Start saving!</Text>
-          </TouchableOpacity>
+          <GrayButton item={'Start saving!'} onPress={handleStartSaving} />
         </View>
       )}
     </View>
