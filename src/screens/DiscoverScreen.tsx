@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import categoryData from '../data/captions/categoryData';
+import {ImageBackground} from 'react-native';
+import buttonImage from '../images/functional/gray_button.png'; // Update the path according to your project structure
 
 const DiscoverScreen: React.FC = ({navigation}) => {
   const categories = [
@@ -28,7 +30,13 @@ const DiscoverScreen: React.FC = ({navigation}) => {
           <TouchableOpacity
             style={styles.button}
             onPress={() => handleCategoryClick(item)}>
-            <Text style={styles.buttonText}>{item}</Text>
+            <ImageBackground
+              source={buttonImage}
+              style={styles.buttonImage}
+              resizeMode="cover" // or "stretch" to fill the button area
+            >
+              <Text style={styles.buttonText}>{item}</Text>
+            </ImageBackground>
           </TouchableOpacity>
         )}
         keyExtractor={item => item}
@@ -38,25 +46,29 @@ const DiscoverScreen: React.FC = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    paddingTop: 50,
-  },
   button: {
     width: 280,
     height: 60,
-    backgroundColor: '#EDEDED',
-    justifyContent: 'center',
-    alignItems: 'center',
     borderRadius: 15,
     marginBottom: 20,
+    overflow: 'hidden', // This is to ensure the borderRadius is applied to the image as well
+  },
+  buttonImage: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonText: {
     fontSize: 20,
     fontWeight: '600',
     color: '#333',
+  },
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    paddingTop: 100,
   },
 });
 

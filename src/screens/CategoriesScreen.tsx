@@ -30,16 +30,29 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     padding: 20,
+    paddingTop: 100,
   },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
     marginBottom: 20,
+    textAlign: 'center',
   },
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around', // Changed this to 'space-around' for even spacing around items
+    paddingHorizontal: 16, // Adjust the horizontal padding of the whole grid to match your design
+  },
+  box: {
+    width: '42%', // Slightly increase the width if you decrease the margin/padding
+    aspectRatio: 1,
+    borderWidth: 3,
+    borderColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 5, // Specify vertical margin to space out items vertically
+    padding: 10,
   },
   // ... other styles if needed
 });
