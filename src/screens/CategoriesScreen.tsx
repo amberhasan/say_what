@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   grid: {
     flexDirection: 'row',
