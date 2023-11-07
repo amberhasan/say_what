@@ -49,10 +49,26 @@ export default function App() {
           tabBarOptions={{
             showLabel: false, // This tells the tab navigator not to show the label
           }}>
-          <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="Discover" component={DiscoverStackNavigator} />
-          <Tab.Screen name="Favorites" component={FavoritesScreen} />
-          <Tab.Screen name="Search" component={SearchScreen} />
+          <Tab.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{headerShown: false}}
+          />
+          <Tab.Screen
+            name="Discover"
+            component={DiscoverStackNavigator}
+            options={{headerShown: false}}
+          />
+          <Tab.Screen
+            name="Favorites"
+            component={FavoritesScreen}
+            options={{headerShown: false}}
+          />
+          <Tab.Screen
+            name="Search"
+            component={SearchScreen}
+            options={{headerShown: false}}
+          />
         </Tab.Navigator>
       </NavigationContainer>
     </Provider>
