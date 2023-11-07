@@ -23,20 +23,24 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 30,
+    fontFamily: 'PlayfairDisplay-Regular',
+    fontSize: 43.5,
     fontWeight: 'bold',
     marginBottom: 20,
   },
   subtitle: {
-    fontSize: 20,
+    fontFamily: 'PlayfairDisplay-Regular',
+    fontSize: 22,
     fontWeight: '300',
     marginBottom: 50,
   },
   caption: {
+    //League Spartan is the font name we need.
     fontSize: 36,
     fontWeight: 'bold',
   },
   footer: {
+    //Sanchez is the font we need.
     marginTop: 50,
     fontSize: 18,
     fontWeight: '300',

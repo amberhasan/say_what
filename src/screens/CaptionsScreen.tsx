@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   bulletPoint: {
     width: 10,
@@ -93,12 +94,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: 'black', // Change this to match your desired bullet point color
     marginRight: 10,
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   container: {
     flex: 1,
     padding: 20,
     paddingTop: 100,
     backgroundColor: 'white',
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   title: {
     fontSize: 32,
@@ -109,15 +112,18 @@ const styles = StyleSheet.create({
   },
   listItem: {
     fontSize: 20,
+    fontFamily: 'PlayfairDisplay_Regular',
   },
   selectedItem: {
     color: '#FF66C3', // Change this to your preferred shade of pink
+    fontFamily: 'PlayfairDisplay_Regular',
   },
   centeredView: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   modalView: {
     margin: 20,
@@ -133,6 +139,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+    fontFamily: 'PlayfairDisplay-Regular',
   },
 });
 

@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 5,
     padding: 10, // Adjust padding to ensure content fits and is centered
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   container: {
     backgroundColor: 'white',
@@ -28,16 +29,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 5, // Adjust horizontal padding if necessary
     paddingVertical: 5, // Adjust vertical padding if necessary
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   icon: {
     width: '100%', // Icons should scale to fit the container width
     height: undefined, // Height will be calculated based on the aspect ratio
     aspectRatio: 1, // Adjust if the icons should not be square
     marginBottom: 8,
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   label: {
     fontSize: 14,
     textAlign: 'center',
+    fontFamily: 'PlayfairDisplay-Regular',
   },
 });
 

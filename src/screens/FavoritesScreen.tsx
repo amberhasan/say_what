@@ -48,20 +48,24 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     paddingTop: 100,
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   messageContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   messageText: {
     fontSize: 20,
     marginBottom: 20,
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   button: {
     width: 200,
@@ -70,19 +74,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 25,
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   buttonText: {
     fontSize: 16,
     fontWeight: '600',
     color: '#333',
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   itemContainer: {
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   itemText: {
     fontSize: 18,
+    fontFamily: 'PlayfairDisplay-Regular',
   },
 });
 

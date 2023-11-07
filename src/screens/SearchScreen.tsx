@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start', // Align content to the top
     alignItems: 'center', // Center content horizontally
     paddingTop: 100, // Adjust top padding to match the example
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   header: {
     fontSize: 28, // Increased font size
@@ -34,6 +35,7 @@ const styles = StyleSheet.create({
     marginBottom: 32, // Increased bottom margin
     marginLeft: 20, // Add left margin to align with the search box
     textAlign: 'center', // Align text to the left
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   searchBox: {
     flexDirection: 'row',
@@ -44,12 +46,13 @@ const styles = StyleSheet.create({
     height: 50, // Fixed height for the search box
     alignItems: 'center',
     paddingHorizontal: 20, // Increase horizontal padding
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   searchInput: {
     flex: 1,
     marginLeft: 10,
     fontSize: 16, // Optional: Adjust font size if necessary
-    // Additional styles for the input can be added here
+    fontFamily: 'PlayfairDisplay-Regular',
   },
 });
 

@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     paddingTop: 100,
+    fontFamily: 'PlayfairDisplay-Regular',
   },
 });
 

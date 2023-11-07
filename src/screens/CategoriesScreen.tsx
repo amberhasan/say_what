@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 20,
     paddingTop: 0,
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   title: {
     fontSize: 32,
@@ -44,6 +45,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-around', // Changed this to 'space-around' for even spacing around items
     paddingHorizontal: 16, // Adjust the horizontal padding of the whole grid to match your design
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   box: {
     width: '42%', // Slightly increase the width if you decrease the margin/padding
@@ -54,6 +56,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 5, // Specify vertical margin to space out items vertically
     padding: 10,
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   // ... other styles if needed
 });
