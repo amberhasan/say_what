@@ -6,6 +6,7 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
+import CustomText from './CustomText';
 
 const GrayButton = ({item, onPress}) => {
   return (
@@ -15,7 +16,7 @@ const GrayButton = ({item, onPress}) => {
         style={styles.buttonImage}
         resizeMode="cover" // or "stretch" to fill the button area
       >
-        <Text style={styles.buttonText}>{item}</Text>
+        <CustomText style={styles.buttonText}>{item}</CustomText>
       </ImageBackground>
     </TouchableOpacity>
   );
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
+    fontFamily: 'PlayfairDisplay_Regular',
     fontSize: 20,
     fontWeight: '600',
     color: '#333',

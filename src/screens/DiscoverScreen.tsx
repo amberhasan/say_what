@@ -35,25 +35,6 @@ const DiscoverScreen: React.FC = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  button: {
-    width: 280,
-    height: 60,
-    borderRadius: 15,
-    marginBottom: 20,
-    overflow: 'hidden', // This is to ensure the borderRadius is applied to the image as well
-  },
-  buttonImage: {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    fontSize: 20,
-    fontWeight: '600',
-    color: '#333',
-    fontFamily: 'PlayfairDisplay_Regular',
-  },
   container: {
     flex: 1,
     backgroundColor: 'white',

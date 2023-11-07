@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
+    fontFamily: 'PlayfairDisplay_Regular',
   },
   listItem: {
     fontSize: 20,
@@ -133,7 +134,6 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  // ... other styles remain unchanged
 });
 
 export default CaptionsScreen;
