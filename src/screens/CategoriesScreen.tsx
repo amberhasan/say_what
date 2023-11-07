@@ -1,13 +1,13 @@
 import React from 'react';
 import {StyleSheet, View, Text, ScrollView} from 'react-native';
 import CategoryBox from '../components/CategoryBox'; // Make sure the path is correct based on your file structure
-
+import Header from '../components/Header';
 const CategoriesScreen = ({navigation, route}) => {
   const {title, categories} = route.params;
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
+      <Header title={title} />
       <View style={styles.grid}>
         {categories.map((category, index) => (
           <CategoryBox
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     padding: 20,
-    paddingTop: 0,
+    paddingTop: 100,
     fontFamily: 'PlayfairDisplay-Regular',
   },
   title: {

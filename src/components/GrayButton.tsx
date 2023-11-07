@@ -39,9 +39,9 @@ const styles = StyleSheet.create({
     fontFamily: 'PlayfairDisplay-Regular',
   },
   buttonText: {
-    fontFamily: 'PlayfairDisplay_Regular',
-    fontSize: 20,
-    fontWeight: '600',
+    fontFamily: 'PlayfairDisplay-Regular',
+    fontSize: 25.4,
+    fontWeight: '700',
     color: '#333',
   },
   container: {
