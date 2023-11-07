@@ -22,6 +22,11 @@ export default function App() {
       <NavigationContainer>
         <Tab.Navigator
           screenOptions={({route}) => ({
+            tabBarStyle: {
+              shadowOpacity: 0,
+              backgroundColor: 'white',
+              borderTopWidth: 0,
+            },
             headerShown: false,
             tabBarShowLabel: false, // This tells the tab navigator not to show the label
             tabBarIcon: ({focused, color, size}) => {
