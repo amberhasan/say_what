@@ -23,7 +23,7 @@ export default function App() {
         <Tab.Navigator
           screenOptions={({route}) => ({
             headerShown: false,
-            showLabel: false, // This tells the tab navigator not to show the label
+            tabBarShowLabel: false, // This tells the tab navigator not to show the label
             tabBarIcon: ({focused, color, size}) => {
               let iconName;
               if (route.name === 'Home') {
