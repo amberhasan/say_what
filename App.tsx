@@ -26,6 +26,7 @@ export default function App() {
               shadowOpacity: 0,
               backgroundColor: 'white',
               borderTopWidth: 0,
+              paddingHorizontal: 25,
             },
             headerShown: false,
             tabBarShowLabel: false, // This tells the tab navigator not to show the label
@@ -49,7 +50,7 @@ export default function App() {
                   : require('./src/assets/images/bottom/unselected/glass.png'); // inactive icon
               }
               return (
-                <Image source={iconName} style={{width: size, height: size}} />
+                <Image source={iconName} style={{width: 60, height: 60}} />
               );
             },
           })}>
