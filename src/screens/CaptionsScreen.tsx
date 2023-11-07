@@ -108,15 +108,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-    fontFamily: 'PlayfairDisplay_Regular',
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   listItem: {
     fontSize: 20,
-    fontFamily: 'PlayfairDisplay_Regular',
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   selectedItem: {
     color: '#FF66C3', // Change this to your preferred shade of pink
-    fontFamily: 'PlayfairDisplay_Regular',
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   centeredView: {
     flex: 1,

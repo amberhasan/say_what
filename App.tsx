@@ -23,6 +23,7 @@ export default function App() {
         <Tab.Navigator
           screenOptions={({route}) => ({
             headerShown: false,
+            showLabel: false, // This tells the tab navigator not to show the label
             tabBarIcon: ({focused, color, size}) => {
               let iconName;
               if (route.name === 'Home') {
@@ -46,10 +47,7 @@ export default function App() {
                 <Image source={iconName} style={{width: size, height: size}} />
               );
             },
-          })}
-          tabBarOptions={{
-            showLabel: false, // This tells the tab navigator not to show the label
-          }}>
+          })}>
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Discover" component={DiscoverStackNavigator} />
           <Tab.Screen name="Favorites" component={FavoritesScreen} />

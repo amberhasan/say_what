@@ -3,17 +3,26 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 // Assuming category.icon is of type ImageSourcePropType which is the correct type for an image source
 const CategoryBox = ({category, onPress}) => (
-  <TouchableOpacity style={styles.box} onPress={onPress}>
-    <View style={styles.container}>
-      <Image source={category.icon} style={styles.icon} resizeMode="contain" />
-    </View>
+  <View
+    style={{
+      width: '38%', // 4 boxes per row
+    }}>
+    <TouchableOpacity style={styles.box} onPress={onPress}>
+      <View style={styles.container}>
+        <Image
+          source={category.icon}
+          style={styles.icon}
+          resizeMode="contain"
+        />
+      </View>
+    </TouchableOpacity>
     <Text style={styles.label}>{category.label}</Text>
-  </TouchableOpacity>
+  </View>
 );
 
 const styles = StyleSheet.create({
   box: {
-    width: '40%', // 4 boxes per row
+    width: '100%', // 4 boxes per row
     aspectRatio: 1, // Keep the box aspect ratio to 1:1, adjust if necessary
     borderWidth: 3,
     borderColor: 'black',
