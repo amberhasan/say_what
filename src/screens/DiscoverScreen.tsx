@@ -1,8 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import categoryData from '../data/captions/categoryData';
-import {ImageBackground} from 'react-native';
-import buttonImage from '../assets/images/functional/gray_button.png'; // Update the path according to your project structure
 import GrayButton from '../components/GrayButton';
 
 const DiscoverScreen: React.FC = ({navigation}) => {
@@ -54,6 +52,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
     color: '#333',
+    fontFamily: 'PlayfairDisplay_Regular',
   },
   container: {
     flex: 1,
