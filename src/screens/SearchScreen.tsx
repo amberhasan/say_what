@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start', // Align content to the top
     alignItems: 'center', // Center content horizontally
     paddingTop: 100, // Adjust top padding to match the example
-    fontFamily: 'PlayfairDisplay-Regular',
   },
   header: {
     fontSize: 28, // Increased font size
@@ -46,7 +45,6 @@ const styles = StyleSheet.create({
     height: 50, // Fixed height for the search box
     alignItems: 'center',
     paddingHorizontal: 20, // Increase horizontal padding
-    fontFamily: 'PlayfairDisplay-Regular',
   },
   searchInput: {
     flex: 1,

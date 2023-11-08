@@ -29,14 +29,12 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginBottom: 20,
     overflow: 'hidden', // This is to ensure the borderRadius is applied to the image as well
-    fontFamily: 'PlayfairDisplay-Regular',
   },
   buttonImage: {
     width: '100%',
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    fontFamily: 'PlayfairDisplay-Regular',
   },
   buttonText: {
     fontFamily: 'PlayfairDisplay-Regular',
@@ -49,7 +47,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     paddingTop: 100,
-    fontFamily: 'PlayfairDisplay-Regular',
   },
 });
 

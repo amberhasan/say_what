@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     paddingTop: 100,
-    fontFamily: 'PlayfairDisplay-Regular',
   },
   header: {
     fontSize: 24,
@@ -60,7 +59,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    fontFamily: 'PlayfairDisplay-Regular',
   },
   messageText: {
     fontSize: 20,
@@ -74,7 +72,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 25,
-    fontFamily: 'PlayfairDisplay-Regular',
   },
   buttonText: {
     fontSize: 16,
@@ -86,7 +83,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
-    fontFamily: 'PlayfairDisplay-Regular',
   },
   itemText: {
     fontSize: 18,
