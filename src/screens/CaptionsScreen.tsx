@@ -45,7 +45,7 @@ const CaptionsScreen = ({route}) => {
             setSelectedCaption(isSelected ? null : item); // Toggle the selection
             setDropdownVisible(!dropdownVisible);
           }}>
-          <Text style={itemStyle}>{`\u2022 ${item}`}</Text>
+          <Text style={itemStyle}>{`\u2022 \"${item}\"`}</Text>
         </TouchableOpacity>
         {dropdownVisible && isSelected && (
           <View style={styles.dropdown}>
