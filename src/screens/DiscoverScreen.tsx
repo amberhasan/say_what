@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import categoryData from '../data/captions/categoryData';
 import GrayButton from '../components/GrayButton';
+import firestore from '@react-native-firebase/firestore';
 
 const DiscoverScreen: React.FC = ({navigation}) => {
   const categories = [
