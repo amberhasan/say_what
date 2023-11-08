@@ -56,7 +56,7 @@ const CaptionsScreen = ({route}) => {
                 source={require('../assets/images/utils/link.png')}
                 style={styles.iconStyle}
               />
-              <Text>Copy to clipboard</Text>
+              <Text style={styles.textItem}>Copy to clipboard</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => addToFavorites(item)}
@@ -65,7 +65,7 @@ const CaptionsScreen = ({route}) => {
                 source={require('../assets/images/bottom/unselected/heart.png')}
                 style={styles.iconStyle}
               />
-              <Text>Add to favorites</Text>
+              <Text style={styles.textItem}>Add to favorites</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -97,8 +97,13 @@ const styles = StyleSheet.create({
   },
   selectedItem: {
     fontSize: 20,
-    fontFamily: 'PlayfairDisplay-Regular',
+    fontFamily: 'PlayfairDisplay-Bold',
     color: '#FF66C3', // Pink color for selected item
+  },
+  textItem: {
+    fontSize: 15,
+    fontFamily: 'OpenSans-Regular',
+    color: 'black',
   },
   iconStyle: {
     width: 20, // Set the width as needed
@@ -109,7 +114,7 @@ const styles = StyleSheet.create({
   dropdownItem: {
     flexDirection: 'row', // Align icon and text horizontally
     alignItems: 'center', // Center items vertically
-    paddingVertical: 10,
+    paddingVertical: 2,
     fontSize: 18,
     color: 'black',
     borderColor: '#eee',
