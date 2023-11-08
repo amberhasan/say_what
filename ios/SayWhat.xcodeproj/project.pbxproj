@@ -17,6 +17,10 @@
 		A951E7DC2AF98E42003299F0 /* PlayfairDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A951E7DB2AF98E42003299F0 /* PlayfairDisplay-Regular.ttf */; };
 		A951E7E02AFAB4CD003299F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A951E7DF2AFAB4CD003299F0 /* GoogleService-Info.plist */; };
 		A951E7E52AFB3BEE003299F0 /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A951E7E42AFB3BEE003299F0 /* PlayfairDisplay-Bold.ttf */; };
+		A951E7EA2AFB4BE1003299F0 /* Sanchez-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A951E7E62AFB4BE0003299F0 /* Sanchez-Regular.ttf */; };
+		A951E7EB2AFB4BE1003299F0 /* LeagueSpartan-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A951E7E72AFB4BE0003299F0 /* LeagueSpartan-ExtraBold.ttf */; };
+		A951E7EC2AFB4BE1003299F0 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A951E7E82AFB4BE0003299F0 /* OpenSans-Regular.ttf */; };
+		A951E7ED2AFB4BE1003299F0 /* LeagueSpartan-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A951E7E92AFB4BE1003299F0 /* LeagueSpartan-Black.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		A951E7DB2AF98E42003299F0 /* PlayfairDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlayfairDisplay-Regular.ttf"; path = "../src/assets/fonts/PlayfairDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		A951E7DF2AFAB4CD003299F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A951E7E42AFB3BEE003299F0 /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlayfairDisplay-Bold.ttf"; path = "../../../Downloads/Playfair_Display/static/PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		A951E7E62AFB4BE0003299F0 /* Sanchez-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sanchez-Regular.ttf"; sourceTree = "<group>"; };
+		A951E7E72AFB4BE0003299F0 /* LeagueSpartan-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LeagueSpartan-ExtraBold.ttf"; sourceTree = "<group>"; };
+		A951E7E82AFB4BE0003299F0 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		A951E7E92AFB4BE1003299F0 /* LeagueSpartan-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LeagueSpartan-Black.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -92,6 +100,10 @@
 		13B07FAE1A68108700A75B9A /* SayWhat */ = {
 			isa = PBXGroup;
 			children = (
+				A951E7E92AFB4BE1003299F0 /* LeagueSpartan-Black.ttf */,
+				A951E7E72AFB4BE0003299F0 /* LeagueSpartan-ExtraBold.ttf */,
+				A951E7E82AFB4BE0003299F0 /* OpenSans-Regular.ttf */,
+				A951E7E62AFB4BE0003299F0 /* Sanchez-Regular.ttf */,
 				A951E7E42AFB3BEE003299F0 /* PlayfairDisplay-Bold.ttf */,
 				A951E7DF2AFAB4CD003299F0 /* GoogleService-Info.plist */,
 				A951E7DB2AF98E42003299F0 /* PlayfairDisplay-Regular.ttf */,
@@ -251,10 +263,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A951E7EB2AFB4BE1003299F0 /* LeagueSpartan-ExtraBold.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				A951E7ED2AFB4BE1003299F0 /* LeagueSpartan-Black.ttf in Resources */,
 				A951E7E02AFAB4CD003299F0 /* GoogleService-Info.plist in Resources */,
+				A951E7EA2AFB4BE1003299F0 /* Sanchez-Regular.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				A951E7E52AFB3BEE003299F0 /* PlayfairDisplay-Bold.ttf in Resources */,
+				A951E7EC2AFB4BE1003299F0 /* OpenSans-Regular.ttf in Resources */,
 				A951E7DC2AF98E42003299F0 /* PlayfairDisplay-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

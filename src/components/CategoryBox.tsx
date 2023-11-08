@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   label: {
-    fontSize: 14,
+    fontSize: 20,
     textAlign: 'center',
     fontFamily: 'PlayfairDisplay-Regular',
   },

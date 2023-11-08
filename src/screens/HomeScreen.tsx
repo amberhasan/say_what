@@ -38,12 +38,14 @@ const styles = StyleSheet.create({
     //League Spartan is the font name we need.
     fontSize: 36,
     fontWeight: 'bold',
+    fontFamily: 'LeagueSpartan-ExtraBold',
   },
   footer: {
     //Sanchez is the font we need.
     marginTop: 50,
     fontSize: 18,
     fontWeight: '300',
+    fontFamily: 'Sanchez-Regular',
   },
 });
 

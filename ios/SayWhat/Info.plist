@@ -41,6 +41,10 @@
 	<array>
 		<string>PlayfairDisplay-Regular.ttf</string>
 		<string>PlayfairDisplay-Bold.ttf</string>
+		<string>LeagueSpartan-Black.ttf</string>
+		<string>LeagueSpartan-ExtraBold.ttf</string>
+		<string>OpenSans-Regular.ttf</string>
+		<string>Sanchez-Regular.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
