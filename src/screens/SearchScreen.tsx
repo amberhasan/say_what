@@ -30,7 +30,7 @@ const SearchScreen: React.FC = () => {
     <TouchableOpacity style={styles.suggestionItem}>
       {/* Uncomment and use icons if available */}
       {/* <Icon name="trending-flat" size={20} color="black" style={styles.suggestionIcon} /> */}
-      <Text style={styles.suggestionText}>{item}</Text>
+      <Text style={styles.suggestionText}>"{item}"</Text>
       {/* Image for arrow, replace with an icon if you have a vector icons package */}
       <Image
         source={require('../assets/images/utils/forward.png')}
@@ -44,8 +44,6 @@ const SearchScreen: React.FC = () => {
       <View style={styles.searchContainer}>
         <Text style={styles.header}>Search</Text>
         <View style={styles.searchBox}>
-          {/* Uncomment and use icons if available */}
-          {/* <Icon name="search" size={20} color="gray" style={styles.searchIcon} /> */}
           <TextInput
             style={styles.searchInput}
             placeholder="Search key words"
@@ -61,14 +59,6 @@ const SearchScreen: React.FC = () => {
         keyExtractor={item => item}
         style={styles.suggestionsList}
       />
-      {/* Footer with icons */}
-      <View style={styles.footer}>
-        {/* Replace these Text components with icons */}
-        <Text>🏠</Text>
-        <Text>💡</Text>
-        <Text>❤️</Text>
-        <Text>🔍</Text>
-      </View>
     </View>
   );
 };
@@ -83,8 +73,8 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingHorizontal: 20,
     backgroundColor: 'white',
-    borderBottomWidth: 1,
-    borderBottomColor: '#EDEDED',
+    borderBottomWidth: 0,
+    borderBottomColor: 'black',
   },
   header: {
     fontSize: 28,
@@ -94,9 +84,11 @@ const styles = StyleSheet.create({
   searchBox: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#EDEDED',
+    backgroundColor: 'white',
     borderRadius: 10,
     paddingLeft: 10,
+    borderWidth: 1,
+    borderColor: 'black',
   },
   searchInput: {
     flex: 1,
@@ -115,22 +107,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 20,
     borderBottomWidth: 1,
-    borderBottomColor: '#EDEDED',
+    borderBottomColor: 'black',
   },
   suggestionText: {
     fontSize: 16,
+    fontFamily: 'OpenSans-Regular',
   },
   arrowIcon: {
     width: 20,
     height: 20,
   },
-  footer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingVertical: 20,
-    borderTopWidth: 1,
-    borderTopColor: '#EDEDED',
-  },
+
   // Add styles for the icons in the footer if needed
 });
 
