@@ -28,10 +28,7 @@ const SearchScreen: React.FC = () => {
 
   const renderSuggestion = ({item}) => (
     <TouchableOpacity style={styles.suggestionItem}>
-      {/* Uncomment and use icons if available */}
-      {/* <Icon name="trending-flat" size={20} color="black" style={styles.suggestionIcon} /> */}
       <Text style={styles.suggestionText}>"{item}"</Text>
-      {/* Image for arrow, replace with an icon if you have a vector icons package */}
       <Image
         source={require('../assets/images/utils/forward.png')}
         style={styles.arrowIcon}
@@ -44,10 +41,14 @@ const SearchScreen: React.FC = () => {
       <View style={styles.searchContainer}>
         <Text style={styles.header}>Search</Text>
         <View style={styles.searchBox}>
+          <Image
+            source={require('../assets/images/utils/search.png')} // Replace with the correct path to your image
+            style={styles.searchIcon}
+          />
           <TextInput
             style={styles.searchInput}
             placeholder="Search key words"
-            placeholderTextColor="gray"
+            placeholderTextColor="black"
             value={searchQuery}
             onChangeText={handleSearch}
           />
@@ -77,15 +78,18 @@ const styles = StyleSheet.create({
     borderBottomColor: 'black',
   },
   header: {
-    fontSize: 28,
+    paddingTop: 20,
+    fontSize: 32,
     fontWeight: 'bold',
     marginBottom: 20,
+    textAlign: 'center',
+    fontFamily: 'PlayfairDisplay-Bold',
   },
   searchBox: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'white',
-    borderRadius: 10,
+    borderRadius: 25, // Increase this number to make it more rounded
     paddingLeft: 10,
     borderWidth: 1,
     borderColor: 'black',
@@ -94,9 +98,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     fontSize: 16,
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   searchIcon: {
-    marginRight: 10,
+    width: 20, // Set the width of the icon
+    height: 20, // Set the height of the icon
   },
   suggestionsList: {
     backgroundColor: 'white',
@@ -105,17 +111,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 20,
+    padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: 'black',
+    paddingLeft: 20,
   },
   suggestionText: {
-    fontSize: 16,
+    fontSize: 22,
     fontFamily: 'OpenSans-Regular',
   },
   arrowIcon: {
-    width: 20,
-    height: 20,
+    width: 30,
+    height: 30,
   },
 
   // Add styles for the icons in the footer if needed
