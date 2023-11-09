@@ -8,7 +8,6 @@ const FavoritesScreen = ({navigation}) => {
   // Use useSelector to get the favorites array from the Redux store
 
   const favorites = useSelector(state => state.favorites).favorites;
-
   // Render an individual favorite item
   const renderFavoriteItem = ({item}) => (
     <View style={styles.itemContainer}>
@@ -50,7 +49,7 @@ const styles = StyleSheet.create({
     paddingTop: 100,
   },
   header: {
-    fontSize: 24,
+    fontSize: 32,
     fontWeight: 'bold',
     marginBottom: 20,
     fontFamily: 'PlayfairDisplay-Regular',
@@ -61,9 +60,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   messageText: {
-    fontSize: 20,
+    fontSize: 30,
     marginBottom: 20,
-    fontFamily: 'PlayfairDisplay-Regular',
+    fontFamily: 'PlayfairDisplay-Bold',
   },
   button: {
     width: 200,
