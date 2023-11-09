@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   caption: {
-    //League Spartan is the font name we need.
+    // fontFamily: 'PlayfairDisplay-Regular',
     fontSize: 36,
     fontWeight: 'bold',
   },
