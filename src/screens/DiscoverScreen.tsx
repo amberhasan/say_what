@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import GrayButton from '../components/GrayButton';
 import firestore from '@react-native-firebase/firestore';
 import captionsData from '../data/captions/captionsData';
+import categoryData from '../data/captions/categoryData';
 
 const DiscoverScreen: React.FC = ({navigation}) => {
   const categories = [
@@ -15,24 +16,24 @@ const DiscoverScreen: React.FC = ({navigation}) => {
     'Universal',
   ];
 
-  const [categoryData, setCategoryData] = useState([]);
+  // const [categoryData, setCategoryData] = useState([]);
 
-  const fetchCategoriesData = async () => {
-    const categoriesResult = await firestore().collection('categories').get();
-    let cat: any = {};
-    categoriesResult.forEach(doc => {
-      cat[doc.id] = doc.data().data;
+  // const fetchCategoriesData = async () => {
+  //   const categoriesResult = await firestore().collection('categories').get();
+  //   let cat: any = {};
+  //   categoriesResult.forEach(doc => {
+  //     cat[doc.id] = doc.data().data;
 
-      console.log('data', doc.id);
-      console.log('data', doc.data().data);
-    });
-    console.log('cat', cat);
-    setCategoryData(cat);
-  };
+  //     console.log('data', doc.id);
+  //     console.log('data', doc.data().data);
+  //   });
+  //   console.log('cat', cat);
+  //   setCategoryData(cat);
+  // };
 
-  useEffect(() => {
-    fetchCategoriesData();
-  }, []);
+  // useEffect(() => {
+  //   fetchCategoriesData();
+  // }, []);
 
   // const captions = Object.keys(captionsData);
 
@@ -96,10 +97,11 @@ const DiscoverScreen: React.FC = ({navigation}) => {
   // };
 
   const handleCategoryClick = (category: string) => {
-    console.log('category', category);
+    // console.log('category', category);
     navigation.navigate('CategoriesScreen', {
       title: category,
-      categories: categoryData[category.toLowerCase()],
+      categories: categoryData[category],
+      // categories: categoryData[category.toLowerCase()],
     });
   };
 

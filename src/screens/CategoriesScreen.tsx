@@ -4,7 +4,7 @@ import CategoryBox from '../components/CategoryBox'; // Make sure the path is co
 import Header from '../components/Header';
 const CategoriesScreen = ({navigation, route}) => {
   const {title, categories} = route.params;
-
+  console.log('categories', categories);
   return (
     <ScrollView style={styles.container}>
       <Header title={title} />
@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 20,
     paddingTop: 100,
-    fontFamily: 'PlayfairDisplay-Regular',
   },
   title: {
     fontSize: 32,
@@ -45,7 +44,6 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-around', // Changed this to 'space-around' for even spacing around items
     paddingHorizontal: 16, // Adjust the horizontal padding of the whole grid to match your design
-    fontFamily: 'PlayfairDisplay-Regular',
   },
   box: {
     width: '42%', // Slightly increase the width if you decrease the margin/padding
@@ -56,7 +54,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 5, // Specify vertical margin to space out items vertically
     padding: 10,
-    fontFamily: 'PlayfairDisplay-Regular',
   },
   // ... other styles if needed
 });
