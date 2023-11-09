@@ -4,14 +4,16 @@ import {View, Text, StyleSheet} from 'react-native';
 const HomeScreen: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}> "Say, What?" </Text>
-      <Text style={styles.subtitle}> A CAPTION APP </Text>
+      <View>
+        <Text style={styles.title}> "Say, What?" </Text>
+        <Text style={styles.subtitle}> A CAPTION APP </Text>
+      </View>
       <View style={styles.captionContainer}>
         <Text style={styles.caption1}> trendy, </Text>
         <Text style={styles.caption2}> relatable, </Text>
         <Text style={styles.caption3}> & relevant. </Text>
+        <Text style={styles.footer}> ALL IN ONE PLACE </Text>
       </View>
-      <Text style={styles.footer}> ALL IN ONE PLACE </Text>
     </View>
   );
 };
@@ -19,40 +21,42 @@ const HomeScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     backgroundColor: 'white',
-    paddingLeft: 20, // adjusted for alignment to the left
-    paddingRight: 20, // keep your padding consistent
+    paddingTop: 50, // Add padding at the top
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   title: {
     fontFamily: 'PlayfairDisplay-Regular',
-    fontSize: 48, // adjusted size; change as needed
+    fontSize: 58,
     fontWeight: 'bold',
-    textAlign: 'left', // align text to the left
+    textAlign: 'center', // Center text horizontally
+    marginTop: 40, // Add some margin at the top to push it down a bit
   },
   subtitle: {
     fontFamily: 'PlayfairDisplay-Regular',
-    fontSize: 22,
-    fontWeight: '300', // already set to a lighter weight
-    textAlign: 'left',
-    marginBottom: 40, // adjusted spacing; change as needed
+    fontSize: 30,
+    fontWeight: '300',
+    textAlign: 'center',
+    marginBottom: 40,
   },
   captionContainer: {
-    alignItems: 'flex-start',
+    flex: 1, // Take up remaining space
+    justifyContent: 'center', // Center the captions vertically
   },
   caption1: {
-    fontFamily: 'LeagueSpartan-Black', // adjusted to the bold version if available
-    fontSize: 64.9, // keep your largest font size here
-    textAlign: 'left', // align text to the left
+    fontFamily: 'LeagueSpartan-Black',
+    fontSize: 90,
+    textAlign: 'left',
   },
   caption2: {
     fontFamily: 'LeagueSpartan-Black',
-    fontSize: 53.4, // second largest font size
+    fontSize: 70,
     textAlign: 'left',
   },
   caption3: {
     fontFamily: 'LeagueSpartan-Black',
-    fontSize: 53.4, // same size as caption2
+    fontSize: 50,
     textAlign: 'left',
   },
   footer: {
@@ -60,7 +64,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '300',
     textAlign: 'left',
-    marginTop: 40, // adjusted spacing; change as needed
+    paddingTop: 10, // Add some padding at the top
+    marginBottom: 40, // Add some margin at the bottom
   },
 });
 

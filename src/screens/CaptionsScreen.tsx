@@ -12,6 +12,7 @@ import {
 import captionsData from '../data/captions/captionsData';
 import {useDispatch} from 'react-redux';
 import {addToFavorites as addToFavoritesAction} from '../actions/favoritesActions';
+import Header from '../components/Header';
 
 const CaptionsScreen = ({route}) => {
   const {selectedCategory} = route.params;
@@ -75,7 +76,8 @@ const CaptionsScreen = ({route}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{selectedCategory}</Text>
+      <Header title={selectedCategory} />
+      {/* <Text style={styles.title}>{selectedCategory}</Text> */}
       <FlatList
         data={phrases}
         renderItem={renderCaptionItem}
@@ -114,7 +116,7 @@ const styles = StyleSheet.create({
   dropdownItem: {
     flexDirection: 'row', // Align icon and text horizontally
     alignItems: 'center', // Center items vertically
-    paddingVertical: 2,
+    paddingVertical: 5,
     fontSize: 18,
     color: 'black',
     borderColor: '#eee',
