@@ -20,21 +20,47 @@ const suggestions = [
 
 const SearchScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [filteredSuggestions, setFilteredSuggestions] = useState([]);
 
   const handleSearch = (text: string) => {
     setSearchQuery(text);
-    // Add search handling logic here if necessary
+    // Filter suggestions based on the search query
+    if (text) {
+      const filtered = suggestions.filter(suggestion =>
+        suggestion.toLowerCase().includes(text.toLowerCase()),
+      );
+      setFilteredSuggestions(filtered);
+    } else {
+      // If the search bar is cleared, hide the suggestions
+      setFilteredSuggestions([]);
+    }
   };
 
-  const renderSuggestion = ({item}) => (
-    <TouchableOpacity style={styles.suggestionItem}>
-      <Text style={styles.suggestionText}>"{item}"</Text>
-      <Image
-        source={require('../assets/images/utils/forward.png')}
-        style={styles.arrowIcon}
-      />
-    </TouchableOpacity>
-  );
+  const renderSuggestion = ({item}) => {
+    // Split the suggestion into parts to highlight the match
+    const regex = new RegExp(`(${searchQuery})`, 'i');
+    const parts = item.split(regex);
+
+    return (
+      <TouchableOpacity style={styles.suggestionItem}>
+        <Text style={styles.suggestionText}>
+          {parts.map((part, index) =>
+            regex.test(part) ? (
+              <Text key={index} style={styles.highlightedText}>
+                {part}
+              </Text>
+            ) : (
+              part
+            ),
+          )}
+        </Text>
+        <Image
+          source={require('../assets/images/utils/forward.png')}
+          style={styles.arrowIcon}
+        />
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -42,7 +68,7 @@ const SearchScreen: React.FC = () => {
         <Text style={styles.header}>Search</Text>
         <View style={styles.searchBox}>
           <Image
-            source={require('../assets/images/utils/search.png')} // Replace with the correct path to your image
+            source={require('../assets/images/utils/search.png')} // Make sure this path is correct
             style={styles.searchIcon}
           />
           <TextInput
@@ -55,7 +81,7 @@ const SearchScreen: React.FC = () => {
         </View>
       </View>
       <FlatList
-        data={suggestions}
+        data={filteredSuggestions} // Use filteredSuggestions here
         renderItem={renderSuggestion}
         keyExtractor={item => item}
         style={styles.suggestionsList}
@@ -76,6 +102,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderBottomWidth: 0,
     borderBottomColor: 'black',
+  },
+  highlightedText: {
+    backgroundColor: 'yellow', // Change the background color to your preference
+    color: 'black', // Change the text color if necessary
   },
   header: {
     paddingTop: 20,
