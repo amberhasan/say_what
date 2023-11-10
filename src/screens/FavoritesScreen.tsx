@@ -1,24 +1,21 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
-  FlatList,
   Alert,
+  Clipboard,
 } from 'react-native';
-import {useSelector} from 'react-redux';
-import SmallGrayButton from '../components/SmallGrayButton';
-import CategoriesScreen from './CategoriesScreen';
-import GrayButton from '../components/GrayButton';
 import firestore from '@react-native-firebase/firestore';
 import _ from 'lodash';
+import SmallGrayButton from '../components/SmallGrayButton';
+// Make sure you import SmallGrayButton and other components correctly
 
 const FavoritesScreen = ({navigation}) => {
-  // Use useSelector to get the favorites array from the Redux store
-
-  // const favorites = useSelector(state => state.favorites).favorites;
   const [favorites, setFavorites] = useState({});
+  const [selectedCaption, setSelectedCaption] = useState(null);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
   const fetchFavorites = async () => {
     try {
@@ -29,7 +26,7 @@ const FavoritesScreen = ({navigation}) => {
       setFavorites(result.data());
     } catch (err) {
       Alert.alert('Error', 'Unable to fetch the favorites.');
-      console.error('Add to Favorites Error, fetchFavorites(): ', err);
+      console.error('Fetch Favorites Error: ', err);
     }
   };
 
@@ -37,50 +34,73 @@ const FavoritesScreen = ({navigation}) => {
     fetchFavorites();
   }, []);
 
-  // Render an individual favorite item
-  const renderFavoriteItem = ({item}) => (
-    <View style={styles.itemContainer}>
-      <SmallGrayButton item={'Favorites'} onPress={() => {}} />
-      <Text style={styles.itemText}>{item}</Text>
-    </View>
-  );
-
-  const handleStartSaving = () => {
-    navigation.navigate('CategoriesScreen'); // Navigate to the "Discover" screen
+  const copyToClipboard = text => {
+    Clipboard.setString(text);
+    setDropdownVisible(false);
+    Alert.alert('Copied!', 'Caption copied to clipboard.');
   };
 
-  const newResult = _.map(favorites, (item, index) => {
-    console.log({
-      item,
-      index,
+  const removeFromFavorites = async (subcategory, removedCaption) => {
+    const updatedCaptions = favorites[subcategory].filter(
+      caption => caption !== removedCaption,
+    );
+    setFavorites({
+      ...favorites,
+      [subcategory]: updatedCaptions,
     });
-  });
+    // Update firestore here if necessary
+  };
 
-  // return <Text>Test</Text>;
-  // If there are no favorites, show a message and button
-  /*
-  {
-    lake : [1,2,3,45,]
-  }
-*/
+  const renderFavoriteItem = (category, caption) => {
+    const isSelected = caption === selectedCaption;
+
+    return (
+      <View style={styles.itemContainer} key={caption}>
+        <TouchableOpacity
+          onPress={() => {
+            setSelectedCaption(isSelected ? null : caption);
+            setDropdownVisible(!isSelected);
+          }}>
+          <Text style={styles.itemText}>{`\u2022 \"${caption}\"`}</Text>
+        </TouchableOpacity>
+        {dropdownVisible && isSelected && (
+          <View style={styles.dropdown}>
+            <TouchableOpacity
+              onPress={() => copyToClipboard(caption)}
+              style={styles.dropdownItem}>
+              <Text style={styles.dropdownText}>Copy to clipboard</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                removeFromFavorites(category, caption);
+                setDropdownVisible(false);
+              }}
+              style={styles.dropdownItem}>
+              <Text style={styles.dropdownText}>Remove from favorites</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Favorites</Text>
       {_.map(favorites, (captions, subcategory) => {
-        if (captions.length === 0) return null;
+        // Check if the captions array is empty and return null to render nothing
+        if (captions.length === 0) {
+          return null;
+        }
         return (
-          <View style={styles.itemContainer}>
+          <View key={subcategory} style={styles.categoryContainer}>
             <SmallGrayButton item={subcategory} onPress={() => {}} />
-            {captions.map(caption => (
-              <Text style={styles.itemText}>{caption}</Text>
-            ))}
+            {captions.map((caption, index) =>
+              renderFavoriteItem(subcategory, caption, index),
+            )}
           </View>
         );
       })}
-      {/* <View style={styles.messageContainer}></View>
-        <Text style={styles.messageText}>No captions found</Text>
-        <GrayButton item={'Start saving!'} onPress={handleStartSaving} />
-      </View> */}
     </View>
   );
 };
@@ -90,80 +110,42 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
-    paddingTop: 100,
+    paddingTop: 50,
   },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
-    fontFamily: 'PlayfairDisplay-Regular',
   },
-  messageContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'left',
-  },
-  messageText: {
-    fontSize: 20,
-    marginBottom: 20,
-    fontFamily: 'PlayfairDisplay-Regular',
-  },
-  button: {
-    width: 200,
-    height: 50,
-    backgroundColor: '#EDEDED',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 25,
-  },
-  buttonText: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#333',
+  categoryContainer: {
+    alignSelf: 'stretch',
+    alignItems: 'flex-start',
+    padding: 10,
   },
   itemContainer: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#e0e0e0',
+    alignSelf: 'stretch',
   },
   itemText: {
     fontSize: 18,
+    marginVertical: 5,
     fontFamily: 'PlayfairDisplay-Regular',
   },
+  dropdown: {
+    alignSelf: 'stretch',
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 5,
+  },
+  dropdownItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 5,
+  },
+  dropdownText: {
+    fontSize: 16,
+    marginLeft: 10,
+  },
+  // Add other styles as needed
 });
 
 export default FavoritesScreen;
-
-/**
- 
-const DATA = [
-  {
-    title: 'Main dishes',
-    data: ['Pizza', 'Burger', 'Risotto'],
-  },
-  {
-    title: 'Sides',
-    data: ['French Fries', 'Onion Rings', 'Fried Shrimps'],
-  },
-  {
-    title: 'Drinks',
-    data: ['Water', 'Coke', 'Beer'],
-  },
-  {
-    title: 'Desserts',
-    data: ['Cheese Cake', 'Ice Cream'],
-  },
-];
-
-const data = {
-  mountains : [],
-  lake : []
-}
-
-const data2 = [
-  {
-   title : mountain,
-   data:[] 
-  }
-]
- */

@@ -157,7 +157,6 @@ const CaptionsScreen = ({route}) => {
   return (
     <View style={styles.container}>
       <Header title={selectedCategory} />
-      {/* <Text style={styles.title}>{selectedCategory}</Text> */}
       <FlatList
         data={phrases}
         renderItem={renderCaptionItem}
