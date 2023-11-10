@@ -24,11 +24,29 @@ const CaptionsScreen = ({route}) => {
   const [favorites, setFavorites] = useState({});
 
   const fetchFavorites = async () => {
-    const result = await firestore()
-      .collection('favorites')
-      .doc('N3Hr8vp8DxO1cDSV1U5o')
-      .get();
-    console.log('result', result.data());
+    try {
+      const result = await firestore()
+        .collection('favorites')
+        .doc('N3Hr8vp8DxO1cDSV1U5o')
+        .get();
+      setFavorites(result.data());
+    } catch (err) {
+      Alert.alert('Error', 'Unable to fetch the favorites.');
+      console.error('Add to Favorites Error, fetchFavorites(): ', err);
+    }
+  };
+
+  const updateFavorites = async () => {
+    try {
+      await firestore()
+        .collection('favorites')
+        .doc('N3Hr8vp8DxO1cDSV1U5o')
+        .update(favorites);
+      Alert.alert('Added!', 'Caption added to favorites.');
+    } catch (err) {
+      Alert.alert('Error', 'Could not add caption to favorites.');
+      console.error('Add to Favorites Error, updateFavorites(): ', err);
+    }
   };
 
   useEffect(() => {
@@ -44,7 +62,18 @@ const CaptionsScreen = ({route}) => {
   const addToFavorites = caption => {
     dispatch(addToFavoritesAction(caption));
     setDropdownVisible(false);
-    Alert.alert('Added!', 'Caption added to favorites.');
+
+    if (favorites[selectedCategory]) {
+      // we have already this category, add new item
+      favorites[selectedCategory].push(caption);
+    } else {
+      //must create new category and add new caption
+      favorites[selectedCategory] = [caption];
+    }
+    updateFavorites();
+    console.log({
+      favorites,
+    });
   };
 
   const renderCaptionItem = ({item}) => {
