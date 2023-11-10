@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     padding: 10,
-    fontSize: 16,
+    fontSize: 20,
     fontFamily: 'PlayfairDisplay-Regular',
   },
   searchIcon: {
