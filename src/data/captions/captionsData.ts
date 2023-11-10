@@ -114,7 +114,7 @@ const captionsData = {
   Excited: ['Someone pinch me!!!'],
 
   //Occasion
-  GirlsNightOut: [
+  GNO: [
     'Happiest hours',
     'Happy hour',
     'Play date',
@@ -227,7 +227,7 @@ const captionsData = {
     'Petition for (@friend/family/lover) to move here',
     'Back and better',
   ],
-  NewYears: [
+  NYE: [
     // TODO: fix this.
     'Page 1 of 365',
     'New year, same ____ (me, bf, bff)',
@@ -248,7 +248,8 @@ const captionsData = {
     'My favorite peeps',
   ],
 
-  FourthOfJuly: [
+  Thanksgiving: [],
+  Fourth: [
     'Red, white, and you',
     'American made',
     'Est. 1776',

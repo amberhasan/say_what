@@ -124,7 +124,7 @@ const categoryData = {
   Universal: [
     {
       icon: require('../../assets/images/universal/any.png'),
-      label: 'For any moment',
+      label: 'For any moment(s)',
     },
     {
       icon: require('../../assets/images/universal/oneword.png'),
