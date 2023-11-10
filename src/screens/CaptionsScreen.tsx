@@ -36,12 +36,12 @@ const CaptionsScreen = ({route}) => {
     }
   };
 
-  const updateFavorites = async () => {
+  const updateFavorites = async updateValues => {
     try {
       await firestore()
         .collection('favorites')
         .doc('N3Hr8vp8DxO1cDSV1U5o')
-        .update(favorites);
+        .update(updateValues);
       Alert.alert('Added!', 'Caption added to favorites.');
     } catch (err) {
       Alert.alert('Error', 'Could not add caption to favorites.');
@@ -70,10 +70,54 @@ const CaptionsScreen = ({route}) => {
       //must create new category and add new caption
       favorites[selectedCategory] = [caption];
     }
-    updateFavorites();
+    updateFavorites(favorites);
     console.log({
       favorites,
     });
+  };
+
+  const removeFromFavorites = async removedCaption => {
+    // fetch all favorites
+    // filter select subcategory captions
+    const selectFavs = favorites[selectedCategory];
+    // remove from captions
+    const filteredFavs = selectFavs.filter(item => item != removedCaption);
+    // update favorites
+
+    favorites[selectedCategory] = filteredFavs;
+    updateFavorites(favorites);
+  };
+
+  // Function to render the favorite button based on the item's favorite status
+  const renderFavoriteButton = item => {
+    if (
+      favorites[selectedCategory] &&
+      favorites[selectedCategory].includes(item)
+    ) {
+      return (
+        <TouchableOpacity
+          onPress={() => removeFromFavorites(item)}
+          style={styles.dropdownItem}>
+          <Image
+            source={require('../assets/images/bottom/unselected/heart.png')} // Replace with your 'filled heart' icon
+            style={styles.iconStyle}
+          />
+          <Text style={styles.textItem}>Remove from favorites</Text>
+        </TouchableOpacity>
+      );
+    } else {
+      return (
+        <TouchableOpacity
+          onPress={() => addToFavorites(item)}
+          style={styles.dropdownItem}>
+          <Image
+            source={require('../assets/images/bottom/unselected/heart.png')} // Replace with your 'unfilled heart' icon
+            style={styles.iconStyle}
+          />
+          <Text style={styles.textItem}>Add to favorites</Text>
+        </TouchableOpacity>
+      );
+    }
   };
 
   const renderCaptionItem = ({item}) => {
@@ -102,15 +146,7 @@ const CaptionsScreen = ({route}) => {
               />
               <Text style={styles.textItem}>Copy to clipboard</Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => addToFavorites(item)}
-              style={styles.dropdownItem}>
-              <Image
-                source={require('../assets/images/bottom/unselected/heart.png')}
-                style={styles.iconStyle}
-              />
-              <Text style={styles.textItem}>Add to favorites</Text>
-            </TouchableOpacity>
+            {renderFavoriteButton(item)}
           </View>
         )}
       </View>

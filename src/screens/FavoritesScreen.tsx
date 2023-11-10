@@ -67,6 +67,7 @@ const FavoritesScreen = ({navigation}) => {
     <View style={styles.container}>
       <Text style={styles.header}>Favorites</Text>
       {_.map(favorites, (captions, subcategory) => {
+        if (captions.length === 0) return null;
         return (
           <View style={styles.itemContainer}>
             <SmallGrayButton item={subcategory} onPress={() => {}} />
