@@ -4,7 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
-import DiscoverScreen from './src/screens/DiscoverScreen';
+import CategoriesScreen from './src/screens/CategoriesScreen';
 import SubcategoriesScreen from './src/screens/SubcategoriesScreen';
 import CaptionsScreen from './src/screens/CaptionsScreen';
 import FavoritesScreen from './src/screens/FavoritesScreen';
@@ -67,12 +67,12 @@ export default function App() {
 function DiscoverStackNavigator() {
   return (
     <DiscoverStack.Navigator
-      initialRouteName="DiscoverScreen"
+      initialRouteName="CategoriesScreen"
       screenOptions={{headerShown: false}} // This will hide the header for all screens in the Discover stack
     >
       <DiscoverStack.Screen
-        name="DiscoverScreen"
-        component={DiscoverScreen}
+        name="CategoriesScreen"
+        component={CategoriesScreen}
         options={{headerShown: false}}
       />
       <DiscoverStack.Screen

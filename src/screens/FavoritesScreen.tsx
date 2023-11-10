@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import {useSelector} from 'react-redux';
 import SmallGrayButton from '../components/SmallGrayButton';
-import DiscoverScreen from './DiscoverScreen';
+import CategoriesScreen from './CategoriesScreen';
 import GrayButton from '../components/GrayButton';
 const FavoritesScreen = ({navigation}) => {
   // Use useSelector to get the favorites array from the Redux store
@@ -18,7 +18,7 @@ const FavoritesScreen = ({navigation}) => {
   );
 
   const handleStartSaving = () => {
-    navigation.navigate('DiscoverScreen'); // Navigate to the "Discover" screen
+    navigation.navigate('CategoriesScreen'); // Navigate to the "Discover" screen
   };
 
   return (

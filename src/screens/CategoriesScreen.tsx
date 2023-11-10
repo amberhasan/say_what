@@ -4,7 +4,7 @@ import categoryData from '../data/captions/categoryData';
 import GrayButton from '../components/GrayButton';
 import firestore from '@react-native-firebase/firestore';
 
-const DiscoverScreen: React.FC = ({navigation}) => {
+const CategoriesScreen: React.FC = ({navigation}) => {
   const categories = [
     'Location',
     'Mood',
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DiscoverScreen;
+export default CategoriesScreen;
