@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import {useSelector} from 'react-redux';
-import GrayButton from '../components/GrayButton';
+import SmallGrayButton from '../components/SmallGrayButton';
 import DiscoverScreen from './DiscoverScreen';
-
+import GrayButton from '../components/GrayButton';
 const FavoritesScreen = ({navigation}) => {
   // Use useSelector to get the favorites array from the Redux store
 
@@ -12,6 +12,7 @@ const FavoritesScreen = ({navigation}) => {
   // Render an individual favorite item
   const renderFavoriteItem = ({item}) => (
     <View style={styles.itemContainer}>
+      <SmallGrayButton item={'Favorites'} onPress={() => {}} />
       <Text style={styles.itemText}>{item}</Text>
     </View>
   );
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
   messageContainer: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'left',
   },
   messageText: {
     fontSize: 20,
