@@ -16,7 +16,7 @@ const DiscoverScreen: React.FC = ({navigation}) => {
   ];
 
   const handleCategoryClick = (category: string) => {
-    navigation.navigate('CategoriesScreen', {
+    navigation.navigate('SubcategoriesScreen', {
       title: category,
       categories: categoryData[category],
     });

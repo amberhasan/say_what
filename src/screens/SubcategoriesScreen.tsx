@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, View, Text, ScrollView} from 'react-native';
 import CategoryBox from '../components/CategoryBox'; // Make sure the path is correct based on your file structure
 import Header from '../components/Header';
-const CategoriesScreen = ({navigation, route}) => {
+const SubcategoriesScreen = ({navigation, route}) => {
   const {title, categories} = route.params;
 
   return (
@@ -58,4 +58,4 @@ const styles = StyleSheet.create({
   // ... other styles if needed
 });
 
-export default CategoriesScreen;
+export default SubcategoriesScreen;

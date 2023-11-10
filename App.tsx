@@ -5,7 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
 import DiscoverScreen from './src/screens/DiscoverScreen';
-import CategoriesScreen from './src/screens/CategoriesScreen';
+import SubcategoriesScreen from './src/screens/SubcategoriesScreen';
 import CaptionsScreen from './src/screens/CaptionsScreen';
 import FavoritesScreen from './src/screens/FavoritesScreen';
 import SearchScreen from './src/screens/SearchScreen';
@@ -76,8 +76,8 @@ function DiscoverStackNavigator() {
         options={{headerShown: false}}
       />
       <DiscoverStack.Screen
-        name="CategoriesScreen"
-        component={CategoriesScreen}
+        name="SubcategoriesScreen"
+        component={SubcategoriesScreen}
         options={{headerShown: false}}
       />
       <DiscoverStack.Screen
