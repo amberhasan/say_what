@@ -1,13 +1,41 @@
-import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  FlatList,
+  Alert,
+} from 'react-native';
 import {useSelector} from 'react-redux';
 import SmallGrayButton from '../components/SmallGrayButton';
 import CategoriesScreen from './CategoriesScreen';
 import GrayButton from '../components/GrayButton';
+import firestore from '@react-native-firebase/firestore';
+import _ from 'lodash';
+
 const FavoritesScreen = ({navigation}) => {
   // Use useSelector to get the favorites array from the Redux store
 
-  const favorites = useSelector(state => state.favorites).favorites;
+  // const favorites = useSelector(state => state.favorites).favorites;
+  const [favorites, setFavorites] = useState({});
+
+  const fetchFavorites = async () => {
+    try {
+      const result = await firestore()
+        .collection('favorites')
+        .doc('N3Hr8vp8DxO1cDSV1U5o')
+        .get();
+      setFavorites(result.data());
+    } catch (err) {
+      Alert.alert('Error', 'Unable to fetch the favorites.');
+      console.error('Add to Favorites Error, fetchFavorites(): ', err);
+    }
+  };
+
+  useEffect(() => {
+    fetchFavorites();
+  }, []);
 
   // Render an individual favorite item
   const renderFavoriteItem = ({item}) => (
@@ -21,24 +49,37 @@ const FavoritesScreen = ({navigation}) => {
     navigation.navigate('CategoriesScreen'); // Navigate to the "Discover" screen
   };
 
+  const newResult = _.map(favorites, (item, index) => {
+    console.log({
+      item,
+      index,
+    });
+  });
+
+  // return <Text>Test</Text>;
+  // If there are no favorites, show a message and button
+  /*
+  {
+    lake : [1,2,3,45,]
+  }
+*/
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Favorites</Text>
-      {favorites.length > 0 ? (
-        <View>
-          <FlatList
-            data={favorites}
-            renderItem={renderFavoriteItem}
-            keyExtractor={(item, index) => index.toString()}
-          />
-        </View>
-      ) : (
-        // If there are no favorites, show a message and button
-        <View style={styles.messageContainer}>
-          <Text style={styles.messageText}>No captions found</Text>
-          <GrayButton item={'Start saving!'} onPress={handleStartSaving} />
-        </View>
-      )}
+      {_.map(favorites, (captions, subcategory) => {
+        return (
+          <View style={styles.itemContainer}>
+            <SmallGrayButton item={subcategory} onPress={() => {}} />
+            {captions.map(caption => (
+              <Text style={styles.itemText}>{caption}</Text>
+            ))}
+          </View>
+        );
+      })}
+      {/* <View style={styles.messageContainer}></View>
+        <Text style={styles.messageText}>No captions found</Text>
+        <GrayButton item={'Start saving!'} onPress={handleStartSaving} />
+      </View> */}
     </View>
   );
 };
@@ -91,3 +132,37 @@ const styles = StyleSheet.create({
 });
 
 export default FavoritesScreen;
+
+/**
+ 
+const DATA = [
+  {
+    title: 'Main dishes',
+    data: ['Pizza', 'Burger', 'Risotto'],
+  },
+  {
+    title: 'Sides',
+    data: ['French Fries', 'Onion Rings', 'Fried Shrimps'],
+  },
+  {
+    title: 'Drinks',
+    data: ['Water', 'Coke', 'Beer'],
+  },
+  {
+    title: 'Desserts',
+    data: ['Cheese Cake', 'Ice Cream'],
+  },
+];
+
+const data = {
+  mountains : [],
+  lake : []
+}
+
+const data2 = [
+  {
+   title : mountain,
+   data:[] 
+  }
+]
+ */

@@ -56,7 +56,11 @@ export default function App() {
           })}>
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Discover" component={DiscoverStackNavigator} />
-          <Tab.Screen name="Favorites" component={FavoritesScreen} />
+          <Tab.Screen
+            name="Favorites"
+            component={FavoritesScreen}
+            options={{unmountOnBlur: true}}
+          />
           <Tab.Screen name="Search" component={SearchScreen} />
         </Tab.Navigator>
       </NavigationContainer>
