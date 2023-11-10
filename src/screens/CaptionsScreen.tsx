@@ -42,10 +42,9 @@ const CaptionsScreen = ({route}) => {
         .collection('favorites')
         .doc('N3Hr8vp8DxO1cDSV1U5o')
         .update(updateValues);
-      Alert.alert('Added!', 'Caption added to favorites.');
     } catch (err) {
-      Alert.alert('Error', 'Could not add caption to favorites.');
-      console.error('Add to Favorites Error, updateFavorites(): ', err);
+      Alert.alert('Error', 'Could not update caption in favorites.');
+      console.error('Error in updateFavorites(): ', err);
     }
   };
 
@@ -70,6 +69,7 @@ const CaptionsScreen = ({route}) => {
       //must create new category and add new caption
       favorites[selectedCategory] = [caption];
     }
+    Alert.alert('Added!', 'Caption added to favorites.');
     updateFavorites(favorites);
     console.log({
       favorites,
@@ -85,6 +85,7 @@ const CaptionsScreen = ({route}) => {
     // update favorites
 
     favorites[selectedCategory] = filteredFavs;
+    Alert.alert('Removed!', 'Caption removed from favorites.');
     updateFavorites(favorites);
   };
 
