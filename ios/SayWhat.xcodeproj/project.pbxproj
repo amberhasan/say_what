@@ -16,6 +16,11 @@
 		8CDE460C0BBB6620B5349C28 /* Pods_SayWhat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD57DCF73EFAEB2E4C499E8F /* Pods_SayWhat.framework */; };
 		A951E7DC2AF98E42003299F0 /* PlayfairDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A951E7DB2AF98E42003299F0 /* PlayfairDisplay-Regular.ttf */; };
 		A951E7EF2AFC0640003299F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A951E7EE2AFC0640003299F0 /* GoogleService-Info.plist */; };
+		A951E8072AFDAA1B003299F0 /* LeagueSpartan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A951E8022AFDAA1B003299F0 /* LeagueSpartan-Bold.ttf */; };
+		A951E8082AFDAA1B003299F0 /* Sanchez-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A951E8032AFDAA1B003299F0 /* Sanchez-Regular.ttf */; };
+		A951E8092AFDAA1B003299F0 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A951E8042AFDAA1B003299F0 /* OpenSans-Bold.ttf */; };
+		A951E80A2AFDAA1B003299F0 /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A951E8052AFDAA1B003299F0 /* PlayfairDisplay-Bold.ttf */; };
+		A951E80B2AFDAA1B003299F0 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A951E8062AFDAA1B003299F0 /* OpenSans-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +50,11 @@
 		89C6BE57DB24E9ADA2F236DE /* Pods-SayWhat-SayWhatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SayWhat-SayWhatTests.release.xcconfig"; path = "Target Support Files/Pods-SayWhat-SayWhatTests/Pods-SayWhat-SayWhatTests.release.xcconfig"; sourceTree = "<group>"; };
 		A951E7DB2AF98E42003299F0 /* PlayfairDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "PlayfairDisplay-Regular.ttf"; path = "../src/assets/fonts/PlayfairDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		A951E7EE2AFC0640003299F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A951E8022AFDAA1B003299F0 /* LeagueSpartan-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LeagueSpartan-Bold.ttf"; sourceTree = "<group>"; };
+		A951E8032AFDAA1B003299F0 /* Sanchez-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sanchez-Regular.ttf"; sourceTree = "<group>"; };
+		A951E8042AFDAA1B003299F0 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		A951E8052AFDAA1B003299F0 /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		A951E8062AFDAA1B003299F0 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		AD57DCF73EFAEB2E4C499E8F /* Pods_SayWhat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SayWhat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FBBA8CDB6D64C334FC818627 /* Pods_SayWhat_SayWhatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SayWhat_SayWhatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,6 +100,11 @@
 		13B07FAE1A68108700A75B9A /* SayWhat */ = {
 			isa = PBXGroup;
 			children = (
+				A951E8022AFDAA1B003299F0 /* LeagueSpartan-Bold.ttf */,
+				A951E8042AFDAA1B003299F0 /* OpenSans-Bold.ttf */,
+				A951E8062AFDAA1B003299F0 /* OpenSans-Regular.ttf */,
+				A951E8052AFDAA1B003299F0 /* PlayfairDisplay-Bold.ttf */,
+				A951E8032AFDAA1B003299F0 /* Sanchez-Regular.ttf */,
 				A951E7EE2AFC0640003299F0 /* GoogleService-Info.plist */,
 				A951E7DB2AF98E42003299F0 /* PlayfairDisplay-Regular.ttf */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -249,9 +264,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A951E80A2AFDAA1B003299F0 /* PlayfairDisplay-Bold.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				A951E8092AFDAA1B003299F0 /* OpenSans-Bold.ttf in Resources */,
+				A951E8072AFDAA1B003299F0 /* LeagueSpartan-Bold.ttf in Resources */,
+				A951E8082AFDAA1B003299F0 /* Sanchez-Regular.ttf in Resources */,
 				A951E7EF2AFC0640003299F0 /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				A951E80B2AFDAA1B003299F0 /* OpenSans-Regular.ttf in Resources */,
 				A951E7DC2AF98E42003299F0 /* PlayfairDisplay-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -630,10 +650,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
@@ -711,10 +728,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
