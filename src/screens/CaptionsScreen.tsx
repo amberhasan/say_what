@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -13,6 +13,7 @@ import captionsData from '../data/captions/captionsData';
 import {useDispatch} from 'react-redux';
 import {addToFavorites as addToFavoritesAction} from '../actions/favoritesActions';
 import Header from '../components/Header';
+import firestore from '@react-native-firebase/firestore';
 
 const CaptionsScreen = ({route}) => {
   const {selectedCategory} = route.params;
@@ -20,6 +21,19 @@ const CaptionsScreen = ({route}) => {
   const [selectedCaption, setSelectedCaption] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dispatch = useDispatch();
+  const [favorites, setFavorites] = useState({});
+
+  const fetchFavorites = async () => {
+    const result = await firestore()
+      .collection('favorites')
+      .doc('N3Hr8vp8DxO1cDSV1U5o')
+      .get();
+    console.log('result', result.data());
+  };
+
+  useEffect(() => {
+    fetchFavorites();
+  }, []);
 
   const copyToClipboard = text => {
     Clipboard.setString(text);
