@@ -5,7 +5,6 @@ import {
   StyleSheet,
   FlatList,
   TouchableOpacity,
-  Clipboard,
   Image,
   Alert,
 } from 'react-native';
@@ -14,6 +13,7 @@ import {addToFavorites as addToFavoritesAction} from '../actions/favoritesAction
 import Header from '../components/Header';
 import firestore from '@react-native-firebase/firestore';
 import _ from 'lodash';
+import Clipboard from '@react-native-community/clipboard';
 
 const CaptionsScreen = ({route}) => {
   const {selectedCategory} = route.params;

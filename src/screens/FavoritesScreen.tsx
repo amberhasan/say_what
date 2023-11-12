@@ -1,15 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Alert,
-  Clipboard,
-} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import _ from 'lodash';
 import GrayButton from '../components/GrayButton';
+import Clipboard from '@react-native-community/clipboard';
 // Make sure you import GrayButton and other components correctly
 
 const FavoritesScreen = ({navigation}) => {
