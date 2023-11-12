@@ -1,21 +1,40 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Text, ScrollView} from 'react-native';
 import CategoryBox from '../components/CategoryBox'; // Make sure the path is correct based on your file structure
 import Header from '../components/Header';
+import firestore from '@react-native-firebase/firestore';
+import {capitalize} from 'lodash';
+
 const SubcategoriesScreen = ({navigation, route}) => {
-  const {title, categories} = route.params;
+  const {category} = route.params;
+  const [subcategories, setSubcategories] = useState([]);
+
+  const fetchSubcategoriesData = async () => {
+    const result = await firestore()
+      .collection('categories')
+      .doc(category)
+      .get();
+    console.log('category', category);
+    console.log('result', result.data().data);
+    setSubcategories(result.data().data);
+  };
+
+  useEffect(() => {
+    fetchSubcategoriesData();
+  }, []);
 
   return (
     <ScrollView style={styles.container}>
-      <Header title={title} />
+      <Header title={capitalize(category)} />
       <View style={styles.grid}>
-        {categories.map((category, index) => (
+        {subcategories.map((category, index) => (
           <CategoryBox
             key={index}
             category={category}
             onPress={() =>
               navigation.navigate('CaptionsScreen', {
-                selectedCategory: category.label.toLowerCase(),
+                title: category.label,
+                selectedCategory: category.subcategory.toLowerCase(),
               })
             }
           />

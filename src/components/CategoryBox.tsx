@@ -10,7 +10,7 @@ const CategoryBox = ({category, onPress}) => (
     <TouchableOpacity style={styles.box} onPress={onPress}>
       <View style={styles.container}>
         <Image
-          source={category.icon}
+          source={{uri: category.icon}}
           style={styles.icon}
           resizeMode="contain"
         />

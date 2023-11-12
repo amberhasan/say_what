@@ -16,7 +16,7 @@ import _ from 'lodash';
 import Clipboard from '@react-native-community/clipboard';
 
 const CaptionsScreen = ({route}) => {
-  const {selectedCategory} = route.params;
+  const {selectedCategory, title} = route.params;
   // const phrases = captionsData[selectedCategory] || [];
   const [phrases, setPhrases] = useState([]);
   const [selectedCaption, setSelectedCaption] = useState(null);
@@ -180,7 +180,7 @@ const CaptionsScreen = ({route}) => {
 
   return (
     <View style={styles.container}>
-      <Header title={_.capitalize(selectedCategory)} />
+      <Header title={title} />
       <FlatList
         data={phrases}
         renderItem={renderCaptionItem}

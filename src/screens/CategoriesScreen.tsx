@@ -1,34 +1,56 @@
-import React, {useEffect} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
-import categoryData from '../data/captions/categoryData';
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  FlatList,
+  ActivityIndicator,
+} from 'react-native';
 import GrayButton from '../components/GrayButton';
 import firestore from '@react-native-firebase/firestore';
-import captionsData from '../data/captions/captionsData';
+import {capitalize} from 'lodash';
 
 const CategoriesScreen: React.FC = ({navigation}) => {
-  const categories = [
-    'Location',
-    'Mood',
-    'Occasion',
-    'Holiday',
-    'Season',
-    'Lifestyle',
-    'Universal',
-  ];
+  const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState([]);
+
+  const fetchCategoriesData = async () => {
+    const categoriesResult = await firestore().collection('categories').get();
+    const cats = [];
+    categoriesResult.forEach(category => {
+      cats.push(category.id);
+    });
+    console.log('cats', cats);
+    setCategories(cats);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchCategoriesData();
+  }, []);
 
   const handleCategoryClick = (category: string) => {
     navigation.navigate('SubcategoriesScreen', {
-      title: category,
-      categories: categoryData[category.toLowerCase()],
+      category: category.toLowerCase(),
+      // categories: categoryData[category.toLowerCase()],
     });
   };
+
+  if (loading) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator size={'large'} />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
       <FlatList
         data={categories}
         renderItem={({item}) => (
-          <GrayButton item={item} onPress={handleCategoryClick} />
+          <GrayButton item={capitalize(item)} onPress={handleCategoryClick} />
         )}
         keyExtractor={item => item}
       />
