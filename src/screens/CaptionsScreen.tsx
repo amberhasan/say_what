@@ -9,20 +9,44 @@ import {
   Image,
   Alert,
 } from 'react-native';
-import captionsData from '../data/captions/captionsData';
 import {useDispatch} from 'react-redux';
 import {addToFavorites as addToFavoritesAction} from '../actions/favoritesActions';
 import Header from '../components/Header';
 import firestore from '@react-native-firebase/firestore';
+import _ from 'lodash';
 
 const CaptionsScreen = ({route}) => {
   const {selectedCategory} = route.params;
-  const phrases = captionsData[selectedCategory] || [];
+  // const phrases = captionsData[selectedCategory] || [];
+  const [phrases, setPhrases] = useState([]);
   const [selectedCaption, setSelectedCaption] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dispatch = useDispatch();
   const [favorites, setFavorites] = useState({});
 
+  const fetchSubcategoriesData = async () => {
+    const categoriesResult = await firestore()
+      .collection('captions')
+      .doc(selectedCategory)
+      .get();
+    console.log('response -> ', categoriesResult.data());
+    setPhrases(categoriesResult.data().data);
+    // const convertedData = [];
+    // categoriesResult.forEach(doc => {
+    //   const subcategory = doc.id;
+    //   doc.data().data.forEach((caption: string) => {
+    //     convertedData.push({
+    //       caption,
+    //       subcategory,
+    //     });
+    //   });
+    // });
+    // setSubcategoryData(convertedData);
+  };
+
+  useEffect(() => {
+    fetchSubcategoriesData();
+  }, []);
   const fetchFavorites = async () => {
     try {
       const result = await firestore()
@@ -156,7 +180,7 @@ const CaptionsScreen = ({route}) => {
 
   return (
     <View style={styles.container}>
-      <Header title={selectedCategory} />
+      <Header title={_.capitalize(selectedCategory)} />
       <FlatList
         data={phrases}
         renderItem={renderCaptionItem}

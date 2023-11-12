@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 import categoryData from '../data/captions/categoryData';
 import GrayButton from '../components/GrayButton';
 import firestore from '@react-native-firebase/firestore';
+import captionsData from '../data/captions/captionsData';
 
 const CategoriesScreen: React.FC = ({navigation}) => {
   const categories = [
@@ -18,7 +19,7 @@ const CategoriesScreen: React.FC = ({navigation}) => {
   const handleCategoryClick = (category: string) => {
     navigation.navigate('SubcategoriesScreen', {
       title: category,
-      categories: categoryData[category],
+      categories: categoryData[category.toLowerCase()],
     });
   };
 

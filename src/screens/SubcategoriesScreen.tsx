@@ -15,7 +15,7 @@ const SubcategoriesScreen = ({navigation, route}) => {
             category={category}
             onPress={() =>
               navigation.navigate('CaptionsScreen', {
-                selectedCategory: category.label,
+                selectedCategory: category.label.toLowerCase(),
               })
             }
           />
