@@ -14,6 +14,7 @@ import configureStore from './src/store/configureStore';
 
 const Tab = createBottomTabNavigator();
 const DiscoverStack = createStackNavigator();
+const SearchStack = createStackNavigator();
 const store = configureStore();
 
 export default function App() {
@@ -61,7 +62,7 @@ export default function App() {
             component={FavoritesScreen}
             options={{unmountOnBlur: true}}
           />
-          <Tab.Screen name="Search" component={SearchScreen} />
+          <Tab.Screen name="Search" component={SearchStackNavigator} />
         </Tab.Navigator>
       </NavigationContainer>
     </Provider>
@@ -90,6 +91,26 @@ function DiscoverStackNavigator() {
         options={{headerShown: false}}
       />
     </DiscoverStack.Navigator>
+  );
+}
+
+function SearchStackNavigator() {
+  return (
+    <SearchStack.Navigator
+      initialRouteName="SearchScreen"
+      screenOptions={{headerShown: false}} // This will hide the header for all screens in the Discover stack
+    >
+      <SearchStack.Screen
+        name="SearchScreen"
+        component={SearchScreen}
+        options={{headerShown: false}}
+      />
+      <SearchStack.Screen
+        name="CaptionsScreen"
+        component={CaptionsScreen}
+        options={{headerShown: false}}
+      />
+    </SearchStack.Navigator>
   );
 }
 

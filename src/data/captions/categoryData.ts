@@ -1,5 +1,5 @@
 const categoryData = {
-  Location: [
+  location: [
     {
       icon: require('../../assets/images/location/mountains.png'),
       label: 'Mountains',
@@ -15,7 +15,7 @@ const categoryData = {
     {icon: require('../../assets/images/location/abroad.png'), label: 'Abroad'},
     {icon: require('../../assets/images/location/home.png'), label: 'Home'},
   ],
-  Mood: [
+  mood: [
     {icon: require('../../assets/images/mood/happy.png'), label: 'Happy'},
     {
       icon: require('../../assets/images/mood/confident.png'),
@@ -33,7 +33,7 @@ const categoryData = {
     {icon: require('../../assets/images/mood/excited.png'), label: 'Excited'},
   ],
 
-  Occasion: [
+  occasion: [
     {icon: require('../../assets/images/occasion/gno.png'), label: 'GNO'},
     {
       icon: require('../../assets/images/occasion/concert.png'),
@@ -72,7 +72,7 @@ const categoryData = {
       label: 'Wedding',
     },
   ],
-  Holiday: [
+  holiday: [
     {icon: require('../../assets/images/holiday/nye.png'), label: 'NYE'},
     {
       icon: require('../../assets/images/holiday/valentines.png'),
@@ -97,13 +97,13 @@ const categoryData = {
       label: 'Christmas',
     },
   ],
-  Season: [
+  season: [
     {icon: require('../../assets/images/seasons/spring.png'), label: 'Spring'},
     {icon: require('../../assets/images/seasons/summer.png'), label: 'Summer'},
     {icon: require('../../assets/images/seasons/fall.png'), label: 'Fall'},
     {icon: require('../../assets/images/seasons/winter.png'), label: 'Winter'},
   ],
-  Lifestyle: [
+  lifestyle: [
     {
       icon: require('../../assets/images/lifestyle/travel.png'),
       label: 'Travel',
@@ -121,7 +121,7 @@ const categoryData = {
       label: 'Beauty',
     },
   ],
-  Universal: [
+  universal: [
     {
       icon: require('../../assets/images/universal/any.png'),
       label: 'For any moment(s)',

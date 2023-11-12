@@ -11,7 +11,7 @@ import {
 import firestore from '@react-native-firebase/firestore';
 // import Icon from 'react-native-vector-icons/MaterialIcons'; // Uncomment if you have the icons package
 
-const SearchScreen: React.FC = () => {
+const SearchScreen: React.FC = ({navigation}) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
 
@@ -19,7 +19,6 @@ const SearchScreen: React.FC = () => {
 
   const fetchSubcategoriesData = async () => {
     const categoriesResult = await firestore().collection('captions').get();
-    let cat: any = {};
     const convertedData = [];
     categoriesResult.forEach(doc => {
       const subcategory = doc.id;
@@ -29,12 +28,7 @@ const SearchScreen: React.FC = () => {
           subcategory,
         });
       });
-      // cat[doc.id] = doc.data().data;
-
-      // console.log('data', doc.id);
-      // console.log('data', doc.data().data);
     });
-    console.log('convertedData', convertedData);
     setSubcategoryData(convertedData);
   };
 
@@ -63,13 +57,22 @@ const SearchScreen: React.FC = () => {
     }
   };
 
+  const onSearchItemPress = item => {
+    console.log('you have pressed', item);
+    navigation.navigate('CaptionsScreen', {
+      selectedCategory: item.subcategory,
+    });
+  };
+
   const renderSuggestion = ({item}) => {
     // Split the suggestion into parts to highlight the match
     const regex = new RegExp(`(${searchQuery})`, 'i');
     const parts = item.caption.split(regex);
 
     return (
-      <TouchableOpacity style={styles.suggestionItem}>
+      <TouchableOpacity
+        style={styles.suggestionItem}
+        onPress={() => onSearchItemPress(item)}>
         <Text style={styles.suggestionText}>
           {parts.map((part, index) =>
             regex.test(part) ? (

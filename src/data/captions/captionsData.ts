@@ -1,7 +1,7 @@
 // captionsData.js
 const captionsData = {
   //Location
-  Mountains: [
+  mountains: [
     'Mountains + Me',
     'All uphill/downhill from here',
     'See you on the slopes',
@@ -12,7 +12,7 @@ const captionsData = {
     'Peaked',
   ],
 
-  Beach: [
+  beach: [
     'Running out of bikinis',
     'Happiest by the water',
     'Paradise: Found',
@@ -24,13 +24,13 @@ const captionsData = {
     'dnd',
   ],
 
-  Lake: [
+  lake: [
     "Lake'n",
     "Nothing a boat day can't fix",
     'Meet me by the water',
     'Lake days>',
   ],
-  Desert: [
+  desert: [
     'Desert skies',
     'Took the scenic route',
     'Scenic views',
@@ -38,7 +38,7 @@ const captionsData = {
     'What’s the wifi password?',
     '_(Location)_ sunsets',
   ],
-  City: [
+  city: [
     'Concrete jungle',
     'Live from _ _(city name)_ _',
     'Wanna share a cab?',
@@ -49,7 +49,7 @@ const captionsData = {
     'Sleepless in _ _(city name)_ _',
     'omw!',
   ],
-  Country: [
+  country: [
     'Not my first rodeo',
     'Yeehaw baby',
     'New boot goofin',
@@ -66,7 +66,7 @@ const captionsData = {
   ],
 
   //Mood
-  Happy: [
+  happy: [
     'Lots to smile about lately',
     'Happy girl',
     'cheesin',
@@ -74,7 +74,7 @@ const captionsData = {
     'big smiles for ____',
     'couldn’t be happier',
   ],
-  Confident: [
+  confident: [
     'How’s the view?',
     'Take notes',
     'Tell the gc I said hi',
@@ -89,20 +89,20 @@ const captionsData = {
     'Heaven sent',
     'Views',
   ],
-  Grateful: [
+  grateful: [
     'Heart is so full',
     "Couldn't ask for more",
     'What more could a girl ask for',
     'Counting my blessings',
     'Thankful for these people',
   ],
-  Celebratory: [
+  celebratory: [
     'Cheers!',
     'The most special night celebrating ___',
     'My kinda party',
     'Cheers to the next chapter',
   ],
-  Nostalgic: [
+  nostalgic: [
     'Take me back',
     "Pretending this didn't end",
     'Pretending I’m still here',
@@ -111,10 +111,10 @@ const captionsData = {
     "Don't blink",
     'Time please slow down',
   ],
-  Excited: ['Someone pinch me!!!'],
+  excited: ['Someone pinch me!!!'],
 
   //Occasion
-  GNO: [
+  gno: [
     'Happiest hours',
     'Happy hour',
     'Play date',
@@ -133,7 +133,7 @@ const captionsData = {
     'be there in 5',
     'the girls room',
   ],
-  Concert: [
+  concert: [
     'all smiles for ___ (@Artist)',
     'Thank you ___ (@artist)',
     '(@artist) ___ fan club',
@@ -142,7 +142,7 @@ const captionsData = {
     'soul food',
     'Come back soon? ___ (@artist)',
   ],
-  Graduation: [
+  graduation: [
     'one degree hotter',
     'Thank you ___ (school/university)',
     '4 years later...',
@@ -154,7 +154,7 @@ const captionsData = {
     'Did the damn thing',
     'Thank you ___ (@school_ for the best 4 years)',
   ],
-  Birthday: [
+  birthday: [
     '___ (Age) trips around the sun',
     'Make a wish',
     '___ (zodiac) szn',
@@ -171,7 +171,7 @@ const captionsData = {
     'Birthday behavior',
     'Having my cake and eating it too',
   ],
-  DateNight: [
+  dateNight: [
     'Me n you <3',
     'nights like these forever please',
     "Can't get enough of you",
@@ -187,7 +187,7 @@ const captionsData = {
     'xoxo',
     'd8 night <3',
   ],
-  GirlsTrip: [
+  girlsTrip: [
     'our favorite tradition',
     'Girls trips forever',
     'Favorite people, favorite place',
@@ -197,20 +197,20 @@ const captionsData = {
     'Time for a nap',
     'Thankful for this place and these people',
   ],
-  Engagement: [
+  engagement: [
     'one million times, yes!',
     'the easiest yes!',
     'forever begins now',
     'I can’t wait to marry you',
     'Forever with you',
   ],
-  Bachelorette: [
+  bachelorette: [
     'Next stop, I do!',
     'Last fling before the ring',
     'A toast to the future Mrs. ____',
     'Celebrated our girl one last time before the big day',
   ],
-  Wedding: [
+  wedding: [
     'Congrats to the ____’s (last name)',
     'Cheers to the newlyweds',
     'such a special night celebrating ____',
@@ -218,7 +218,7 @@ const captionsData = {
     'Mr. and Mrs. ____',
     'the two become one, congrats to the ____’s (last name)',
   ],
-  Reunion: [
+  reunion: [
     'Long time coming',
     '____ (months/years), too long',
     'Catching up',
@@ -227,7 +227,7 @@ const captionsData = {
     'Petition for (@friend/family/lover) to move here',
     'Back and better',
   ],
-  NYE: [
+  nye: [
     // TODO: fix this.
     'Page 1 of 365',
     'New year, same ____ (me, bf, bff)',
