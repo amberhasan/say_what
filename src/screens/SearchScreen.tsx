@@ -113,7 +113,7 @@ const SearchScreen: React.FC = ({navigation}) => {
       <FlatList
         data={filteredSuggestions} // Use filteredSuggestions here
         renderItem={renderSuggestion}
-        keyExtractor={item => item.caption}
+        keyExtractor={(item, index) => item.caption + index}
         style={styles.suggestionsList}
       />
     </View>
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     borderBottomColor: 'black',
   },
   highlightedText: {
-    backgroundColor: 'yellow', // Change the background color to your preference
+    fontFamily: 'PlayfairDisplay-Bold',
     color: 'black', // Change the text color if necessary
   },
   header: {
