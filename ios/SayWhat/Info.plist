@@ -42,6 +42,11 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>PlayfairDisplay-Regular.ttf</string>
+		<string>LeagueSpartan-Bold.ttf</string>
+		<string>OpenSans-Bold.ttf</string>
+		<string>OpenSans-Regular.ttf</string>
+		<string>PlayfairDisplay-Bold.ttf</string>
+		<string>Sanchez-Regular.ttf</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
