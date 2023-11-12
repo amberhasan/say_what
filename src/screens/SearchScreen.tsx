@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -8,26 +8,53 @@ import {
   FlatList,
   Image,
 } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
 // import Icon from 'react-native-vector-icons/MaterialIcons'; // Uncomment if you have the icons package
-
-const suggestions = [
-  'Long live cowgirls',
-  'Girls trips forever',
-  'The girls are girling',
-  'The girls room',
-  // ... other suggestions
-];
 
 const SearchScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
 
+  const [subcategoryData, setSubcategoryData] = useState([]);
+
+  const fetchSubcategoriesData = async () => {
+    const categoriesResult = await firestore().collection('captions').get();
+    let cat: any = {};
+    const convertedData = [];
+    categoriesResult.forEach(doc => {
+      const subcategory = doc.id;
+      doc.data().data.forEach((caption: string) => {
+        convertedData.push({
+          caption,
+          subcategory,
+        });
+      });
+      // cat[doc.id] = doc.data().data;
+
+      // console.log('data', doc.id);
+      // console.log('data', doc.data().data);
+    });
+    console.log('convertedData', convertedData);
+    setSubcategoryData(convertedData);
+  };
+
+  useEffect(() => {
+    fetchSubcategoriesData();
+  }, []);
+
+  useEffect(() => {
+    // fetch all the subcategories
+    // convert them according our needed data
+    // i.e data = [{caption : '', subCategory: ''}...{}]
+    // use in flatlist
+  }, []);
+
   const handleSearch = (text: string) => {
     setSearchQuery(text);
     // Filter suggestions based on the search query
     if (text) {
-      const filtered = suggestions.filter(suggestion =>
-        suggestion.toLowerCase().includes(text.toLowerCase()),
+      const filtered = subcategoryData.filter(suggestion =>
+        suggestion.caption.toLowerCase().includes(text.toLowerCase()),
       );
       setFilteredSuggestions(filtered);
     } else {
@@ -39,7 +66,7 @@ const SearchScreen: React.FC = () => {
   const renderSuggestion = ({item}) => {
     // Split the suggestion into parts to highlight the match
     const regex = new RegExp(`(${searchQuery})`, 'i');
-    const parts = item.split(regex);
+    const parts = item.caption.split(regex);
 
     return (
       <TouchableOpacity style={styles.suggestionItem}>
@@ -83,7 +110,7 @@ const SearchScreen: React.FC = () => {
       <FlatList
         data={filteredSuggestions} // Use filteredSuggestions here
         renderItem={renderSuggestion}
-        keyExtractor={item => item}
+        keyExtractor={item => item.caption}
         style={styles.suggestionsList}
       />
     </View>
