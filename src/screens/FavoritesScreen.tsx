@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import _ from 'lodash';
-import SmallGrayButton from '../components/SmallGrayButton';
-// Make sure you import SmallGrayButton and other components correctly
+import GrayButton from '../components/GrayButton';
+// Make sure you import GrayButton and other components correctly
 
 const FavoritesScreen = ({navigation}) => {
   const [favorites, setFavorites] = useState({});
@@ -94,7 +94,23 @@ const FavoritesScreen = ({navigation}) => {
         }
         return (
           <View key={subcategory} style={styles.categoryContainer}>
-            <SmallGrayButton item={subcategory} onPress={() => {}} />
+            <GrayButton
+              item={subcategory}
+              onPress={() => {}}
+              buttonText={{
+                fontFamily: 'PlayfairDisplay-Regular',
+                paddingLeft: 20,
+              }}
+              buttonContainer={{
+                width: 180,
+                height: 45,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+              buttonImageContainer={{
+                alignItems: 'flex-start',
+              }}
+            />
             {captions.map((caption, index) =>
               renderFavoriteItem(subcategory, caption, index),
             )}

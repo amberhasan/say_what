@@ -8,15 +8,23 @@ import {
 } from 'react-native';
 import CustomText from './CustomText';
 
-const GrayButton = ({item, onPress}) => {
+const GrayButton = ({
+  item,
+  onPress,
+  buttonText,
+  buttonContainer,
+  buttonImageContainer,
+}) => {
   return (
-    <TouchableOpacity style={styles.button} onPress={() => onPress(item)}>
+    <TouchableOpacity
+      style={[styles.button, buttonContainer]}
+      onPress={() => onPress(item)}>
       <ImageBackground
         source={require('../assets/images/functional/gray_button.png')}
-        style={styles.buttonImage}
-        resizeMode="cover" // or "stretch" to fill the button area
+        style={[styles.buttonImage, buttonImageContainer]}
+        resizeMode="contain" // or "stretch" to fill the button area
       >
-        <CustomText style={styles.buttonText}>{item}</CustomText>
+        <CustomText style={[styles.buttonText, buttonText]}>{item}</CustomText>
       </ImageBackground>
     </TouchableOpacity>
   );
@@ -37,9 +45,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    fontFamily: 'PlayfairDisplay-Regular',
+    fontFamily: 'PlayfairDisplay-Bold',
     fontSize: 25.4,
-    fontWeight: '700',
+    // fontWeight: '700',
     color: '#333',
   },
   container: {
