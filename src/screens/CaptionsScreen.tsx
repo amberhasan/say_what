@@ -14,6 +14,7 @@ import Header from '../components/Header';
 import firestore from '@react-native-firebase/firestore';
 import _ from 'lodash';
 import Clipboard from '@react-native-community/clipboard';
+import DropdownMenu from '../components/DropdownMenu';
 
 const CaptionsScreen = ({route}) => {
   const {selectedCategory, title} = route.params;
@@ -147,6 +148,8 @@ const CaptionsScreen = ({route}) => {
 
   const renderCaptionItem = ({item}) => {
     const isSelected = item === selectedCaption;
+    const isFavorite =
+      favorites[selectedCategory] && favorites[selectedCategory].includes(item);
 
     // Determine if the item is selected to change the text color
     const itemStyle = isSelected ? styles.selectedItem : styles.listItem;
@@ -161,18 +164,12 @@ const CaptionsScreen = ({route}) => {
           <Text style={itemStyle}>{`\u2022 \"${item}\"`}</Text>
         </TouchableOpacity>
         {dropdownVisible && isSelected && (
-          <View style={styles.dropdown}>
-            <TouchableOpacity
-              onPress={() => copyToClipboard(item)}
-              style={styles.dropdownItem}>
-              <Image
-                source={require('../assets/images/utils/link.png')}
-                style={styles.iconStyle}
-              />
-              <Text style={styles.textItem}>Copy to clipboard</Text>
-            </TouchableOpacity>
-            {renderFavoriteButton(item)}
-          </View>
+          <DropdownMenu
+            caption={item}
+            copyToClipboard={copyToClipboard}
+            toggleFavorite={isFavorite ? removeFromFavorites : addToFavorites}
+            isFavorite={isFavorite}
+          />
         )}
       </View>
     );

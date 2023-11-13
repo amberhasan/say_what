@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
     fontFamily: 'PlayfairDisplay-Regular',
+    textAlign: 'center',
   },
   placeholder: {
     width: 50, // To maintain the title in center if there is no back button

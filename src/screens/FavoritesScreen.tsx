@@ -5,6 +5,7 @@ import _ from 'lodash';
 import GrayButton from '../components/GrayButton';
 import Clipboard from '@react-native-community/clipboard';
 import Header from '../components/Header';
+import DropdownMenu from '../components/DropdownMenu';
 const FavoritesScreen = ({navigation}) => {
   const [favorites, setFavorites] = useState({});
   const [selectedCaption, setSelectedCaption] = useState(null);
@@ -43,40 +44,34 @@ const FavoritesScreen = ({navigation}) => {
     });
     // Update firestore here if necessary
   };
-
   const renderFavoriteItem = (category, caption) => {
     const isSelected = caption === selectedCaption;
+
+    // Define a style for the selected item
+    const itemStyle = isSelected
+      ? [styles.itemText, styles.selectedItemText] // Apply the selected style
+      : styles.itemText; // Regular style
 
     return (
       <View style={styles.itemContainer} key={caption}>
         <TouchableOpacity
           onPress={() => {
-            setSelectedCaption(isSelected ? null : caption);
-            setDropdownVisible(!isSelected);
+            setSelectedCaption(isSelected ? null : caption); // Toggle the selection
+            setDropdownVisible(!dropdownVisible || selectedCaption !== caption);
           }}>
-          <Text style={styles.itemText}>{`\u2022 \"${caption}\"`}</Text>
+          <Text style={itemStyle}>{`\u2022 \"${caption}\"`}</Text>
         </TouchableOpacity>
         {dropdownVisible && isSelected && (
-          <View style={styles.dropdown}>
-            <TouchableOpacity
-              onPress={() => copyToClipboard(caption)}
-              style={styles.dropdownItem}>
-              <Text style={styles.dropdownText}>Copy to clipboard</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                removeFromFavorites(category, caption);
-                setDropdownVisible(false);
-              }}
-              style={styles.dropdownItem}>
-              <Text style={styles.dropdownText}>Remove from favorites</Text>
-            </TouchableOpacity>
-          </View>
+          <DropdownMenu
+            caption={caption}
+            copyToClipboard={copyToClipboard} // Changed from copyToClipboard to onCopy
+            toggleFavorite={() => removeFromFavorites(category, caption)} // Changed from onRemove to toggleFavorite
+            isFavorite={true} // You need to pass the isFavorite prop based on the caption's favorite status
+          />
         )}
       </View>
     );
   };
-
   return (
     <View style={styles.container}>
       <Header title="Favorites" showBackButton={false} />
@@ -92,6 +87,7 @@ const FavoritesScreen = ({navigation}) => {
               onPress={() => {}}
               buttonText={{
                 fontFamily: 'PlayfairDisplay-Regular',
+                fontSize: 18,
                 paddingLeft: 20,
               }}
               buttonContainer={{
@@ -99,6 +95,7 @@ const FavoritesScreen = ({navigation}) => {
                 height: 45,
                 justifyContent: 'center',
                 alignItems: 'center',
+                paddingLeft: 20,
               }}
               buttonImageContainer={{
                 alignItems: 'flex-start',
@@ -115,11 +112,21 @@ const FavoritesScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  itemText: {
+    fontSize: 18,
+    marginVertical: 5,
+    fontFamily: 'PlayfairDisplay-Regular',
+    // other styles for your item text
+  },
+  selectedItemText: {
+    color: '#FF66C3', // This is the color that will be applied when an item is selected
+    fontFamily: 'PlayfairDisplay-Bold',
+  },
   container: {
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
-    paddingTop: 50,
+    paddingTop: 100,
   },
   header: {
     fontSize: 24,
@@ -133,11 +140,7 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     alignSelf: 'stretch',
-  },
-  itemText: {
-    fontSize: 18,
-    marginVertical: 5,
-    fontFamily: 'PlayfairDisplay-Regular',
+    paddingLeft: 20,
   },
   dropdown: {
     alignSelf: 'stretch',
