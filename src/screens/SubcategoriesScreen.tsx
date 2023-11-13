@@ -25,7 +25,7 @@ const SubcategoriesScreen = ({navigation, route}) => {
 
   return (
     <ScrollView style={styles.container}>
-      <Header title={capitalize(category)} />
+      <Header title={capitalize(category)} showBackButton={true} />
       <View style={styles.grid}>
         {subcategories.map((category, index) => (
           <CategoryBox

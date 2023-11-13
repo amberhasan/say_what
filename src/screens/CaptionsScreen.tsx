@@ -180,7 +180,7 @@ const CaptionsScreen = ({route}) => {
 
   return (
     <View style={styles.container}>
-      <Header title={title} />
+      <Header title={title} showBackButton={true} />
       <FlatList
         data={phrases}
         renderItem={renderCaptionItem}

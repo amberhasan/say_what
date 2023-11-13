@@ -4,8 +4,7 @@ import firestore from '@react-native-firebase/firestore';
 import _ from 'lodash';
 import GrayButton from '../components/GrayButton';
 import Clipboard from '@react-native-community/clipboard';
-// Make sure you import GrayButton and other components correctly
-
+import Header from '../components/Header';
 const FavoritesScreen = ({navigation}) => {
   const [favorites, setFavorites] = useState({});
   const [selectedCaption, setSelectedCaption] = useState(null);
@@ -80,7 +79,7 @@ const FavoritesScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Favorites</Text>
+      <Header title="Favorites" showBackButton={false} />
       {_.map(favorites, (captions, subcategory) => {
         // Check if the captions array is empty and return null to render nothing
         if (captions.length === 0) {
