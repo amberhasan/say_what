@@ -37,7 +37,6 @@ const DropdownMenu = ({
 };
 
 const styles = StyleSheet.create({
-  // ... your styles for dropdown and dropdownItem
   iconStyle: {
     width: 20,
     height: 20,
@@ -48,7 +47,7 @@ const styles = StyleSheet.create({
     fontFamily: 'OpenSans-Regular',
   },
   dropdown: {
-    // ... your styles for the dropdown container
+    paddingLeft: 20,
   },
   dropdownItem: {
     flexDirection: 'row',

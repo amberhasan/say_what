@@ -95,6 +95,7 @@ const FavoritesScreen = ({navigation}) => {
                 height: 45,
                 justifyContent: 'center',
                 alignItems: 'center',
+                marginBottom: 5, // Make sure this value is small to reduce space
                 paddingLeft: 20,
               }}
               buttonImageContainer={{
@@ -120,7 +121,6 @@ const styles = StyleSheet.create({
   },
   selectedItemText: {
     color: '#FF66C3', // This is the color that will be applied when an item is selected
-    fontFamily: 'PlayfairDisplay-Bold',
   },
   container: {
     flex: 1,
@@ -142,22 +142,6 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     paddingLeft: 20,
   },
-  dropdown: {
-    alignSelf: 'stretch',
-    backgroundColor: 'white',
-    padding: 10,
-    borderRadius: 5,
-  },
-  dropdownItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 5,
-  },
-  dropdownText: {
-    fontSize: 16,
-    marginLeft: 10,
-  },
-  // Add other styles as needed
 });
 
 export default FavoritesScreen;

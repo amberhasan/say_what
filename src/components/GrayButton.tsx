@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     width: 280,
     height: 60,
     borderRadius: 15,
-    marginBottom: 20,
-    overflow: 'hidden', // This is to ensure the borderRadius is applied to the image as well
+    marginBottom: 10, // Reduced from 20 to 10 for less space
+    overflow: 'hidden',
   },
   buttonImage: {
     width: '100%',
