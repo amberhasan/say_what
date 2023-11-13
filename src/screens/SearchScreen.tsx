@@ -58,7 +58,6 @@ const SearchScreen: React.FC = ({navigation}) => {
   };
 
   const onSearchItemPress = item => {
-    console.log('you have pressed', item);
     navigation.navigate('CaptionsScreen', {
       selectedCategory: item.subcategory,
     });

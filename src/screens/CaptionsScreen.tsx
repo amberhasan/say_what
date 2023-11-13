@@ -30,19 +30,7 @@ const CaptionsScreen = ({route}) => {
       .collection('captions')
       .doc(selectedCategory)
       .get();
-    console.log('response -> ', categoriesResult.data());
     setPhrases(categoriesResult.data().data);
-    // const convertedData = [];
-    // categoriesResult.forEach(doc => {
-    //   const subcategory = doc.id;
-    //   doc.data().data.forEach((caption: string) => {
-    //     convertedData.push({
-    //       caption,
-    //       subcategory,
-    //     });
-    //   });
-    // });
-    // setSubcategoryData(convertedData);
   };
 
   useEffect(() => {
@@ -96,9 +84,6 @@ const CaptionsScreen = ({route}) => {
     }
     Alert.alert('Added!', 'Caption added to favorites.');
     updateFavorites(favorites);
-    console.log({
-      favorites,
-    });
   };
 
   const removeFromFavorites = async removedCaption => {

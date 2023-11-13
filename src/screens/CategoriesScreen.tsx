@@ -21,7 +21,6 @@ const CategoriesScreen: React.FC = ({navigation}) => {
     categoriesResult.forEach(category => {
       cats.push(category.id);
     });
-    console.log('cats', cats);
     setCategories(cats);
     setLoading(false);
   };

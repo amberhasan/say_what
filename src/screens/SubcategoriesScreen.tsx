@@ -14,8 +14,6 @@ const SubcategoriesScreen = ({navigation, route}) => {
       .collection('categories')
       .doc(category)
       .get();
-    console.log('category', category);
-    console.log('result', result.data().data);
     setSubcategories(result.data().data);
   };
 
