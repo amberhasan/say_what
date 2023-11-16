@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, Text, ScrollView} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {StyleSheet, View, Text, ScrollView, Image} from 'react-native';
 import CategoryBox from '../components/CategoryBox'; // Make sure the path is correct based on your file structure
 import Header from '../components/Header';
 import firestore from '@react-native-firebase/firestore';
@@ -8,6 +8,8 @@ import {capitalize} from 'lodash';
 const SubcategoriesScreen = ({navigation, route}) => {
   const {category} = route.params;
   const [subcategories, setSubcategories] = useState([]);
+  const [isAtEnd, setIsAtEnd] = useState(false);
+  const scrollViewRef = useRef(null);
 
   const fetchSubcategoriesData = async () => {
     const result = await firestore()
@@ -21,24 +23,57 @@ const SubcategoriesScreen = ({navigation, route}) => {
     fetchSubcategoriesData();
   }, []);
 
+  const handleScroll = event => {
+    const scrollViewHeight = event.nativeEvent.layoutMeasurement.height;
+    const contentHeight = event.nativeEvent.contentSize.height;
+    const scrollOffset = event.nativeEvent.contentOffset.y;
+
+    if (scrollOffset + scrollViewHeight >= contentHeight) {
+      // ScrollView has reached the end
+      setIsAtEnd(true);
+    } else {
+      setIsAtEnd(false);
+    }
+  };
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <Header title={capitalize(category)} showBackButton={true} />
-      <View style={styles.grid}>
-        {subcategories.map((category, index) => (
-          <CategoryBox
-            key={index}
-            category={category}
-            onPress={() =>
-              navigation.navigate('CaptionsScreen', {
-                title: category.label,
-                selectedCategory: category.subcategory.toLowerCase(),
-              })
-            }
-          />
-        ))}
-      </View>
-    </ScrollView>
+      <Image
+        source={require('../assets/images/utils/scroll.png')}
+        style={{
+          position: 'absolute',
+          zIndex: 100,
+          height: 25,
+          width: 25,
+          right: 0,
+          bottom: 0,
+          marginRight: 10,
+          marginBottom: 10,
+          opacity: isAtEnd ? 0 : 1, // Hide the scroll image when at the end
+        }}
+      />
+      <ScrollView
+        ref={scrollViewRef}
+        onScroll={handleScroll}
+        onContentSizeChange={() => {
+          // scrollViewRef.current.scrollToEnd({animated: false});
+        }}>
+        <View style={styles.grid}>
+          {subcategories.map((category, index) => (
+            <CategoryBox
+              key={index}
+              category={category}
+              onPress={() =>
+                navigation.navigate('CaptionsScreen', {
+                  title: category.label,
+                  selectedCategory: category.subcategory.toLowerCase(),
+                })
+              }
+            />
+          ))}
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -59,7 +94,7 @@ const styles = StyleSheet.create({
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-around', // Changed this to 'space-around' for even spacing around items
+    justifyContent: 'center', // Changed this to 'space-around' for even spacing around items
     paddingHorizontal: 16, // Adjust the horizontal padding of the whole grid to match your design
   },
   box: {

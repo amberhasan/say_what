@@ -6,6 +6,7 @@ const CategoryBox = ({category, onPress}) => (
   <View
     style={{
       width: '38%', // 4 boxes per row
+      marginHorizontal: 10,
     }}>
     <TouchableOpacity style={styles.box} onPress={onPress}>
       <View style={styles.container}>
