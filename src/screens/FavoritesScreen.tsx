@@ -6,6 +6,7 @@ import GrayButton from '../components/GrayButton';
 import Clipboard from '@react-native-community/clipboard';
 import Header from '../components/Header';
 import DropdownMenu from '../components/DropdownMenu';
+import {capitalize} from 'lodash';
 const FavoritesScreen = ({navigation}) => {
   const [favorites, setFavorites] = useState({});
   const [selectedCaption, setSelectedCaption] = useState(null);
@@ -83,6 +84,14 @@ const FavoritesScreen = ({navigation}) => {
       </View>
     );
   };
+
+  const formattedSubcategory = subcategory => {
+    return subcategory
+      .split('_')
+      .map(item => capitalize(item))
+      .join(' ');
+  };
+
   return (
     <View style={styles.container}>
       <Header title="Favorites" showBackButton={false} />
@@ -94,7 +103,7 @@ const FavoritesScreen = ({navigation}) => {
         return (
           <View key={subcategory} style={styles.categoryContainer}>
             <GrayButton
-              item={subcategory}
+              item={formattedSubcategory(subcategory)}
               onPress={() => {}}
               buttonText={{
                 fontFamily: 'PlayfairDisplay-Regular',

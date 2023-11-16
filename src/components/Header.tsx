@@ -23,7 +23,7 @@ const Header = ({title, showBackButton = true}) => {
       <View style={styles.titleContainer}>
         <Text style={styles.title}>{title}</Text>
       </View>
-      <View style={styles.placeholder} />
+      {showBackButton && <View style={styles.placeholder} />}
     </View>
   );
 };
