@@ -7,8 +7,11 @@ import {
   TouchableOpacity,
   FlatList,
   Image,
+  SafeAreaView,
 } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
+import {capitalize} from 'lodash';
+import {formattedSubcategory} from '../utils';
 // import Icon from 'react-native-vector-icons/MaterialIcons'; // Uncomment if you have the icons package
 
 const SearchScreen: React.FC = ({navigation}) => {
@@ -36,13 +39,6 @@ const SearchScreen: React.FC = ({navigation}) => {
     fetchSubcategoriesData();
   }, []);
 
-  useEffect(() => {
-    // fetch all the subcategories
-    // convert them according our needed data
-    // i.e data = [{caption : '', subCategory: ''}...{}]
-    // use in flatlist
-  }, []);
-
   const handleSearch = (text: string) => {
     setSearchQuery(text);
     // Filter suggestions based on the search query
@@ -58,9 +54,11 @@ const SearchScreen: React.FC = ({navigation}) => {
   };
 
   const onSearchItemPress = item => {
+    console.log('item', item);
     navigation.navigate('CaptionsScreen', {
       selectedCategory: item.subcategory,
       searchedCaption: item.caption,
+      title: formattedSubcategory(item.subcategory),
     });
   };
 
@@ -84,39 +82,37 @@ const SearchScreen: React.FC = ({navigation}) => {
             ),
           )}
         </Text>
-        {/* <Image
-          source={require('../assets/images/utils/forward.png')}
-          style={styles.arrowIcon}
-        /> */}
       </TouchableOpacity>
     );
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.searchContainer}>
-        <Text style={styles.header}>Search</Text>
-        <View style={styles.searchBox}>
-          <Image
-            source={require('../assets/images/utils/search.png')} // Make sure this path is correct
-            style={styles.searchIcon}
-          />
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Search key words"
-            placeholderTextColor="black"
-            value={searchQuery}
-            onChangeText={handleSearch}
-          />
+    <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+      <View style={styles.container}>
+        <View style={styles.searchContainer}>
+          <Text style={styles.header}>Search</Text>
+          <View style={styles.searchBox}>
+            <Image
+              source={require('../assets/images/utils/search.png')} // Make sure this path is correct
+              style={styles.searchIcon}
+            />
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Search key words"
+              placeholderTextColor="black"
+              value={searchQuery}
+              onChangeText={handleSearch}
+            />
+          </View>
         </View>
+        <FlatList
+          data={filteredSuggestions} // Use filteredSuggestions here
+          renderItem={renderSuggestion}
+          keyExtractor={(item, index) => item.caption + index}
+          style={styles.suggestionsList}
+        />
       </View>
-      <FlatList
-        data={filteredSuggestions} // Use filteredSuggestions here
-        renderItem={renderSuggestion}
-        keyExtractor={(item, index) => item.caption + index}
-        style={styles.suggestionsList}
-      />
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -126,7 +122,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   searchContainer: {
-    paddingTop: 50,
     paddingBottom: 20,
     paddingHorizontal: 20,
     backgroundColor: 'white',
@@ -138,7 +133,6 @@ const styles = StyleSheet.create({
     color: 'black', // Change the text color if necessary
   },
   header: {
-    paddingTop: 20,
     fontSize: 32,
     fontWeight: 'bold',
     marginBottom: 20,

@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   Alert,
+  SafeAreaView,
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {addToFavorites as addToFavoritesAction} from '../actions/favoritesActions';
@@ -99,41 +100,7 @@ const CaptionsScreen = ({route}) => {
     updateFavorites(favorites);
   };
 
-  // Function to render the favorite button based on the item's favorite status
-  const renderFavoriteButton = item => {
-    if (
-      favorites[selectedCategory] &&
-      favorites[selectedCategory].includes(item)
-    ) {
-      return (
-        <TouchableOpacity
-          onPress={() => removeFromFavorites(item)}
-          style={styles.dropdownItem}>
-          <Image
-            source={require('../assets/images/bottom/unselected/heart.png')} // Replace with your 'filled heart' icon
-            style={styles.iconStyle}
-          />
-          <Text style={styles.textItem}>Remove from favorites</Text>
-        </TouchableOpacity>
-      );
-    } else {
-      return (
-        <TouchableOpacity
-          onPress={() => addToFavorites(item)}
-          style={styles.dropdownItem}>
-          <Image
-            source={require('../assets/images/bottom/unselected/heart.png')} // Replace with your 'unfilled heart' icon
-            style={styles.iconStyle}
-          />
-          <Text style={styles.textItem}>Add to favorites</Text>
-        </TouchableOpacity>
-      );
-    }
-  };
-
   const renderCaptionItem = ({item}) => {
-    console.log('item', item);
-    console.log('searchedCaption', searchedCaption);
     const isSelected = item === selectedCaption;
     const isFavorite =
       favorites[selectedCategory] && favorites[selectedCategory].includes(item);
@@ -169,15 +136,17 @@ const CaptionsScreen = ({route}) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Header title={title} showBackButton={true} />
-      <FlatList
-        data={phrases}
-        renderItem={renderCaptionItem}
-        keyExtractor={(item, index) => index.toString()}
-        extraData={selectedCaption} // Adding this to ensure FlatList updates when state changes
-      />
-    </View>
+    <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+      <View style={styles.container}>
+        <Header title={title} showBackButton={true} />
+        <FlatList
+          data={phrases}
+          renderItem={renderCaptionItem}
+          keyExtractor={(item, index) => index.toString()}
+          extraData={selectedCaption} // Adding this to ensure FlatList updates when state changes
+        />
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -224,7 +193,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    paddingTop: 100,
     backgroundColor: 'white',
   },
   title: {

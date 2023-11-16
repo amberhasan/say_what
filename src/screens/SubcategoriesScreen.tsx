@@ -1,5 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {StyleSheet, View, Text, ScrollView, Image} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  Image,
+  SafeAreaView,
+} from 'react-native';
 import CategoryBox from '../components/CategoryBox'; // Make sure the path is correct based on your file structure
 import Header from '../components/Header';
 import firestore from '@react-native-firebase/firestore';
@@ -36,44 +43,46 @@ const SubcategoriesScreen = ({navigation, route}) => {
     }
   };
   return (
-    <View style={styles.container}>
-      <Header title={capitalize(category)} showBackButton={true} />
-      <Image
-        source={require('../assets/images/utils/scroll.png')}
-        style={{
-          position: 'absolute',
-          zIndex: 100,
-          height: 25,
-          width: 25,
-          right: 0,
-          bottom: 0,
-          marginRight: 10,
-          marginBottom: 10,
-          opacity: isAtEnd ? 0 : 1, // Hide the scroll image when at the end
-        }}
-      />
-      <ScrollView
-        ref={scrollViewRef}
-        onScroll={handleScroll}
-        onContentSizeChange={() => {
-          // scrollViewRef.current.scrollToEnd({animated: false});
-        }}>
-        <View style={styles.grid}>
-          {subcategories.map((category, index) => (
-            <CategoryBox
-              key={index}
-              category={category}
-              onPress={() =>
-                navigation.navigate('CaptionsScreen', {
-                  title: category.label,
-                  selectedCategory: category.subcategory.toLowerCase(),
-                })
-              }
-            />
-          ))}
-        </View>
-      </ScrollView>
-    </View>
+    <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+      <View style={styles.container}>
+        <Header title={capitalize(category)} showBackButton={true} />
+        <Image
+          source={require('../assets/images/utils/scroll.png')}
+          style={{
+            position: 'absolute',
+            zIndex: 100,
+            height: 25,
+            width: 25,
+            right: 0,
+            bottom: 0,
+            marginRight: 10,
+            marginBottom: 10,
+            opacity: isAtEnd ? 0 : 1, // Hide the scroll image when at the end
+          }}
+        />
+        <ScrollView
+          ref={scrollViewRef}
+          onScroll={handleScroll}
+          onContentSizeChange={() => {
+            // scrollViewRef.current.scrollToEnd({animated: false});
+          }}>
+          <View style={styles.grid}>
+            {subcategories.map((category, index) => (
+              <CategoryBox
+                key={index}
+                category={category}
+                onPress={() =>
+                  navigation.navigate('CaptionsScreen', {
+                    title: category.label,
+                    selectedCategory: category.subcategory.toLowerCase(),
+                  })
+                }
+              />
+            ))}
+          </View>
+        </ScrollView>
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -82,7 +91,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     padding: 20,
-    paddingTop: 100,
   },
   title: {
     fontSize: 32,

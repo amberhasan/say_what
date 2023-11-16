@@ -1,12 +1,20 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+  SafeAreaView,
+} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import _ from 'lodash';
 import GrayButton from '../components/GrayButton';
 import Clipboard from '@react-native-community/clipboard';
 import Header from '../components/Header';
 import DropdownMenu from '../components/DropdownMenu';
-import {capitalize} from 'lodash';
+import {formattedSubcategory} from '../utils';
+
 const FavoritesScreen = ({navigation}) => {
   const [favorites, setFavorites] = useState({});
   const [selectedCaption, setSelectedCaption] = useState(null);
@@ -85,50 +93,45 @@ const FavoritesScreen = ({navigation}) => {
     );
   };
 
-  const formattedSubcategory = subcategory => {
-    return subcategory
-      .split('_')
-      .map(item => capitalize(item))
-      .join(' ');
-  };
-
   return (
-    <View style={styles.container}>
-      <Header title="Favorites" showBackButton={false} />
-      {_.map(favorites, (captions, subcategory) => {
-        // Check if the captions array is empty and return null to render nothing
-        if (captions.length === 0) {
-          return null;
-        }
-        return (
-          <View key={subcategory} style={styles.categoryContainer}>
-            <GrayButton
-              item={formattedSubcategory(subcategory)}
-              onPress={() => {}}
-              buttonText={{
-                fontFamily: 'PlayfairDisplay-Regular',
-                fontSize: 18,
-                paddingLeft: 20,
-              }}
-              buttonContainer={{
-                width: 180,
-                height: 45,
-                justifyContent: 'center',
-                alignItems: 'center',
-                marginBottom: 5, // Make sure this value is small to reduce space
-                paddingLeft: 20,
-              }}
-              buttonImageContainer={{
-                alignItems: 'flex-start',
-              }}
-            />
-            {captions.map((caption, index) =>
-              renderFavoriteItem(subcategory, caption, index),
-            )}
-          </View>
-        );
-      })}
-    </View>
+    <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+      <View style={styles.container}>
+        <Header title="Favorites" showBackButton={false} />
+        {_.map(favorites, (captions, subcategory) => {
+          // Check if the captions array is empty and return null to render nothing
+          if (captions.length === 0) {
+            return null;
+          }
+          return (
+            <View key={subcategory} style={styles.categoryContainer}>
+              <GrayButton
+                item={formattedSubcategory(subcategory)}
+                onPress={() => {}}
+                buttonText={{
+                  fontFamily: 'PlayfairDisplay-Regular',
+                  fontSize: 18,
+                  paddingLeft: 20,
+                }}
+                buttonContainer={{
+                  width: 180,
+                  height: 45,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginBottom: 5, // Make sure this value is small to reduce space
+                  paddingLeft: 20,
+                }}
+                buttonImageContainer={{
+                  alignItems: 'flex-start',
+                }}
+              />
+              {captions.map((caption, index) =>
+                renderFavoriteItem(subcategory, caption, index),
+              )}
+            </View>
+          );
+        })}
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -146,7 +149,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
-    paddingTop: 100,
   },
   header: {
     fontSize: 24,
