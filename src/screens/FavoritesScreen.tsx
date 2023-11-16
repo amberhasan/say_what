@@ -34,6 +34,17 @@ const FavoritesScreen = ({navigation}) => {
     Alert.alert('Copied!', 'Caption copied to clipboard.');
   };
 
+  const updateFavorites = async updateValues => {
+    try {
+      await firestore()
+        .collection('favorites')
+        .doc('N3Hr8vp8DxO1cDSV1U5o')
+        .update(updateValues);
+    } catch (err) {
+      Alert.alert('Error', 'Could not update caption in favorites.');
+      console.error('Error in updateFavorites(): ', err);
+    }
+  };
   const removeFromFavorites = async (subcategory, removedCaption) => {
     const updatedCaptions = favorites[subcategory].filter(
       caption => caption !== removedCaption,
@@ -42,7 +53,7 @@ const FavoritesScreen = ({navigation}) => {
       ...favorites,
       [subcategory]: updatedCaptions,
     });
-    // Update firestore here if necessary
+    updateFavorites(favorites);
   };
   const renderFavoriteItem = (category, caption) => {
     const isSelected = caption === selectedCaption;
@@ -115,7 +126,7 @@ const FavoritesScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   itemText: {
     fontSize: 18,
-    marginVertical: 5,
+    marginVertical: 0,
     fontFamily: 'PlayfairDisplay-Regular',
     // other styles for your item text
   },

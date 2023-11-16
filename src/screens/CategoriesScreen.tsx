@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
-    paddingTop: 100,
+    paddingTop: 150,
     fontFamily: 'PlayfairDisplay-Regular',
   },
 });

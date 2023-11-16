@@ -83,10 +83,10 @@ const SearchScreen: React.FC = ({navigation}) => {
             ),
           )}
         </Text>
-        <Image
+        {/* <Image
           source={require('../assets/images/utils/forward.png')}
           style={styles.arrowIcon}
-        />
+        /> */}
       </TouchableOpacity>
     );
   };
