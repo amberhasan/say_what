@@ -60,6 +60,7 @@ const SearchScreen: React.FC = ({navigation}) => {
   const onSearchItemPress = item => {
     navigation.navigate('CaptionsScreen', {
       selectedCategory: item.subcategory,
+      searchedCaption: item.caption,
     });
   };
 

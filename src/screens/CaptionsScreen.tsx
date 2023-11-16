@@ -17,7 +17,7 @@ import Clipboard from '@react-native-community/clipboard';
 import DropdownMenu from '../components/DropdownMenu';
 
 const CaptionsScreen = ({route}) => {
-  const {selectedCategory, title} = route.params;
+  const {selectedCategory, title, searchedCaption} = route.params;
   // const phrases = captionsData[selectedCategory] || [];
   const [phrases, setPhrases] = useState([]);
   const [selectedCaption, setSelectedCaption] = useState(null);
@@ -132,6 +132,8 @@ const CaptionsScreen = ({route}) => {
   };
 
   const renderCaptionItem = ({item}) => {
+    console.log('item', item);
+    console.log('searchedCaption', searchedCaption);
     const isSelected = item === selectedCaption;
     const isFavorite =
       favorites[selectedCategory] && favorites[selectedCategory].includes(item);
@@ -146,7 +148,13 @@ const CaptionsScreen = ({route}) => {
             setSelectedCaption(isSelected ? null : item); // Toggle the selection
             setDropdownVisible(!dropdownVisible);
           }}>
-          <Text style={itemStyle}>{`\u2022 \"${item}\"`}</Text>
+          <Text
+            style={[
+              itemStyle,
+              searchedCaption === item && {
+                fontFamily: 'PlayfairDisplay-Bold',
+              },
+            ]}>{`\u2022 \"${item}\"`}</Text>
         </TouchableOpacity>
         {dropdownVisible && isSelected && (
           <DropdownMenu
