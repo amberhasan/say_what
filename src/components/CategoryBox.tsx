@@ -1,9 +1,10 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
+import {CategoryBoxProps} from '../types';
 
 // Assuming category.icon is of type ImageSourcePropType which is the correct type for an image source
-const CategoryBox = ({category, onPress}) => (
+const CategoryBox = ({category, onPress}: CategoryBoxProps) => (
   <View
     style={{
       width: '38%', // 4 boxes per row

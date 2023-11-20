@@ -12,9 +12,10 @@ import {
 import firestore from '@react-native-firebase/firestore';
 import {capitalize} from 'lodash';
 import {formattedSubcategory} from '../utils';
+import {SearchScreenProps} from '../types';
 // import Icon from 'react-native-vector-icons/MaterialIcons'; // Uncomment if you have the icons package
 
-const SearchScreen: React.FC = ({navigation}) => {
+const SearchScreen = ({navigation}: {navigation: SearchScreenProps}) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
 

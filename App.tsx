@@ -11,10 +11,11 @@ import FavoritesScreen from './src/screens/FavoritesScreen';
 import SearchScreen from './src/screens/SearchScreen';
 import {Provider} from 'react-redux';
 import configureStore from './src/store/configureStore';
+import {DiscoverStackParams, SearchStackParams} from './src/types';
 
 const Tab = createBottomTabNavigator();
-const DiscoverStack = createStackNavigator();
-const SearchStack = createStackNavigator();
+const DiscoverStack = createStackNavigator<DiscoverStackParams>();
+const SearchStack = createStackNavigator<SearchStackParams>();
 const store = configureStore();
 
 export default function App() {

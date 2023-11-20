@@ -7,6 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import CustomText from './CustomText';
+import {GrayButtonProps} from '../types';
 
 const GrayButton = ({
   item,
@@ -14,7 +15,7 @@ const GrayButton = ({
   buttonText,
   buttonContainer,
   buttonImageContainer,
-}) => {
+}: GrayButtonProps) => {
   return (
     <TouchableOpacity
       style={[styles.button, buttonContainer]}

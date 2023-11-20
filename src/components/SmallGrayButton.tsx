@@ -8,8 +8,9 @@ import {
   View,
 } from 'react-native';
 import CustomText from './CustomText';
+import {SmallGrayButtonProps} from '../types';
 
-const SmallGrayButton = ({item, onPress}) => {
+const SmallGrayButton = ({item, onPress}: SmallGrayButtonProps) => {
   return (
     <TouchableOpacity style={styles.button} onPress={() => onPress(item)}>
       <ImageBackground

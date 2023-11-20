@@ -11,8 +11,15 @@ import CategoryBox from '../components/CategoryBox'; // Make sure the path is co
 import Header from '../components/Header';
 import firestore from '@react-native-firebase/firestore';
 import {capitalize} from 'lodash';
+import {SubcategoriesScreenProps, SubcategoriesScreenRoute} from '../types';
 
-const SubcategoriesScreen = ({navigation, route}) => {
+const SubcategoriesScreen = ({
+  navigation,
+  route,
+}: {
+  navigation: SubcategoriesScreenProps;
+  route: SubcategoriesScreenRoute;
+}) => {
   const {category} = route.params;
   const [subcategories, setSubcategories] = useState([]);
   const [isAtEnd, setIsAtEnd] = useState(false);

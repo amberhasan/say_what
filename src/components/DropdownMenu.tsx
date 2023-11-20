@@ -1,13 +1,14 @@
 // DropdownMenu.js
 import React from 'react';
 import {View, TouchableOpacity, Text, Image, StyleSheet} from 'react-native';
+import {DropdownMenuProps} from '../types';
 
 const DropdownMenu = ({
   caption,
   copyToClipboard,
   toggleFavorite,
   isFavorite,
-}) => {
+}: DropdownMenuProps) => {
   return (
     <View style={styles.dropdown}>
       <TouchableOpacity

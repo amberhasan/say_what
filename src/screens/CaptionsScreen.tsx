@@ -16,8 +16,9 @@ import firestore from '@react-native-firebase/firestore';
 import _ from 'lodash';
 import Clipboard from '@react-native-community/clipboard';
 import DropdownMenu from '../components/DropdownMenu';
+import {CaptionsScreenRoute} from '../types';
 
-const CaptionsScreen = ({route}) => {
+const CaptionsScreen = ({route}: {route: CaptionsScreenRoute}) => {
   const {selectedCategory, title, searchedCaption} = route.params;
   // const phrases = captionsData[selectedCategory] || [];
   const [phrases, setPhrases] = useState([]);

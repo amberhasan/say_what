@@ -1,5 +1,16 @@
 import React from 'react';
-import {Text as RNText, StyleSheet} from 'react-native';
+import {
+  Text as RNText,
+  StyleProp,
+  StyleSheet,
+  TextProps,
+  TextStyle,
+} from 'react-native';
+import {customTextProps} from '../types';
+
+const CustomText = ({style, ...props}: customTextProps) => {
+  return <RNText style={[styles.text, style]} {...props} />;
+};
 
 const styles = StyleSheet.create({
   text: {
@@ -7,9 +18,5 @@ const styles = StyleSheet.create({
     // ... any other default styles you want
   },
 });
-
-const CustomText = ({style, ...props}) => {
-  return <RNText style={[styles.text, style]} {...props} />;
-};
 
 export default CustomText;

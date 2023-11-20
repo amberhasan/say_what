@@ -1,8 +1,9 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {HeaderProps} from '../types';
 
-const Header = ({title, showBackButton = true}) => {
+const Header = ({title, showBackButton = true}: HeaderProps) => {
   const navigation = useNavigation();
 
   const onBackPress = () => {
