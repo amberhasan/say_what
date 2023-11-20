@@ -161,7 +161,6 @@ const styles = StyleSheet.create({
   },
   selectedItem: {
     fontSize: 20,
-    fontFamily: 'PlayfairDisplay-Bold',
     color: '#FF66C3', // Pink color for selected item
   },
   textItem: {
