@@ -1,5 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 // Assuming category.icon is of type ImageSourcePropType which is the correct type for an image source
 const CategoryBox = ({category, onPress}) => (
@@ -10,10 +11,10 @@ const CategoryBox = ({category, onPress}) => (
     }}>
     <TouchableOpacity style={styles.box} onPress={onPress}>
       <View style={styles.container}>
-        <Image
+        <FastImage
           source={{uri: category.icon}}
           style={styles.icon}
-          resizeMode="contain"
+          resizeMode={FastImage.resizeMode.contain}
         />
       </View>
     </TouchableOpacity>
