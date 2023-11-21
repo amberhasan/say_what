@@ -73,6 +73,7 @@ const SearchScreen = ({navigation}: {navigation: SearchScreenProps}) => {
         style={styles.suggestionItem}
         onPress={() => onSearchItemPress(item)}>
         <Text style={styles.suggestionText}>
+          "{''}
           {parts.map((part, index) =>
             regex.test(part) ? (
               <Text key={index} style={styles.highlightedText}>
@@ -82,6 +83,7 @@ const SearchScreen = ({navigation}: {navigation: SearchScreenProps}) => {
               part
             ),
           )}
+          {''}"
         </Text>
       </TouchableOpacity>
     );
