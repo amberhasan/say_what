@@ -1,10 +1,12 @@
 import {
   ADD_TO_FAVORITES,
   REMOVE_FROM_FAVORITES,
+  SET_DEVICE_ID,
 } from '../actions/favoritesActions';
 
 const initialState = {
   favorites: [],
+  deviceId: null,
 };
 
 export const favoritesReducer = (state = initialState, action) => {
@@ -20,6 +22,11 @@ export const favoritesReducer = (state = initialState, action) => {
         favorites: state.favorites.filter(
           caption => caption !== action.payload,
         ),
+      };
+    case SET_DEVICE_ID:
+      return {
+        ...state,
+        deviceId: action.payload,
       };
     default:
       return state;

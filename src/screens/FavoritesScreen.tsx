@@ -14,17 +14,20 @@ import Clipboard from '@react-native-community/clipboard';
 import Header from '../components/Header';
 import DropdownMenu from '../components/DropdownMenu';
 import {formattedSubcategory} from '../utils';
+import {useSelector} from 'react-redux';
 
 const FavoritesScreen = ({navigation}) => {
   const [favorites, setFavorites] = useState({});
   const [selectedCaption, setSelectedCaption] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const deviceId = useSelector(state => state.favorites.deviceId);
+  console.log('deviceId', deviceId);
 
   const fetchFavorites = async () => {
     try {
       const result = await firestore()
         .collection('favorites')
-        .doc('N3Hr8vp8DxO1cDSV1U5o')
+        .doc(deviceId)
         .get();
       setFavorites(result.data());
     } catch (err) {
@@ -47,7 +50,7 @@ const FavoritesScreen = ({navigation}) => {
     try {
       await firestore()
         .collection('favorites')
-        .doc('N3Hr8vp8DxO1cDSV1U5o')
+        .doc(deviceId)
         .update(updateValues);
     } catch (err) {
       Alert.alert('Error', 'Could not update caption in favorites.');
@@ -55,14 +58,21 @@ const FavoritesScreen = ({navigation}) => {
     }
   };
   const removeFromFavorites = async (subcategory, removedCaption) => {
+    console.log('BEFORE REMOVING');
+    console.log(favorites[subcategory]);
     const updatedCaptions = favorites[subcategory].filter(
       caption => caption !== removedCaption,
     );
+    console.log('AFTER REMOVING');
+    console.log(updatedCaptions);
     setFavorites({
       ...favorites,
       [subcategory]: updatedCaptions,
     });
-    updateFavorites(favorites);
+    updateFavorites({
+      ...favorites,
+      [subcategory]: updatedCaptions,
+    });
   };
   const renderFavoriteItem = (category, caption) => {
     const isSelected = caption === selectedCaption;

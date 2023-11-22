@@ -9,7 +9,7 @@ import {
   Alert,
   SafeAreaView,
 } from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {addToFavorites as addToFavoritesAction} from '../actions/favoritesActions';
 import Header from '../components/Header';
 import firestore from '@react-native-firebase/firestore';
@@ -26,6 +26,8 @@ const CaptionsScreen = ({route}: {route: CaptionsScreenRoute}) => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dispatch = useDispatch();
   const [favorites, setFavorites] = useState({});
+  const deviceId = useSelector(state => state.favorites.deviceId);
+  console.log('deviceID is: ', deviceId);
 
   const fetchSubcategoriesData = async () => {
     const categoriesResult = await firestore()
@@ -42,9 +44,10 @@ const CaptionsScreen = ({route}: {route: CaptionsScreenRoute}) => {
     try {
       const result = await firestore()
         .collection('favorites')
-        .doc('N3Hr8vp8DxO1cDSV1U5o')
+        .doc(deviceId)
         .get();
-      setFavorites(result.data());
+      console.log('result.data()', result.data());
+      setFavorites(result.data() || {});
     } catch (err) {
       Alert.alert('Error', 'Unable to fetch the favorites.');
       console.error('Add to Favorites Error, fetchFavorites(): ', err);
@@ -53,10 +56,20 @@ const CaptionsScreen = ({route}: {route: CaptionsScreenRoute}) => {
 
   const updateFavorites = async updateValues => {
     try {
-      await firestore()
-        .collection('favorites')
-        .doc('N3Hr8vp8DxO1cDSV1U5o')
-        .update(updateValues);
+      // Reference to the document
+      const docRef = firestore().collection('favorites').doc(deviceId);
+
+      // Get the document
+      const doc = await docRef.get();
+
+      // Check if the document exists
+      if (doc.exists) {
+        // If it exists, update the document
+        await docRef.update(updateValues);
+      } else {
+        // Optionally create the document if it does not exist
+        await docRef.set(updateValues);
+      }
     } catch (err) {
       Alert.alert('Error', 'Could not update caption in favorites.');
       console.error('Error in updateFavorites(): ', err);

@@ -9,10 +9,11 @@ import SubcategoriesScreen from './src/screens/SubcategoriesScreen';
 import CaptionsScreen from './src/screens/CaptionsScreen';
 import FavoritesScreen from './src/screens/FavoritesScreen';
 import SearchScreen from './src/screens/SearchScreen';
-import {Provider} from 'react-redux';
+import {Provider, useDispatch} from 'react-redux';
 import configureStore from './src/store/configureStore';
 import {DiscoverStackParams, SearchStackParams} from './src/types';
 import {getUniqueId} from 'react-native-device-info';
+import {setDeviceId} from './src/actions/favoritesActions';
 
 const Tab = createBottomTabNavigator();
 const DiscoverStack = createStackNavigator<DiscoverStackParams>();
@@ -23,6 +24,7 @@ export default function App() {
   useEffect(() => {
     getUniqueId()
       .then(id => {
+        store.dispatch(setDeviceId(id.split('-').join('')));
         console.log('id', id);
       })
       .catch(err => console.log('unable to get device id ', err));
