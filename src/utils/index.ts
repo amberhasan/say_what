@@ -4,5 +4,7 @@ export const formattedSubcategory = (subcategory: string) => {
   return subcategory
     .split('_')
     .map((item: string) => capitalize(item))
-    .join(' ');
+    .join(' ')
+    .split('dot')
+    .join('.');
 };

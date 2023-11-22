@@ -45,11 +45,6 @@ export type SearchScreenProps = StackNavigationProp<
 
 export type SearchScreenRoute = RouteProp<SearchStackParams, 'SearchScreen'>;
 
-export type SmallGrayButtonProps = {
-  item: string;
-  onPress: (item: string) => void;
-};
-
 export type CategoryBoxProps = {
   category: {
     label: string;
