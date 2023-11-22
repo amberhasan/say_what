@@ -17,8 +17,9 @@ import _ from 'lodash';
 import Clipboard from '@react-native-community/clipboard';
 import DropdownMenu from '../components/DropdownMenu';
 import {CaptionsScreenRoute} from '../types';
+import {useFocusEffect} from '@react-navigation/native';
 
-const CaptionsScreen = ({route}: {route: CaptionsScreenRoute}) => {
+const CaptionsScreen = ({route, navigation}: {route: CaptionsScreenRoute}) => {
   const {selectedCategory, title, searchedCaption} = route.params;
   // const phrases = captionsData[selectedCategory] || [];
   const [phrases, setPhrases] = useState([]);
@@ -40,6 +41,7 @@ const CaptionsScreen = ({route}: {route: CaptionsScreenRoute}) => {
   useEffect(() => {
     fetchSubcategoriesData();
   }, []);
+
   const fetchFavorites = async () => {
     try {
       const result = await firestore()
@@ -55,6 +57,7 @@ const CaptionsScreen = ({route}: {route: CaptionsScreenRoute}) => {
   };
 
   const updateFavorites = async updateValues => {
+    console.log('Updated values: ', updateValues);
     try {
       // Reference to the document
       const docRef = firestore().collection('favorites').doc(deviceId);
@@ -76,9 +79,16 @@ const CaptionsScreen = ({route}: {route: CaptionsScreenRoute}) => {
     }
   };
 
-  useEffect(() => {
-    fetchFavorites();
-  }, []);
+  React.useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      // The screen is focused
+      // Call any action
+      fetchFavorites();
+    });
+
+    // Return the function to unsubscribe from the event so it gets removed on unmount
+    return unsubscribe;
+  }, [navigation]);
 
   const copyToClipboard = text => {
     Clipboard.setString(text);
