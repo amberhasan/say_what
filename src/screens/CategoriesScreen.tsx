@@ -32,7 +32,6 @@ const CategoriesScreen: React.FC = ({navigation}) => {
   const handleCategoryClick = (category: string) => {
     navigation.navigate('SubcategoriesScreen', {
       category: category.toLowerCase(),
-      // categories: categoryData[category.toLowerCase()],
     });
   };
 
@@ -52,6 +51,7 @@ const CategoriesScreen: React.FC = ({navigation}) => {
           <GrayButton item={capitalize(item)} onPress={handleCategoryClick} />
         )}
         keyExtractor={item => item}
+        contentContainerStyle={styles.listContentContainer} // add this line
       />
     </View>
   );
@@ -64,6 +64,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 150,
     fontFamily: 'PlayfairDisplay-Regular',
+  },
+  listContentContainer: {
+    paddingHorizontal: 0, // remove horizontal padding if any
   },
 });
 
