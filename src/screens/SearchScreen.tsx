@@ -59,7 +59,9 @@ const SearchScreen = ({navigation}: {navigation: SearchScreenProps}) => {
     navigation.navigate('CaptionsScreen', {
       selectedCategory: item.subcategory,
       searchedCaption: item.caption,
-      title: formattedSubcategory(item.subcategory),
+      title: formattedSubcategory(item.subcategory)
+        .split('apostrophe')
+        .join("'"),
     });
   };
 
