@@ -531,7 +531,7 @@
 				DEVELOPMENT_TEAM = ZWDA7F62FT;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SayWhat/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Capfluence;
+				INFOPLIST_KEY_CFBundleDisplayName = Capfluencer;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -559,7 +559,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = ZWDA7F62FT;
 				INFOPLIST_FILE = SayWhat/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Capfluence;
+				INFOPLIST_KEY_CFBundleDisplayName = Capfluencer;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

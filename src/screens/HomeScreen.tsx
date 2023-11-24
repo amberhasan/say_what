@@ -5,7 +5,7 @@ const HomeScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.title}> "Capfluence" </Text>
+        <Text style={styles.title}> "Capfluencer" </Text>
         <Text style={styles.subtitle}> A CAPTION APP </Text>
       </View>
       <View style={styles.captionContainer}>
