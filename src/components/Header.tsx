@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 10,
   },
   backButton: {
     width: 50,
