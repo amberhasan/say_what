@@ -9,8 +9,7 @@ import {
   Alert,
   SafeAreaView,
 } from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {addToFavorites as addToFavoritesAction} from '../actions/favoritesActions';
+import {useSelector} from 'react-redux';
 import Header from '../components/Header';
 import firestore from '@react-native-firebase/firestore';
 import _ from 'lodash';
@@ -25,9 +24,8 @@ const CaptionsScreen = ({route, navigation}: {route: CaptionsScreenRoute}) => {
   const [phrases, setPhrases] = useState([]);
   const [selectedCaption, setSelectedCaption] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const dispatch = useDispatch();
   const [favorites, setFavorites] = useState({});
-  const deviceId = useSelector(state => state.favorites.deviceId);
+  const deviceId = useSelector(state => state.app.deviceId);
   console.log('deviceID is: ', deviceId);
 
   const fetchSubcategoriesData = async () => {
@@ -97,7 +95,6 @@ const CaptionsScreen = ({route, navigation}: {route: CaptionsScreenRoute}) => {
   };
 
   const addToFavorites = caption => {
-    dispatch(addToFavoritesAction(caption));
     setDropdownVisible(false);
 
     if (favorites[selectedCategory]) {

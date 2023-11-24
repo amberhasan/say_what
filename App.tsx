@@ -13,7 +13,7 @@ import {Provider, useDispatch} from 'react-redux';
 import configureStore from './src/store/configureStore';
 import {DiscoverStackParams, SearchStackParams} from './src/types';
 import {getUniqueId} from 'react-native-device-info';
-import {setDeviceId} from './src/actions/favoritesActions';
+import {setDeviceId} from './src/actions/appActions';
 
 const Tab = createBottomTabNavigator();
 const DiscoverStack = createStackNavigator<DiscoverStackParams>();

@@ -20,7 +20,7 @@ const FavoritesScreen = ({navigation}) => {
   const [favorites, setFavorites] = useState({});
   const [selectedCaption, setSelectedCaption] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const deviceId = useSelector(state => state.favorites.deviceId);
+  const deviceId = useSelector(state => state.app.deviceId);
   console.log('deviceId', deviceId);
 
   const fetchFavorites = async () => {
