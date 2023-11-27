@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Alert,
   SafeAreaView,
+  ScrollView,
 } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import _ from 'lodash';
@@ -103,43 +104,78 @@ const FavoritesScreen = ({navigation}) => {
     );
   };
 
+  // { a: [], b:[], c:[]}
+
+  // [[], [], []]
+
+  const isEmpty = object => {
+    let result = true;
+    Object.values(object).map(arr => {
+      if (arr.length > 0) {
+        result = false;
+      }
+    });
+    return result;
+  };
+
+  console.log('favorites', favorites);
+  console.log('length', Object.values(favorites).length);
+  if (isEmpty(favorites)) {
+    return (
+      <>
+        <Header title="Favorites" showBackButton={false} />
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'white',
+          }}>
+          <Text>No Favorites</Text>
+        </View>
+      </>
+    );
+  }
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
       <View style={styles.container}>
         <Header title="Favorites" showBackButton={false} />
-        {_.map(favorites, (captions, subcategory) => {
-          // Check if the captions array is empty and return null to render nothing
-          if (captions.length === 0) {
-            return null;
-          }
-          return (
-            <View key={subcategory} style={styles.categoryContainer}>
-              <GrayButton
-                item={formattedSubcategory(subcategory)}
-                onPress={() => {}}
-                buttonText={{
-                  fontFamily: 'PlayfairDisplay-Regular',
-                  fontSize: 18,
-                  paddingLeft: 20,
-                }}
-                buttonContainer={{
-                  width: 180,
-                  height: 45,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  marginBottom: 5, // Make sure this value is small to reduce space
-                  paddingLeft: 20,
-                }}
-                buttonImageContainer={{
-                  alignItems: 'flex-start',
-                }}
-              />
-              {captions.map((caption, index) =>
-                renderFavoriteItem(subcategory, caption, index),
-              )}
-            </View>
-          );
-        })}
+        <ScrollView style={{flexGrow: 1}}>
+          {_.map(favorites, (captions, subcategory) => {
+            // Check if the captions array is empty and return null to render nothing
+            if (captions.length === 0) {
+              return null;
+            }
+            return (
+              <View key={subcategory} style={styles.categoryContainer}>
+                <GrayButton
+                  item={formattedSubcategory(subcategory)}
+                  onPress={() => {}}
+                  buttonText={{
+                    fontFamily: 'PlayfairDisplay-Regular',
+                    fontSize: 18,
+                    paddingLeft: 20,
+                  }}
+                  buttonContainer={{
+                    width: 180,
+                    height: 45,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginBottom: 5, // Make sure this value is small to reduce space
+                    paddingLeft: 20,
+                  }}
+                  buttonImageContainer={{
+                    alignItems: 'flex-start',
+                  }}
+                />
+                {captions.map((caption, index) =>
+                  renderFavoriteItem(subcategory, caption, index),
+                )}
+              </View>
+            );
+          })}
+        </ScrollView>
       </View>
     </SafeAreaView>
   );

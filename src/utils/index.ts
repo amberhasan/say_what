@@ -6,5 +6,7 @@ export const formattedSubcategory = (subcategory: string) => {
     .map((item: string) => capitalize(item))
     .join(' ')
     .split('dot')
-    .join('.');
+    .join('.')
+    .split('apostrophe')
+    .join(`'`);
 };
