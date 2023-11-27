@@ -46,9 +46,20 @@ const CategoriesScreen: React.FC = ({navigation}) => {
   return (
     <View style={styles.container}>
       <FlatList
+        style={{flexGrow: 1}}
         data={categories}
         renderItem={({item}) => (
-          <GrayButton item={capitalize(item)} onPress={handleCategoryClick} />
+          <View
+            style={{
+              flex: 1,
+              // alignSelf: 'stretch',
+              // alignContent: 'stretch',
+
+              flexDirection: 'row',
+              marginTop: 10,
+            }}>
+            <GrayButton item={capitalize(item)} onPress={handleCategoryClick} />
+          </View>
         )}
         keyExtractor={item => item}
         contentContainerStyle={styles.listContentContainer} // add this line
@@ -62,10 +73,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
-    paddingTop: 150,
+    paddingTop: 50,
     fontFamily: 'PlayfairDisplay-Regular',
   },
   listContentContainer: {
+    flexGrow: 1,
     paddingHorizontal: 0, // remove horizontal padding if any
   },
 });

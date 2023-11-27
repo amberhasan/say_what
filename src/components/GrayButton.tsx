@@ -33,8 +33,10 @@ const GrayButton = ({
 
 const styles = StyleSheet.create({
   button: {
-    width: 280,
-    height: 60,
+    // width: 280,
+    // height: 60,
+    height: 70,
+    width: '100%',
     borderRadius: 15,
     marginBottom: 10, // Reduced from 20 to 10 for less space
     overflow: 'hidden',
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontFamily: 'PlayfairDisplay-Bold',
-    fontSize: 30,
+    fontSize: 35,
     // fontWeight: '700',
     color: '#333',
   },
