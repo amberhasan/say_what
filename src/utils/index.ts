@@ -1,7 +1,7 @@
 import {capitalize} from 'lodash';
 
 export const formattedSubcategory = (subcategory: string) => {
-  return subcategory
+  let text = subcategory
     .split('_')
     .map((item: string) => capitalize(item))
     .join(' ')
@@ -9,4 +9,8 @@ export const formattedSubcategory = (subcategory: string) => {
     .join('.')
     .split('apostrophe')
     .join(`'`);
+  if (text === 'Gno' || text === 'Nye') {
+    text = text.toUpperCase();
+  }
+  return text;
 };

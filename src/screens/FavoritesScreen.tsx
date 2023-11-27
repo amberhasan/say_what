@@ -131,7 +131,36 @@ const FavoritesScreen = ({navigation}) => {
             alignItems: 'center',
             backgroundColor: 'white',
           }}>
-          <Text>No Favorites</Text>
+          <Text
+            style={{
+              fontSize: 38,
+              fontFamily: 'PlayfairDisplay-Bold',
+            }}>
+            No captions found
+          </Text>
+          {/* <View style={{flex: 0}}> */}
+          <GrayButton
+            item={'Start saving!'}
+            onPress={() => {
+              navigation.navigate('CategoriesScreen');
+            }}
+            buttonText={{
+              fontFamily: 'PlayfairDisplay-Regular',
+              fontSize: 25,
+            }}
+            buttonContainer={{
+              width: '65%',
+              height: 70,
+              justifyContent: 'center',
+              alignItems: 'center',
+              // marginBottom: 5, // Make sure this value is small to reduce space
+              // paddingLeft: 20,
+            }}
+            // buttonImageContainer={{
+            //   alignItems: 'flex-start',
+            // }}
+          />
+          {/* </View> */}
         </View>
       </>
     );
@@ -194,7 +223,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    alignItems: 'center',
   },
   header: {
     fontSize: 24,
