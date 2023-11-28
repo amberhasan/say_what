@@ -40,10 +40,11 @@ const styles = StyleSheet.create({
     width: 50,
     justifyContent: 'center',
     alignItems: 'center',
+    marginLeft: 30,
   },
   backImage: {
-    height: 24, // Adjust as necessary
-    width: 24, // Adjust as necessary
+    height: 45, // Adjust as necessary
+    width: 45, // Adjust as necessary
   },
   titleContainer: {
     flex: 1,
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 32,
+    fontSize: 36,
     fontWeight: 'bold',
     fontFamily: 'PlayfairDisplay-Regular',
     textAlign: 'center',

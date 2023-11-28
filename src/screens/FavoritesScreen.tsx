@@ -7,6 +7,7 @@ import {
   Alert,
   SafeAreaView,
   ScrollView,
+  ActivityIndicator,
 } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import _ from 'lodash';
@@ -19,10 +20,10 @@ import {useSelector} from 'react-redux';
 
 const FavoritesScreen = ({navigation}) => {
   const [favorites, setFavorites] = useState({});
+  const [loading, setLoading] = useState(true);
   const [selectedCaption, setSelectedCaption] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const deviceId = useSelector(state => state.app.deviceId);
-  console.log('deviceId', deviceId);
 
   const fetchFavorites = async () => {
     try {
@@ -31,9 +32,11 @@ const FavoritesScreen = ({navigation}) => {
         .doc(deviceId)
         .get();
       setFavorites(result.data());
+      setLoading(false);
     } catch (err) {
       Alert.alert('Error', 'Unable to fetch the favorites.');
       console.error('Fetch Favorites Error: ', err);
+      setLoading(false);
     }
   };
 
@@ -59,13 +62,9 @@ const FavoritesScreen = ({navigation}) => {
     }
   };
   const removeFromFavorites = async (subcategory, removedCaption) => {
-    console.log('BEFORE REMOVING');
-    console.log(favorites[subcategory]);
     const updatedCaptions = favorites[subcategory].filter(
       caption => caption !== removedCaption,
     );
-    console.log('AFTER REMOVING');
-    console.log(updatedCaptions);
     setFavorites({
       ...favorites,
       [subcategory]: updatedCaptions,
@@ -104,23 +103,26 @@ const FavoritesScreen = ({navigation}) => {
     );
   };
 
-  // { a: [], b:[], c:[]}
-
-  // [[], [], []]
+  if (loading) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator color="gray" size={'large'} />
+      </View>
+    );
+  }
 
   const isEmpty = object => {
-    let result = true;
-    Object.values(object).map(arr => {
-      if (arr.length > 0) {
-        result = false;
+    // let result = true;
+    const values = Object.values(object);
+    for (let i = 0; i < values.length; i++) {
+      if (values[i].length > 0) {
+        return false;
       }
-    });
-    return result;
+    }
+    return true;
   };
 
-  console.log('favorites', favorites);
-  console.log('length', Object.values(favorites).length);
-  if (isEmpty(favorites)) {
+  if (isEmpty(favorites) && !loading) {
     return (
       <>
         <Header title="Favorites" showBackButton={false} />

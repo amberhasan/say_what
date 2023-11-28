@@ -26,7 +26,6 @@ const CaptionsScreen = ({route, navigation}: {route: CaptionsScreenRoute}) => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [favorites, setFavorites] = useState({});
   const deviceId = useSelector(state => state.app.deviceId);
-  console.log('deviceID is: ', deviceId);
 
   const fetchSubcategoriesData = async () => {
     const categoriesResult = await firestore()
@@ -46,7 +45,6 @@ const CaptionsScreen = ({route, navigation}: {route: CaptionsScreenRoute}) => {
         .collection('favorites')
         .doc(deviceId)
         .get();
-      console.log('result.data()', result.data());
       setFavorites(result.data() || {});
     } catch (err) {
       Alert.alert('Error', 'Unable to fetch the favorites.');
@@ -55,7 +53,6 @@ const CaptionsScreen = ({route, navigation}: {route: CaptionsScreenRoute}) => {
   };
 
   const updateFavorites = async updateValues => {
-    console.log('Updated values: ', updateValues);
     try {
       // Reference to the document
       const docRef = firestore().collection('favorites').doc(deviceId);

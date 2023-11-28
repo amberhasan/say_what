@@ -25,14 +25,15 @@ const CategoryBox = ({category, onPress}: CategoryBoxProps) => (
 
 const styles = StyleSheet.create({
   box: {
-    width: '100%', // 4 boxes per row
+    width: '90%', // 4 boxes per row
     aspectRatio: 1, // Keep the box aspect ratio to 1:1, adjust if necessary
-    borderWidth: 3,
+    borderWidth: 4,
     borderColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 5,
-    padding: 10, // Adjust padding to ensure content fits and is centered
+    marginTop: 10,
+
+    // paddingHorizontal: 10, // Adjust padding to ensure content fits and is centered
   },
   container: {
     backgroundColor: 'white',
@@ -48,9 +49,10 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   label: {
-    fontSize: 14,
+    fontSize: 23,
     textAlign: 'center',
     fontFamily: 'PlayfairDisplay-Regular',
+    marginTop: -1,
   },
 });
 

@@ -13,6 +13,7 @@ import firestore from '@react-native-firebase/firestore';
 import {capitalize} from 'lodash';
 import {formattedSubcategory} from '../utils';
 import {SearchScreenProps} from '../types';
+import Header from '../components/Header';
 // import Icon from 'react-native-vector-icons/MaterialIcons'; // Uncomment if you have the icons package
 
 const SearchScreen = ({navigation}: {navigation: SearchScreenProps}) => {
@@ -55,7 +56,6 @@ const SearchScreen = ({navigation}: {navigation: SearchScreenProps}) => {
   };
 
   const onSearchItemPress = item => {
-    console.log('item', item);
     navigation.navigate('CaptionsScreen', {
       selectedCategory: item.subcategory,
       searchedCaption: item.caption,
@@ -94,8 +94,8 @@ const SearchScreen = ({navigation}: {navigation: SearchScreenProps}) => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
       <View style={styles.container}>
+        <Header title="Search" showBackButton={false} />
         <View style={styles.searchContainer}>
-          <Text style={styles.header}>Search</Text>
           <View style={styles.searchBox}>
             <Image
               source={require('../assets/images/utils/search.png')} // Make sure this path is correct

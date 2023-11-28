@@ -58,7 +58,11 @@ const CategoriesScreen: React.FC = ({navigation}) => {
               flexDirection: 'row',
               marginTop: 10,
             }}>
-            <GrayButton item={capitalize(item)} onPress={handleCategoryClick} />
+            <GrayButton
+              item={capitalize(item)}
+              onPress={handleCategoryClick}
+              buttonContainer={{height: 60}}
+            />
           </View>
         )}
         keyExtractor={item => item}
