@@ -221,6 +221,7 @@ const styles = StyleSheet.create({
   },
   selectedItemText: {
     color: '#FF66C3', // This is the color that will be applied when an item is selected
+    fontFamily: 'PlayfairDisplay-Regular',
   },
   container: {
     flex: 1,
