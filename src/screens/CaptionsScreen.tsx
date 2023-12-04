@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   View,
   Text,
@@ -25,6 +25,7 @@ const CaptionsScreen = ({route, navigation}: {route: CaptionsScreenRoute}) => {
   const [selectedCaption, setSelectedCaption] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [favorites, setFavorites] = useState({});
+  const lastSelectedOption = useRef(null);
   const deviceId = useSelector(state => state.app.deviceId);
 
   const fetchSubcategoriesData = async () => {
@@ -130,8 +131,12 @@ const CaptionsScreen = ({route, navigation}: {route: CaptionsScreenRoute}) => {
       <View style={styles.captionContainer}>
         <TouchableOpacity
           onPress={() => {
+            console.log({
+              isSelected,
+              item,
+            });
             setSelectedCaption(isSelected ? null : item); // Toggle the selection
-            setDropdownVisible(!dropdownVisible);
+            setDropdownVisible(!isSelected);
           }}>
           <Text
             style={[
@@ -179,6 +184,7 @@ const styles = StyleSheet.create({
   },
   selectedItem: {
     fontSize: 20,
+    fontFamily: 'PlayfairDisplay-Regular',
     color: '#FF66C3', // Pink color for selected item
   },
   textItem: {

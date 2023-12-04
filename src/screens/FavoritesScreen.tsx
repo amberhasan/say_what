@@ -31,7 +31,9 @@ const FavoritesScreen = ({navigation}) => {
         .collection('favorites')
         .doc(deviceId)
         .get();
-      setFavorites(result.data());
+      if (result.data()) {
+        setFavorites(result.data());
+      }
       setLoading(false);
     } catch (err) {
       Alert.alert('Error', 'Unable to fetch the favorites.');
@@ -144,7 +146,7 @@ const FavoritesScreen = ({navigation}) => {
           <GrayButton
             item={'Start saving!'}
             onPress={() => {
-              navigation.navigate('CategoriesScreen');
+              navigation.navigate('Discover');
             }}
             buttonText={{
               fontFamily: 'PlayfairDisplay-Regular',
