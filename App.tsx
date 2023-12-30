@@ -55,7 +55,6 @@ export default function App() {
     } catch (err) {
       console.error('Error getting value from storage ', err);
     }
-    setShowGettingStartedScreen(true); //TODO, test
   };
 
   useEffect(() => {

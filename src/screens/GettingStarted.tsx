@@ -21,8 +21,8 @@ const GettingStarted = ({onRefresh}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.welcomeText}>Welcome to...</Text>
+      <Text style={styles.titleText}>Capfluencer!</Text>
 
-      <Text style={styles.captionText}>Your new Caption Influencer!</Text>
       <View style={{height: 350, marginHorizontal: 20}}>
         <ImageBackground
           resizeMode="stretch"
@@ -43,6 +43,8 @@ const GettingStarted = ({onRefresh}) => {
               // marginHorizontal: 75,,
               // opacity: 0.5,
             }}>
+            <Text style={styles.captionText}>Your new Caption Influencer!</Text>
+
             <Text style={styles.descriptionText}>
               Whether you’re in a pinch, need inspiration, or have no idea what
               to do, Capfluencer is here to help!
@@ -65,17 +67,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8e1f4',
   },
   welcomeText: {
-    fontSize: 60,
+    fontSize: 40,
     padding: 5,
     fontWeight: 'bold',
     marginBottom: 20,
     fontFamily: 'Ephesis-Regular',
   },
+  titleText: {
+    fontSize: 60,
+    padding: 5,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    fontFamily: 'YesevaOne-Regular',
+  },
   captionText: {
     fontSize: 18,
     textAlign: 'center',
     marginBottom: 10,
-    fontFamily: 'PlayfairDisplay-Regular',
+    fontFamily: 'YesevaOne-Regular',
   },
   descriptionText: {
     fontSize: 16,
@@ -83,6 +92,8 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     paddingHorizontal: 20,
     fontFamily: 'YesevaOne-Regular',
+    paddingTop: 10,
+    lineHeight: 21,
   },
   button: {
     backgroundColor: '#FFFFFF', // Set to white or the color matching your design
