@@ -2,6 +2,7 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {HeaderProps} from '../types';
+import fonts from '../theme/fonts';
 
 const Header = ({title, showBackButton = true}: HeaderProps) => {
   const navigation = useNavigation();
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     backgroundColor: 'white',
     borderBottomWidth: 1,
-    borderBottomColor: 'black',
+    borderBottomColor: 'rgba(0,0,0,0.5)',
   },
   backButton: {
     width: 50,
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 36,
     fontWeight: 'bold',
-    fontFamily: 'PlayfairDisplay-Regular',
+    fontFamily: fonts.playfairDisplayRegular,
     textAlign: 'center',
   },
   placeholder: {

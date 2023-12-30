@@ -28,6 +28,7 @@ import {getUniqueId} from 'react-native-device-info';
 import {setDeviceId} from './src/actions/appActions';
 import GettingStarted from './src/screens/GettingStarted';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import colors from './src/theme/colors';
 
 const Tab = createBottomTabNavigator();
 const DiscoverStack = createStackNavigator<DiscoverStackParams>();
@@ -80,7 +81,9 @@ export default function App() {
       <SafeAreaView
         style={{
           flex: 1,
-          backgroundColor: showGettingStartedScreen ? '#f8e1f4' : 'white',
+          backgroundColor: showGettingStartedScreen
+            ? colors.lightPink
+            : colors.white,
         }}>
         <StatusBar barStyle="dark-content" />
         <View style={{flex: 1}}>
@@ -98,7 +101,7 @@ export default function App() {
                     shadowOpacity: 0,
                     backgroundColor: 'white',
                     borderTopWidth: 1,
-                    borderTopColor: 'black',
+                    borderTopColor: 'rgba(0,0,0,0.5)',
                     paddingTop: 28,
                     paddingHorizontal: 25,
                   },
