@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   label: {
-    fontSize: 23,
+    fontSize: 20,
     textAlign: 'center',
     fontFamily: 'PlayfairDisplay-Regular',
     marginTop: -1,

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -6,6 +6,7 @@ import {
   Image,
   SafeAreaView,
   StatusBar,
+  ActivityIndicator,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -18,17 +19,47 @@ import FavoritesScreen from './src/screens/FavoritesScreen';
 import SearchScreen from './src/screens/SearchScreen';
 import {Provider, useDispatch} from 'react-redux';
 import configureStore from './src/store/configureStore';
-import {DiscoverStackParams, SearchStackParams} from './src/types';
+import {
+  DiscoverStackParams,
+  GettingStartedStackParams,
+  SearchStackParams,
+} from './src/types';
 import {getUniqueId} from 'react-native-device-info';
 import {setDeviceId} from './src/actions/appActions';
+import GettingStarted from './src/screens/GettingStarted';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Tab = createBottomTabNavigator();
 const DiscoverStack = createStackNavigator<DiscoverStackParams>();
 const SearchStack = createStackNavigator<SearchStackParams>();
+const GettingStartedStack = createStackNavigator<GettingStartedStackParams>();
 const store = configureStore();
 
 export default function App() {
+  const [showGettingStartedScreen, setShowGettingStartedScreen] = useState<
+    null | boolean
+  >(null);
+
+  const getGettingStartedValue = async () => {
+    try {
+      await AsyncStorage.clear();
+      console.log('Calling the function');
+      const result = await AsyncStorage.getItem('SHOW_GETTING_STARTED_SCREEN'); //'true'
+      console.log('result ', result);
+      if (result) {
+        const bool = result === 'true';
+        setShowGettingStartedScreen(bool);
+      } else {
+        setShowGettingStartedScreen(true);
+      }
+    } catch (err) {
+      console.error('Error getting value from storage ', err);
+    }
+    setShowGettingStartedScreen(false); //TODO: comment out, for testing.
+  };
+
   useEffect(() => {
+    getGettingStartedValue();
     getUniqueId()
       .then(id => {
         store.dispatch(setDeviceId(id.split('-').join('')));
@@ -36,55 +67,80 @@ export default function App() {
       })
       .catch(err => console.log('unable to get device id ', err));
   }, []);
+
+  if (showGettingStartedScreen === null) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
+
   return (
     <Provider store={store}>
       <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
         <StatusBar barStyle="dark-content" />
-        <View style={{flex: 1, marginTop: 25}}>
+        <View style={{flex: 1}}>
           <NavigationContainer>
-            <Tab.Navigator
-              screenOptions={({route}) => ({
-                tabBarStyle: {
-                  shadowOpacity: 0,
-                  backgroundColor: 'white',
-                  borderTopWidth: 0,
-                  paddingHorizontal: 25,
-                },
-                headerShown: false,
-                tabBarShowLabel: false, // This tells the tab navigator not to show the label
-                tabBarIcon: ({focused, color, size}) => {
-                  let iconName;
-                  if (route.name === 'Home') {
-                    iconName = focused
-                      ? require('./src/assets/images/bottom/selected/house_pink.png') // active icon
-                      : require('./src/assets/images/bottom/unselected/house.png'); // inactive icon
-                  } else if (route.name === 'Discover') {
-                    iconName = focused
-                      ? require('./src/assets/images/bottom/selected/lightbulb_pink.png') // active icon
-                      : require('./src/assets/images/bottom/unselected/lightbulb.png'); // inactive icon
-                  } else if (route.name === 'Favorites') {
-                    iconName = focused
-                      ? require('./src/assets/images/bottom/selected/heart_pink.png') // active icon
-                      : require('./src/assets/images/bottom/unselected/heart.png'); // inactive icon
-                  } else if (route.name === 'Search') {
-                    iconName = focused
-                      ? require('./src/assets/images/bottom/selected/glass_pink.png') // active icon
-                      : require('./src/assets/images/bottom/unselected/glass.png'); // inactive icon
-                  }
-                  return (
-                    <Image source={iconName} style={{width: 60, height: 60}} />
-                  );
-                },
-              })}>
-              <Tab.Screen name="Home" component={HomeScreen} />
-              <Tab.Screen name="Discover" component={DiscoverStackNavigator} />
-              <Tab.Screen
-                name="Favorites"
-                component={FavoritesScreen}
-                options={{unmountOnBlur: true}}
+            {showGettingStartedScreen ? (
+              <GettingStartedNavigator
+                initialRouteParams={{
+                  getGettingStartedValue,
+                }}
               />
-              <Tab.Screen name="Search" component={SearchStackNavigator} />
-            </Tab.Navigator>
+            ) : (
+              <Tab.Navigator
+                screenOptions={({route}) => ({
+                  tabBarStyle: {
+                    shadowOpacity: 0,
+                    backgroundColor: 'white',
+                    borderTopWidth: 1,
+                    borderTopColor: 'black',
+                    paddingTop: 28,
+                    paddingHorizontal: 25,
+                  },
+                  headerShown: false,
+                  tabBarShowLabel: false, // This tells the tab navigator not to show the label
+                  tabBarIcon: ({focused, color, size}) => {
+                    let iconName;
+                    if (route.name === 'Home') {
+                      iconName = focused
+                        ? require('./src/assets/images/bottom/selected/house_pink.png') // active icon
+                        : require('./src/assets/images/bottom/unselected/house.png'); // inactive icon
+                    } else if (route.name === 'Discover') {
+                      iconName = focused
+                        ? require('./src/assets/images/bottom/selected/lightbulb_pink.png') // active icon
+                        : require('./src/assets/images/bottom/unselected/lightbulb.png'); // inactive icon
+                    } else if (route.name === 'Favorites') {
+                      iconName = focused
+                        ? require('./src/assets/images/bottom/selected/heart_pink.png') // active icon
+                        : require('./src/assets/images/bottom/unselected/heart.png'); // inactive icon
+                    } else if (route.name === 'Search') {
+                      iconName = focused
+                        ? require('./src/assets/images/bottom/selected/glass_pink.png') // active icon
+                        : require('./src/assets/images/bottom/unselected/glass.png'); // inactive icon
+                    }
+                    return (
+                      <Image
+                        source={iconName}
+                        style={{width: 52, height: 52}}
+                      />
+                    );
+                  },
+                })}>
+                <Tab.Screen name="Home" component={HomeScreen} />
+                <Tab.Screen
+                  name="Discover"
+                  component={DiscoverStackNavigator}
+                />
+                <Tab.Screen
+                  name="Favorites"
+                  component={FavoritesScreen}
+                  options={{unmountOnBlur: true}}
+                />
+                <Tab.Screen name="Search" component={SearchStackNavigator} />
+              </Tab.Navigator>
+            )}
           </NavigationContainer>
         </View>
       </SafeAreaView>
@@ -114,6 +170,23 @@ function DiscoverStackNavigator() {
         options={{headerShown: false}}
       />
     </DiscoverStack.Navigator>
+  );
+}
+
+function GettingStartedNavigator({initialRouteParams}) {
+  return (
+    <GettingStartedStack.Navigator>
+      <GettingStartedStack.Screen
+        name="GettingStarted"
+        options={{headerShown: false}}>
+        {props => (
+          <GettingStarted
+            {...props}
+            onRefresh={initialRouteParams.getGettingStartedValue}
+          />
+        )}
+      </GettingStartedStack.Screen>
+    </GettingStartedStack.Navigator>
   );
 }
 

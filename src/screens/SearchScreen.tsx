@@ -40,6 +40,10 @@ const SearchScreen = ({navigation}: {navigation: SearchScreenProps}) => {
   useEffect(() => {
     fetchSubcategoriesData();
   }, []);
+  const clearSearch = () => {
+    setSearchQuery('');
+    setFilteredSuggestions([]);
+  };
 
   const handleSearch = (text: string) => {
     setSearchQuery(text);
@@ -108,6 +112,14 @@ const SearchScreen = ({navigation}: {navigation: SearchScreenProps}) => {
               value={searchQuery}
               onChangeText={handleSearch}
             />
+            {searchQuery.length > 0 && (
+              <TouchableOpacity onPress={clearSearch}>
+                <Image
+                  source={require('../assets/images/utils/x.png')}
+                  style={styles.xIcon}
+                />
+              </TouchableOpacity>
+            )}
           </View>
         </View>
         <FlatList
@@ -128,6 +140,7 @@ const styles = StyleSheet.create({
   },
   searchContainer: {
     paddingBottom: 20,
+    paddingTop: 20,
     paddingHorizontal: 20,
     backgroundColor: 'white',
     borderBottomWidth: 0,
@@ -150,6 +163,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 25, // Increase this number to make it more rounded
     paddingLeft: 10,
+    paddingRight: 15,
     borderWidth: 1,
     borderColor: 'black',
   },
@@ -162,6 +176,10 @@ const styles = StyleSheet.create({
   searchIcon: {
     width: 20, // Set the width of the icon
     height: 20, // Set the height of the icon
+  },
+  xIcon: {
+    width: 15, // Set the width of the icon
+    height: 15, // Set the height of the icon
   },
   suggestionsList: {
     backgroundColor: 'white',

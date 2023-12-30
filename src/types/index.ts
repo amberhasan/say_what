@@ -14,6 +14,10 @@ export type DiscoverStackParams = {
   };
 };
 
+export type GettingStartedStackParams = {
+  GettingStarted: undefined; //we are not passing anything so we don't need RouteProp
+};
+
 export type ScreenProps = StackNavigationProp<
   DiscoverStackParams,
   'CategoriesScreen' | 'SubcategoriesScreen' | 'CaptionsScreen'

@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   textItem: {
     fontSize: 15,
-    fontFamily: 'OpenSans-Regular',
+    fontFamily: 'OpenSans-Bold',
   },
   dropdown: {
     paddingLeft: 20,
