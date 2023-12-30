@@ -5,7 +5,7 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 const GettingStarted = ({onRefresh}) => {
   const onPressLetsGo = async () => {
     try {
-      // await AsyncStorage.setItem('SHOW_GETTING_STARTED_SCREEN', 'false');
+      await AsyncStorage.setItem('SHOW_GETTING_STARTED_SCREEN', 'false');
       onRefresh();
     } catch (err) {
       console.error('Error occurred on lets go', err);

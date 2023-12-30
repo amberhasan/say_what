@@ -42,7 +42,7 @@ export default function App() {
 
   const getGettingStartedValue = async () => {
     try {
-      await AsyncStorage.clear();
+      //await AsyncStorage.clear();
       console.log('Calling the function');
       const result = await AsyncStorage.getItem('SHOW_GETTING_STARTED_SCREEN'); //'true'
       console.log('result ', result);
@@ -55,7 +55,6 @@ export default function App() {
     } catch (err) {
       console.error('Error getting value from storage ', err);
     }
-    setShowGettingStartedScreen(false); //TODO: comment out, for testing.
   };
 
   useEffect(() => {
