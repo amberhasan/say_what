@@ -1,6 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 
 const GettingStarted = ({onRefresh}) => {
   const onPressLetsGo = async () => {
@@ -15,11 +21,35 @@ const GettingStarted = ({onRefresh}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.welcomeText}>Welcome to...</Text>
+
       <Text style={styles.captionText}>Your new Caption Influencer!</Text>
-      <Text style={styles.descriptionText}>
-        Whether you’re in a pinch, need inspiration, or have no idea what to do,
-        Capfluencer is here to help!
-      </Text>
+      <View style={{height: 350, marginHorizontal: 20}}>
+        <ImageBackground
+          resizeMode="stretch"
+          style={{
+            height: 350,
+            width: '100%',
+          }}
+          source={require('../assets/images/utils/messageCloudPlaceholder.png')}>
+          <View
+            style={{
+              height: 265,
+              // backgroundColor: 'orange',
+              width: '100%',
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: 100,
+              paddingHorizontal: 15,
+              // marginHorizontal: 75,,
+              // opacity: 0.5,
+            }}>
+            <Text style={styles.descriptionText}>
+              Whether you’re in a pinch, need inspiration, or have no idea what
+              to do, Capfluencer is here to help!
+            </Text>
+          </View>
+        </ImageBackground>
+      </View>
       <TouchableOpacity style={styles.button} onPress={onPressLetsGo}>
         <Text style={styles.buttonText}>Let's go!</Text>
       </TouchableOpacity>
@@ -36,6 +66,7 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     fontSize: 60,
+    padding: 5,
     fontWeight: 'bold',
     marginBottom: 20,
     fontFamily: 'Ephesis-Regular',
@@ -51,6 +82,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 30,
     paddingHorizontal: 20,
+    fontFamily: 'YesevaOne-Regular',
   },
   button: {
     backgroundColor: '#FFFFFF', // Set to white or the color matching your design

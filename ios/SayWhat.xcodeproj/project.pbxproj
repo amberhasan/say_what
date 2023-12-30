@@ -22,6 +22,7 @@
 		A951E80A2AFDAA1B003299F0 /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A951E8052AFDAA1B003299F0 /* PlayfairDisplay-Bold.ttf */; };
 		A951E80B2AFDAA1B003299F0 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A951E8062AFDAA1B003299F0 /* OpenSans-Regular.ttf */; };
 		A9BCCF742B401D8000B373A0 /* Ephesis-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9BCCF732B401D8000B373A0 /* Ephesis-Regular.ttf */; };
+		A9BCCF762B409AFA00B373A0 /* YesevaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9BCCF752B409AFA00B373A0 /* YesevaOne-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		A951E8062AFDAA1B003299F0 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		A9BCCF702B401D6900B373A0 /* Ephesis-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ephesis-Regular.ttf"; sourceTree = "<group>"; };
 		A9BCCF732B401D8000B373A0 /* Ephesis-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ephesis-Regular.ttf"; path = "../../../Downloads/Ephesis,Open_Sans (1)/Ephesis/Ephesis-Regular.ttf"; sourceTree = "<group>"; };
+		A9BCCF752B409AFA00B373A0 /* YesevaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YesevaOne-Regular.ttf"; sourceTree = "<group>"; };
 		AD57DCF73EFAEB2E4C499E8F /* Pods_SayWhat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SayWhat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FBBA8CDB6D64C334FC818627 /* Pods_SayWhat_SayWhatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SayWhat_SayWhatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +105,7 @@
 		13B07FAE1A68108700A75B9A /* SayWhat */ = {
 			isa = PBXGroup;
 			children = (
+				A9BCCF752B409AFA00B373A0 /* YesevaOne-Regular.ttf */,
 				A9BCCF732B401D8000B373A0 /* Ephesis-Regular.ttf */,
 				A9BCCF702B401D6900B373A0 /* Ephesis-Regular.ttf */,
 				A951E8022AFDAA1B003299F0 /* LeagueSpartan-Bold.ttf */,
@@ -269,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9BCCF762B409AFA00B373A0 /* YesevaOne-Regular.ttf in Resources */,
 				A951E80A2AFDAA1B003299F0 /* PlayfairDisplay-Bold.ttf in Resources */,
 				A9BCCF742B401D8000B373A0 /* Ephesis-Regular.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
