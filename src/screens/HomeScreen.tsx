@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    paddingTop: 50, // Add padding at the top
     paddingLeft: 20,
     paddingRight: 20,
   },
@@ -31,7 +30,7 @@ const styles = StyleSheet.create({
     fontSize: 58,
     fontWeight: 'bold',
     textAlign: 'center', // Center text horizontally
-    marginTop: 40, // Add some margin at the top to push it down a bit
+    marginTop: 20, // Add some margin at the top to push it down a bit
   },
   subtitle: {
     fontFamily: 'PlayfairDisplay-Regular',

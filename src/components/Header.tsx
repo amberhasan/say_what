@@ -59,8 +59,9 @@ const styles = StyleSheet.create({
   },
   placeholder: {
     width: 50, // To maintain the title in center if there is no back button
+    height: 50,
+    marginRight: 30,
   },
-  // ... other styles ...
 });
 
 export default Header;

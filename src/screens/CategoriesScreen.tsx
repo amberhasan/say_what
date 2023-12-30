@@ -10,6 +10,7 @@ import {
 import GrayButton from '../components/GrayButton';
 import firestore from '@react-native-firebase/firestore';
 import {capitalize} from 'lodash';
+import Header from '../components/Header';
 
 const CategoriesScreen: React.FC = ({navigation}) => {
   const [loading, setLoading] = useState(true);
@@ -45,8 +46,9 @@ const CategoriesScreen: React.FC = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <Header title={'Discover'} showBackButton={false} />
       <FlatList
-        style={{flexGrow: 1}}
+        style={{flexGrow: 1, paddingTop: 10}}
         data={categories}
         renderItem={({item}) => (
           <View
@@ -77,7 +79,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
-    paddingTop: 50,
     fontFamily: 'PlayfairDisplay-Regular',
   },
   listContentContainer: {

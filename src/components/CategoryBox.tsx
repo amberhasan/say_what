@@ -19,7 +19,9 @@ const CategoryBox = ({category, onPress}: CategoryBoxProps) => (
         />
       </View>
     </TouchableOpacity>
-    <Text style={styles.label}>{category.label}</Text>
+    <View style={{flex: 0, width: '90%'}}>
+      <Text style={styles.label}>{category.label}</Text>
+    </View>
   </View>
 );
 

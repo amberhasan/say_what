@@ -160,8 +160,9 @@ const CaptionsScreen = ({route, navigation}: {route: CaptionsScreenRoute}) => {
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+      <Header title={title} showBackButton={true} />
+
       <View style={styles.container}>
-        <Header title={title} showBackButton={true} />
         <FlatList
           data={phrases}
           renderItem={renderCaptionItem}
