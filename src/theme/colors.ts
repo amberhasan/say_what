@@ -1,7 +1,7 @@
 const colors = {
   black: 'black',
   white: 'white',
-  lightPink: '#f8e1f4',
+  lightPink: '#ffeef6',
 };
 
 export default colors;

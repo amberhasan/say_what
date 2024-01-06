@@ -20,10 +20,12 @@ const GettingStarted = ({onRefresh}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.welcomeText}>Welcome to...</Text>
-      <Text style={styles.titleText}>Capfluencer!</Text>
+      <View style={styles.header}>
+        <Text style={styles.welcomeText}>Welcome to...</Text>
+        <Text style={styles.titleText}>Capfluencer!</Text>
+      </View>
 
-      <View style={{height: 350, marginHorizontal: 20}}>
+      <View style={{height: 350, marginHorizontal: 20, paddingTop: 40}}>
         <ImageBackground
           resizeMode="stretch"
           style={{
@@ -64,30 +66,36 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f8e1f4',
+    backgroundColor: '#ffeef6',
+  },
+  header: {
+    alignItems: 'flex-start', // Align items to the left
+    marginBottom: 20, // Adjust as needed to control spacing from the rest of the content
   },
   welcomeText: {
-    fontSize: 40,
-    padding: 5,
+    fontSize: 80,
     fontWeight: 'bold',
-    marginBottom: 20,
     fontFamily: 'Ephesis-Regular',
+    paddingLeft: 15, // Remove margin and padding to bring texts closer
+    padding: 0,
+    marginRight: 50,
   },
   titleText: {
-    fontSize: 60,
-    padding: 5,
+    fontSize: 40,
     fontWeight: 'bold',
-    marginBottom: 20,
     fontFamily: 'YesevaOne-Regular',
+    marginTop: -25, // Negative margin to bring this text closer to the above text
+    marginLeft: 100,
   },
+
   captionText: {
-    fontSize: 18,
+    fontSize: 19,
     textAlign: 'center',
     marginBottom: 10,
     fontFamily: 'YesevaOne-Regular',
   },
   descriptionText: {
-    fontSize: 16,
+    fontSize: 17,
     textAlign: 'center',
     marginBottom: 30,
     paddingHorizontal: 20,
@@ -98,9 +106,9 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: '#FFFFFF', // Set to white or the color matching your design
     paddingVertical: 10,
-    paddingHorizontal: 40, // Increase padding for a wider button
+    paddingHorizontal: 15, // Increase padding for a wider button
     borderRadius: 10, // Adjust border radius to match your design, if it's a circle, it should be half of the height
-    borderWidth: 1, // Add border width if there is a border in the design
+    borderWidth: 2, // Add border width if there is a border in the design
     borderColor: '#000000', // Set border color to match your design
     // Add shadow styles if the button has a shadow
     shadowColor: '#000',
@@ -108,15 +116,17 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
+    marginTop: 200,
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 22.8,
     fontWeight: 'bold', // Add bold if the text is bold in the design
     color: '#000000', // Set text color to match your design
     textAlign: 'center',
+    fontFamily: 'YesevaOne-Regular',
   },
 });
 

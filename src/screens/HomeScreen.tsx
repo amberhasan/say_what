@@ -8,13 +8,12 @@ const HomeScreen: React.FC = () => {
       <Header title={'Capfluencer'} showBackButton={false} />
       <View style={{flex: 1, paddingLeft: 20, paddingRight: 20}}>
         <View>
-          <Text style={styles.subtitle}> A CAPTION APP </Text>
+          <Text style={styles.subtitle}>Caption - Influencer</Text>
         </View>
         <View style={styles.captionContainer}>
-          <Text style={styles.caption1}> trendy, </Text>
-          <Text style={styles.caption2}> relatable, </Text>
-          <Text style={styles.caption3}> & relevant. </Text>
-          <Text style={styles.footer}> ALL IN ONE PLACE </Text>
+          <Text style={styles.caption}>trendy,</Text>
+          <Text style={styles.caption}>relatable,</Text>
+          <Text style={styles.caption}>& relevant captions!</Text>
         </View>
       </View>
     </View>
@@ -27,36 +26,29 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   title: {
-    fontFamily: 'PlayfairDisplay-Regular',
-    fontSize: 58,
+    fontFamily: 'YesevaOne-Regular',
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center', // Center text horizontally
     marginTop: 20, // Add some margin at the top to push it down a bit
   },
   subtitle: {
-    fontFamily: 'PlayfairDisplay-Regular',
-    fontSize: 30,
+    fontFamily: 'YesevaOne-Regular',
+    fontSize: 20,
     fontWeight: '300',
     textAlign: 'center',
     marginBottom: 40,
+    marginTop: 10,
   },
   captionContainer: {
     flex: 1, // Take up remaining space
     justifyContent: 'center', // Center the captions vertically
+    alignItems: 'flex-start', // Align the captions to the left
+    paddingLeft: 50,
   },
-  caption1: {
-    fontFamily: 'LeagueSpartan-Bold',
-    fontSize: 90,
-    textAlign: 'left',
-  },
-  caption2: {
-    fontFamily: 'LeagueSpartan-Bold',
-    fontSize: 70,
-    textAlign: 'left',
-  },
-  caption3: {
-    fontFamily: 'LeagueSpartan-Bold',
-    fontSize: 50,
+  caption: {
+    fontFamily: 'YesevaOne-Regular',
+    fontSize: 55,
     textAlign: 'left',
   },
   footer: {
