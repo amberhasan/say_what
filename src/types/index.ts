@@ -2,6 +2,11 @@ import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {StyleProp, TextProps, TextStyle} from 'react-native';
 
+export type HomeStackParams = {
+  HomeScreen: undefined; //we are not passing anything so we don't need RouteProp
+  InfoScreen: undefined;
+};
+
 export type DiscoverStackParams = {
   CategoriesScreen: undefined; //we are not passing anything so we don't need RouteProp
   SubcategoriesScreen: {

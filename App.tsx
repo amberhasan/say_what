@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, createRef} from 'react';
 import {
   View,
   Text,
@@ -8,7 +8,11 @@ import {
   StatusBar,
   ActivityIndicator,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import {
+  NavigationContainer,
+  Route,
+  getFocusedRouteNameFromRoute,
+} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
@@ -21,6 +25,7 @@ import {Provider, useDispatch} from 'react-redux';
 import configureStore from './src/store/configureStore';
 import {
   DiscoverStackParams,
+  HomeStackParams,
   OverviewStackParams,
   SearchStackParams,
 } from './src/types';
@@ -29,17 +34,23 @@ import {setDeviceId} from './src/actions/appActions';
 import OverviewScreen from './src/screens/OverviewScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import colors from './src/theme/colors';
+import InfoScreen from './src/screens/InfoScreen';
 
 const Tab = createBottomTabNavigator();
+const HomeStack = createStackNavigator<HomeStackParams>();
 const DiscoverStack = createStackNavigator<DiscoverStackParams>();
 const SearchStack = createStackNavigator<SearchStackParams>();
 const OverviewStack = createStackNavigator<OverviewStackParams>();
 const store = configureStore();
 
 export default function App() {
+  const navigationRef = createRef();
+  const routeNameRef = createRef();
+
   const [showOverviewScreen, setShowOverviewScreen] = useState<null | boolean>(
     null,
   );
+  const [currentRouteName, setCurrentRouteName] = useState<string>('');
 
   const getOverviewScreenValue = async () => {
     try {
@@ -76,16 +87,42 @@ export default function App() {
     );
   }
 
+  const getTabBarVisibility = (route): boolean => {
+    const routeName = getFocusedRouteNameFromRoute(route);
+    console.log('routeName', routeName);
+    const hideOnScreens = ['InfoScreen']; // put here name of screen where you want to hide tabBar
+    return hideOnScreens.indexOf(routeName) <= -1;
+  };
+
+  const getStatusBarColor = () => {
+    if (showOverviewScreen || currentRouteName === 'InfoScreen') {
+      return colors.lightPink;
+    } else {
+      return colors.white;
+    }
+  };
+
   return (
     <Provider store={store}>
       <SafeAreaView
         style={{
           flex: 1,
-          backgroundColor: showOverviewScreen ? colors.lightPink : colors.white,
+          backgroundColor: getStatusBarColor(),
         }}>
         <StatusBar barStyle="dark-content" />
         <View style={{flex: 1}}>
-          <NavigationContainer>
+          <NavigationContainer
+            ref={navigationRef}
+            onReady={() => {
+              setCurrentRouteName(navigationRef.current.getCurrentRoute().name);
+            }}
+            onStateChange={() => {
+              // const previousRouteName = routeNameRef.current;
+              const currentRouteName =
+                navigationRef.current.getCurrentRoute().name;
+              console.log('currentRouteName', currentRouteName);
+              setCurrentRouteName(currentRouteName);
+            }}>
             {showOverviewScreen ? (
               <OverviewScreenNavigator
                 initialRouteParams={{
@@ -101,7 +138,7 @@ export default function App() {
                     borderTopWidth: 1,
                     borderTopColor: 'rgba(0,0,0,0.5)',
                     paddingTop: 28,
-                    paddingHorizontal: 25,
+                    paddingHorizontal: 0,
                   },
                   headerShown: false,
                   tabBarShowLabel: false, // This tells the tab navigator not to show the label
@@ -132,7 +169,30 @@ export default function App() {
                     );
                   },
                 })}>
-                <Tab.Screen name="Home" component={HomeScreen} />
+                <Tab.Screen
+                  name="Home"
+                  component={HomeStackNavigator}
+                  options={({route}) => {
+                    const result = getTabBarVisibility(route);
+                    return result
+                      ? {
+                          tabBarStyle: {
+                            display: 'flex',
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            shadowOpacity: 0,
+                            backgroundColor: 'white',
+                            borderTopWidth: 1,
+                            borderTopColor: 'rgba(0,0,0,0.5)',
+                            paddingTop: 28,
+                            paddingHorizontal: 0,
+                          },
+                        }
+                      : {
+                          tabBarStyle: {display: 'none'},
+                        };
+                  }}
+                />
                 <Tab.Screen
                   name="Discover"
                   component={DiscoverStackNavigator}
@@ -152,6 +212,25 @@ export default function App() {
   );
 }
 
+function HomeStackNavigator() {
+  return (
+    <HomeStack.Navigator
+      initialRouteName="HomeScreen"
+      screenOptions={{headerShown: false}} // This will hide the header for all screens in the Discover stack
+    >
+      <HomeStack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{headerShown: false}}
+      />
+      <HomeStack.Screen
+        name="InfoScreen"
+        component={InfoScreen}
+        options={{headerShown: false}}
+      />
+    </HomeStack.Navigator>
+  );
+}
 function DiscoverStackNavigator() {
   return (
     <DiscoverStack.Navigator

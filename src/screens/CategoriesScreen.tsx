@@ -11,7 +11,7 @@ import firestore from '@react-native-firebase/firestore';
 import {capitalize} from 'lodash';
 import Header from '../components/Header';
 
-const CategoriesScreen = ({navigation}) => {
+const CategoriesScreen = ({navigation}: any) => {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
 
@@ -75,26 +75,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   listContentContainer: {
-    paddingVertical: 30,
+    flexGrow: 1,
     width: '100%',
-    alignItems: 'center', // Center items in the flatlist
+    marginTop: 15,
+    // alignItems: 'center', // Center items in the flatlist
   },
   button: {
     backgroundColor: '#FFEEF6', // A lighter shade of pink
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 10, // Fully rounded corners
-    marginVertical: 8, // Adjusted vertical margin
+    marginVertical: 15, // Adjusted vertical margin
     alignItems: 'center',
     justifyContent: 'center',
-    minWidth: 300, // Ensure a minimum width for all buttons
+    minWidth: 350, // Ensure a minimum width for all buttons
     shadowColor: 'rgba(0, 0, 0, 0)', // Light shadow
     shadowOpacity: 1,
     elevation: 6,
   },
   buttonText: {
     color: '#000', // Dark text color
-    fontSize: 28,
+    fontSize: 35,
     fontFamily: 'PlayfairDisplay-Bold', // Assuming you have this font integrated
   },
 });

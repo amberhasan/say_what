@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Header from '../components/Header';
 
-const HomeScreen: React.FC = () => {
+const HomeScreen: React.FC = ({navigation}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -19,7 +19,7 @@ const HomeScreen: React.FC = () => {
           right: 30,
         }}
         onPress={() => {
-          Alert.alert('Info clicked');
+          navigation.navigate('InfoScreen');
         }}>
         <Image
           source={require('../assets/images/utils/info_icon.png')}
