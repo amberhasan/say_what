@@ -21,27 +21,27 @@ import {Provider, useDispatch} from 'react-redux';
 import configureStore from './src/store/configureStore';
 import {
   DiscoverStackParams,
-  GettingStartedStackParams,
+  OverviewStackParams,
   SearchStackParams,
 } from './src/types';
 import {getUniqueId} from 'react-native-device-info';
 import {setDeviceId} from './src/actions/appActions';
-import GettingStarted from './src/screens/GettingStarted';
+import OverviewScreen from './src/screens/OverviewScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import colors from './src/theme/colors';
 
 const Tab = createBottomTabNavigator();
 const DiscoverStack = createStackNavigator<DiscoverStackParams>();
 const SearchStack = createStackNavigator<SearchStackParams>();
-const GettingStartedStack = createStackNavigator<GettingStartedStackParams>();
+const OverviewStack = createStackNavigator<OverviewStackParams>();
 const store = configureStore();
 
 export default function App() {
-  const [showGettingStartedScreen, setShowGettingStartedScreen] = useState<
-    null | boolean
-  >(null);
+  const [showOverviewScreen, setShowOverviewScreen] = useState<null | boolean>(
+    null,
+  );
 
-  const getGettingStartedValue = async () => {
+  const getOverviewScreenValue = async () => {
     try {
       // await AsyncStorage.clear();
       console.log('Calling the function');
@@ -49,9 +49,9 @@ export default function App() {
       console.log('result ', result);
       if (result) {
         const bool = result === 'true';
-        setShowGettingStartedScreen(bool);
+        setShowOverviewScreen(bool);
       } else {
-        setShowGettingStartedScreen(true);
+        setShowOverviewScreen(true);
       }
     } catch (err) {
       console.error('Error getting value from storage ', err);
@@ -59,7 +59,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    getGettingStartedValue();
+    getOverviewScreenValue();
     getUniqueId()
       .then(id => {
         store.dispatch(setDeviceId(id.split('-').join('')));
@@ -68,7 +68,7 @@ export default function App() {
       .catch(err => console.log('unable to get device id ', err));
   }, []);
 
-  if (showGettingStartedScreen === null) {
+  if (showOverviewScreen === null) {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <ActivityIndicator />
@@ -81,17 +81,15 @@ export default function App() {
       <SafeAreaView
         style={{
           flex: 1,
-          backgroundColor: showGettingStartedScreen
-            ? colors.lightPink
-            : colors.white,
+          backgroundColor: showOverviewScreen ? colors.lightPink : colors.white,
         }}>
         <StatusBar barStyle="dark-content" />
         <View style={{flex: 1}}>
           <NavigationContainer>
-            {showGettingStartedScreen ? (
-              <GettingStartedNavigator
+            {showOverviewScreen ? (
+              <OverviewScreenNavigator
                 initialRouteParams={{
-                  getGettingStartedValue,
+                  getOverviewScreenValue,
                 }}
               />
             ) : (
@@ -179,20 +177,20 @@ function DiscoverStackNavigator() {
   );
 }
 
-function GettingStartedNavigator({initialRouteParams}) {
+function OverviewScreenNavigator({initialRouteParams}) {
   return (
-    <GettingStartedStack.Navigator>
-      <GettingStartedStack.Screen
-        name="GettingStarted"
+    <OverviewStack.Navigator>
+      <OverviewStack.Screen
+        name="OverviewScreen"
         options={{headerShown: false}}>
         {props => (
-          <GettingStarted
+          <OverviewScreen
             {...props}
-            onRefresh={initialRouteParams.getGettingStartedValue}
+            onRefresh={initialRouteParams.getOverviewScreenValue}
           />
         )}
-      </GettingStartedStack.Screen>
-    </GettingStartedStack.Navigator>
+      </OverviewStack.Screen>
+    </OverviewStack.Navigator>
   );
 }
 

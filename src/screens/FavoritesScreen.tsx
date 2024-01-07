@@ -17,6 +17,7 @@ import Header from '../components/Header';
 import DropdownMenu from '../components/DropdownMenu';
 import {formattedSubcategory} from '../utils';
 import {useSelector} from 'react-redux';
+import Button from '../components/Button';
 
 const FavoritesScreen = ({navigation}) => {
   const [favorites, setFavorites] = useState({});
@@ -143,28 +144,12 @@ const FavoritesScreen = ({navigation}) => {
             No captions found
           </Text>
           {/* <View style={{flex: 0}}> */}
-          <GrayButton
-            item={'Start saving!'}
+          <Button
+            title={'Start saving!'}
             onPress={() => {
               navigation.navigate('Discover');
             }}
-            buttonText={{
-              fontFamily: 'PlayfairDisplay-Regular',
-              fontSize: 25,
-            }}
-            buttonContainer={{
-              width: '65%',
-              height: 70,
-              justifyContent: 'center',
-              alignItems: 'center',
-              // marginBottom: 5, // Make sure this value is small to reduce space
-              // paddingLeft: 20,
-            }}
-            // buttonImageContainer={{
-            //   alignItems: 'flex-start',
-            // }}
           />
-          {/* </View> */}
         </View>
       </>
     );
@@ -182,24 +167,18 @@ const FavoritesScreen = ({navigation}) => {
             }
             return (
               <View key={subcategory} style={styles.categoryContainer}>
-                <GrayButton
-                  item={formattedSubcategory(subcategory)}
+                <Button
+                  title={formattedSubcategory(subcategory)}
                   onPress={() => {}}
-                  buttonText={{
+                  buttonTextStyle={{
                     fontFamily: 'PlayfairDisplay-Regular',
-                    fontSize: 18,
-                    paddingLeft: 20,
+                    fontSize: 20,
+                    paddingVertical: 5,
+                    paddingHorizontal: 10,
                   }}
                   buttonContainer={{
-                    width: 180,
-                    height: 45,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    marginBottom: 5, // Make sure this value is small to reduce space
-                    paddingLeft: 20,
-                  }}
-                  buttonImageContainer={{
-                    alignItems: 'flex-start',
+                    marginLeft: 20,
+                    borderRadius: 5,
                   }}
                 />
                 {captions.map((caption, index) =>

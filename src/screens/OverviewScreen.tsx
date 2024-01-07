@@ -8,7 +8,7 @@ import {
   ImageBackground,
 } from 'react-native';
 
-const GettingStarted = ({onRefresh}) => {
+const OverviewScreen = ({onRefresh}) => {
   const onPressLetsGo = async () => {
     try {
       await AsyncStorage.setItem('SHOW_GETTING_STARTED_SCREEN', 'false');
@@ -130,4 +130,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GettingStarted;
+export default OverviewScreen;

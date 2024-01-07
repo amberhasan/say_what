@@ -1,10 +1,34 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Alert,
+} from 'react-native';
 import Header from '../components/Header';
 
 const HomeScreen: React.FC = () => {
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+        style={{
+          position: 'absolute',
+          zIndex: 1000,
+          right: 30,
+        }}
+        onPress={() => {
+          Alert.alert('Info clicked');
+        }}>
+        <Image
+          source={require('../assets/images/utils/info_icon.png')}
+          style={{
+            height: 32,
+            width: 32,
+          }}
+        />
+      </TouchableOpacity>
       <Header title={'Capfluencer'} showBackButton={false} />
       <View style={{flex: 1, paddingLeft: 20, paddingRight: 20}}>
         <View>
