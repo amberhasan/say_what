@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import _ from 'lodash';
-import GrayButton from '../components/GrayButton';
 import Clipboard from '@react-native-community/clipboard';
 import Header from '../components/Header';
 import DropdownMenu from '../components/DropdownMenu';
