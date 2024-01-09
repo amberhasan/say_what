@@ -27,7 +27,14 @@ If everything is set up _correctly_, you should see your new app running in your
 
 
 # About the application 
+
+## General
 * `App.tsx` is the first thing that the program runs. It holds the bottom tab navigator as well as all the screens and overview.
+* The "assets" folder holds all the fonts used and the images used throughout the application like the bottom tab images, back button, icons
+* The "theme" folder holds the colors and fonts used in the app
+* The "types" folder holds the different data types (something that is important in Typescript)
+* The "reducers" and "store" folders/files are to handle the device ID of users so that we can store each user's Favorites individually
+* The "utils" folder and file inside handle the formatting when retrieving data from the backend, converting it to a readable front-end text
 
 ## Screens
 There's a folder called "screens" which holds all of the screens of the application. For the 4 bottom tabs, we have:
