@@ -1,30 +1,19 @@
 # Starting the application 
 
-Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
-
-## Step 1: Start the Metro Server
-
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
-
-To start Metro, run the following command from the _root_ of your React Native project:
+1. Make sure you have Yarn installed (you might need homebrew, if you have a Mac - you can install homebrew first and then install yarn). 
+2. Clone this project somewhere and cd into it
+3. You need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native. Run the following command from the _root_ of your React Native project:
 
 ```bash
 yarn start
 ```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _iOS_ app:
-
-### For iOS
-
+4. Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _iOS_ app:
 ```bash
 yarn ios
 ```
-
 You can also run it by opening the iOS folder of the app in XCode, and then clicking the Play button
 If everything is set up _correctly_, you should see your new app running in your _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
+You might need to download some things it tells you to. 
 
 # About the application 
 
