@@ -1,7 +1,6 @@
 import React, {useEffect, useState, createRef} from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   Image,
   SafeAreaView,
@@ -10,7 +9,6 @@ import {
 } from 'react-native';
 import {
   NavigationContainer,
-  Route,
   getFocusedRouteNameFromRoute,
 } from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -21,7 +19,7 @@ import SubcategoriesScreen from './src/screens/SubcategoriesScreen';
 import CaptionsScreen from './src/screens/CaptionsScreen';
 import FavoritesScreen from './src/screens/FavoritesScreen';
 import SearchScreen from './src/screens/SearchScreen';
-import {Provider, useDispatch} from 'react-redux';
+import {Provider} from 'react-redux';
 import configureStore from './src/store/configureStore';
 import {
   DiscoverStackParams,

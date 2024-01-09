@@ -69,14 +69,6 @@ export type DropdownMenuProps = {
   isFavorite: boolean;
 };
 
-export type GrayButtonProps = {
-  item: string;
-  onPress: (item: string) => void;
-  buttonText?: object;
-  buttonContainer?: object;
-  buttonImageContainer?: object;
-};
-
 export type HeaderProps = {
   title: string;
   showBackButton?: boolean;
