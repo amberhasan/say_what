@@ -80,6 +80,7 @@ export type GrayButtonProps = {
 export type HeaderProps = {
   title: string;
   showBackButton?: boolean;
+  style?: object;
 };
 
 export interface customTextProps extends TextProps {

@@ -4,7 +4,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {HeaderProps} from '../types';
 import fonts from '../theme/fonts';
 
-const Header = ({title, showBackButton = true}: HeaderProps) => {
+const Header = ({title, showBackButton = true, style}: HeaderProps) => {
   const navigation = useNavigation();
 
   const onBackPress = () => {
@@ -23,7 +23,7 @@ const Header = ({title, showBackButton = true}: HeaderProps) => {
         </TouchableOpacity>
       )}
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={[styles.title, style]}>{title}</Text>
       </View>
       {showBackButton && <View style={styles.placeholder} />}
     </View>
