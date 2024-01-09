@@ -31,14 +31,19 @@ If everything is set up _correctly_, you should see your new app running in your
 
 ## Screens
 There's a folder called "screens" which holds all of the screens of the application. For the 4 bottom tabs, we have:
-1. "HomeScreen"
-2. "CategoriesScreen" -> "SubcategoriesScreen" -> "CaptionsScreen" is the order of screens when you click into each button
-3. "FavoritesScreen"
-4. "SearchScreen"
+1. "HomeScreen.tsx"
+2. "CategoriesScreen.tsx" -> "SubcategoriesScreen.tsx" -> "CaptionsScreen.tsx" is the order of screens when you click into each button
+3. "FavoritesScreen.tsx"
+4. "SearchScreen.tsx"
   
 The first tab has the info button, which takes the user to the "InfoScreen". 
 There is a very similar screen that the user sees when they launch the app for the very first time, called the "OverviewScreen". 
 
 ## Components
 In React Native, instead of having huge files, you break things into components that you can plug in to different places. So, I have made these reusable components:
-* 
+* Button.tsx is currently a light pink button - it's used in CategoriesScreen.tsx file mainly and also in the FavoritesScreen.tsx
+* CategoryBox.tsx is what is used in the SubcategoriesScreen.txt for each item
+* CustomText.txt is a file that holds some default text style I wanted to use throughout the app
+* DropdownMenu.tsx is the component that is used when a caption is selected and there is a "Copy to clipboard" and "Add to favorites"
+* Header.tsx holds all of the very top bar text and sometimes the back button.
+* Overview.tsx is a component I used to create the InfoScreen and OverviewScreen
