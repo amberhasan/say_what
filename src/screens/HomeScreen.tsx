@@ -47,7 +47,7 @@ const HomeScreen: React.FC = ({navigation}) => {
           <View style={styles.innerBox}>
             <Text style={styles.caption}>Trendy,</Text>
             <Text style={styles.caption}>relatable,</Text>
-            <Text style={styles.caption}>& relevant captions!</Text>
+            <Text style={styles.caption}>& convenient captions!</Text>
           </View>
           <Text style={styles.subtitle}>Browse, save and search now!</Text>
         </View>
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   },
 
   innerBox: {
-    backgroundColor: colors.lightPink,
+    backgroundColor: colors.black,
     paddingTop: 50,
     paddingBottom: 50,
   },
@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
     fontFamily: 'YesevaOne-Regular',
     fontSize: 50,
     textAlign: 'center',
+    color: colors.lightPink,
   },
 });
 

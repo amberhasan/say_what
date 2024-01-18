@@ -38,7 +38,7 @@ const Overview = ({onPressLetsGo}: any) => {
 
             <Text style={styles.descriptionText}>
               Whether you’re in a pinch, need inspiration, or have no idea what
-              to do, Capfluencer is here to help!
+              to say, Capfluencer is here to help!
             </Text>
           </View>
         </ImageBackground>
