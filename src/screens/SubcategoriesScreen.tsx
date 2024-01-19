@@ -12,7 +12,6 @@ import Header from '../components/Header';
 import firestore from '@react-native-firebase/firestore';
 import {capitalize} from 'lodash';
 import {SubcategoriesScreenProps, SubcategoriesScreenRoute} from '../types';
-
 const SubcategoriesScreen = ({
   navigation,
   route,
@@ -86,6 +85,14 @@ const SubcategoriesScreen = ({
                 }
               />
             ))}
+            {subcategories?.length % 2 == 1 && (
+              <View
+                style={{
+                  width: '38%', // 4 boxes per row
+                  marginHorizontal: 10,
+                }}
+              />
+            )}
           </View>
         </ScrollView>
       </View>
@@ -106,10 +113,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'PlayfairDisplay-Regular',
   },
+
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center', // Changed this to 'space-around' for even spacing around items
+    justifyContent: 'center', // Align grid items to the left
     paddingHorizontal: 16, // Adjust the horizontal padding of the whole grid to match your design
   },
   box: {
