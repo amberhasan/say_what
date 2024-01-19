@@ -17,7 +17,7 @@ const HomeScreen: React.FC = ({navigation}) => {
         style={{
           position: 'absolute',
           zIndex: 1000,
-          right: 30,
+          right: '5%',
         }}
         onPress={() => {
           navigation.navigate('InfoScreen');
@@ -46,8 +46,8 @@ const HomeScreen: React.FC = ({navigation}) => {
         <View style={styles.outerBox}>
           <View style={styles.innerBox}>
             <Text style={styles.caption}>Trendy,</Text>
-            <Text style={styles.caption}>relatable,</Text>
-            <Text style={styles.caption}>& convenient captions!</Text>
+            <Text style={styles.caption}>relatable, &</Text>
+            <Text style={styles.caption}>convenient captions!</Text>
           </View>
           <Text style={styles.subtitle}>Browse, save and search now!</Text>
         </View>
@@ -87,8 +87,8 @@ const styles = StyleSheet.create({
 
   innerBox: {
     backgroundColor: colors.black,
-    paddingTop: 50,
-    paddingBottom: 50,
+    paddingTop: '5%',
+    paddingBottom: '5%',
   },
   caption: {
     fontFamily: 'YesevaOne-Regular',

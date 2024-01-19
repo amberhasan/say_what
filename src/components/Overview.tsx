@@ -14,7 +14,7 @@ const Overview = ({onPressLetsGo}: any) => {
         <Text style={styles.titleText}>Capfluencer!</Text>
       </View>
 
-      <View style={{height: 350, marginHorizontal: 20, paddingTop: 40}}>
+      <View style={{height: '30%', marginHorizontal: 20, paddingTop: 40}}>
         <ImageBackground
           resizeMode="stretch"
           style={{
