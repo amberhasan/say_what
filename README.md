@@ -1,3 +1,5 @@
+<img width="696" alt="image" src="https://github.com/amberhasan/say_what/assets/12038406/ec00194d-c288-432f-8eb2-9c41ad6a9b76">
+
 # Starting the application 
 
 1. Make sure you have Yarn installed (you might need homebrew, if you have a Mac - you can install homebrew first and then install yarn). 
